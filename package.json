@@ -1,32 +1,57 @@
 {
-  "name": "webpack-test",
-  "version": "1.0.0",
-  "description": "",
-  "main": "src/main.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "http-server ./dist/",
-    "start:dev": "webpack-dev-server --env.dev --config conf/webpack.config.js",
-    "build:dev": "webpack --env.dev --config conf/webpack.config.js",
-    "build:prod": "webpack --env.prod --config conf/webpack.config.js"
-  },
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "bootstrap-sass": "^3.3.7",
-    "css-loader": "^0.28.9",
-    "ejs-loader": "^0.3.0",
-    "extract-text-webpack-plugin": "^3.0.2",
-    "file-loader": "^1.1.6",
-    "html-webpack-plugin": "^2.30.1",
-    "http-server": "^0.11.1",
-    "node-sass": "^4.7.2",
-    "sass-loader": "^6.0.6",
-    "style-loader": "^0.20.1",
-    "svg-inline-loader": "^0.8.0",
-    "uglifyjs-webpack-plugin": "^1.1.8",
-    "webpack": "^3.10.0",
-    "webpack-dev-server": "^2.11.1"
-  },
-  "dependencies": {}
+	"name": "webpack-test",
+	"version": "0.0.1",
+	"description": "",
+	"main": "src/main.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "http-server ./dist/",
+		"start:dev": "webpack-dev-server --env.dev --config conf/webpack/webpack.config.js",
+		"build:dev": "webpack --env.dev --config conf/webpack/webpack.config.js",
+		"build:prod": "webpack --env.prod --config conf/webpack/webpack.config.js"
+	},
+	"app": {
+		"root": "src",
+		"outDir": "dist",
+		"main": [
+			"main.js"
+		],
+		"template": "index.html",
+		"templateData": {
+			"title": "Webpack test configuration"
+		},
+		"assets": [
+			"assets/icons/favicon_16x16.png",
+			"assets/icons/favicon_32x32.png",
+			"assets/images/c.png",
+			"assets/svg/sign/sign-00.svg"
+		],
+		"styles": [
+			"styles/styles.scss",
+			"styles/banners/a.scss"
+		]
+	},
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"@types/clean-webpack-plugin": "^0.1.0",
+		"@types/webpack-merge": "^4.1.1",
+		"bootstrap-sass": "^3.3.7",
+		"clean-webpack-plugin": "^0.1.18",
+		"css-loader": "^0.28.9",
+		"ejs-loader": "^0.3.0",
+		"extract-text-webpack-plugin": "^3.0.2",
+		"file-loader": "^1.1.6",
+		"html-webpack-plugin": "^2.30.1",
+		"http-server": "^0.11.1",
+		"node-sass": "^4.7.2",
+		"sass-loader": "^6.0.6",
+		"style-loader": "^0.20.1",
+		"svg-inline-loader": "^0.8.0",
+		"uglifyjs-webpack-plugin": "^1.1.8",
+		"webpack": "^3.10.0",
+		"webpack-dev-server": "^2.11.1",
+		"webpack-merge": "^4.1.1"
+	},
+	"dependencies": {}
 }
