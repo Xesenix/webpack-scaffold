@@ -1,11 +1,11 @@
 /* this file is imported from other stylesheet */
-
-$assetRoot: '../../' !default;
+/* default setup according to stylesheet position relative to application src folder */
+$srcRoot: '../../' !default;
 
 .b {
 	width: 64px;
 	height: 64px;
-	/* Use this kind of path interpolation for getting image preview */
-	background: transparent url(#{$assetRoot + 'assets/images/b.png'}) no-repeat;
+	/* Use this kind of path interpolation for getting image preview in Visual Code */
+	background: transparent url(#{$srcRoot + 'assets/images/b.png'}) no-repeat;
 	background-size: 64px 64px;
 }

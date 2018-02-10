@@ -1,13 +1,13 @@
+/* This script doesn't really on $srcRoot */
 @import 'bootstrap';
-
 /* For setting up assets paths for imported style sheets */
-$assetRoot: '../';
-
+$srcRoot: '../' !default;
+/* We import any other stylesheet that uses $srcRoot after setting up $srcRoot */
 @import 'banners/b';
 
 body {
-	/* Use this kind of path interpolation for getting image preview */
-	background: #444 url(#{$assetRoot + 'assets/background/bg.png'}) repeat;
+	/* Use this kind of path interpolation for getting image preview in Visual Code */
+	background: #444 url(#{$srcRoot + 'assets/background/bg.png'}) repeat;
 	background-size: 256px;
 	image-rendering: pixelated;
 	color: #fff;
