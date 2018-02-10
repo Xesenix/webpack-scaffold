@@ -1,5 +1,6 @@
 [
 	"./src/assets/icons/favicon_16x16.png",
 	"./src/assets/icons/favicon_32x32.png",
-	"./src/assets/images/c.png"
+	"./src/assets/images/c.png",
+	"./src/assets/svg/sign/sign-00.svg"
 ]

@@ -6,7 +6,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const cssPluginFactory = require('./webpack/plugins/css');
 const fontsRulesFactory = require('./webpack/rules/fonts');
-const imagesRulesFactory = require('./webpack/rules/images');
+const assetsRulesFactory = require('./webpack/rules/assets');
 const stylesRulesFactory = require('./webpack/rules/styles');
 
 const styles = require('./styles.json');
@@ -18,10 +18,10 @@ module.exports = (env) => {
 	const isProd = !!env.prod;
 	const isTest = !!env.test;
 	const isDev = !!env.dev;
+	const distPath = path.resolve(__dirname, '../dist');
+	const srcPath = path.resolve(__dirname, '../src');
 
-	const extractCssPlugin = cssPluginFactory({
-		// disable: !isProd
-	});
+	const extractCssPlugin = cssPluginFactory();
 	const htmlPlugin = new HtmlWebpackPlugin({
 		title: `${package.name} - ${package.version}`,
 		inject: true,
@@ -38,15 +38,19 @@ module.exports = (env) => {
 	return {
 		entry: ['./src/main.js', ...styles, ...assets],
 		output: {
-			path: path.resolve(__dirname, '../dist'),
+			path: distPath,
 			filename: '[name].boundle.js',
 			// publicPath: path.resolve(__dirname, '../dist/'),
 		},
+		devServer: {
+			contentBase: [distPath], // assets needs project to be build before they load
+			hot: true,
+		},
 		module: {
 			rules: [
+				...fontsRulesFactory(srcPath),
+				...assetsRulesFactory(srcPath),
 				...stylesRulesFactory(extractCssPlugin),
-				...imagesRulesFactory(path.resolve(__dirname, '../src')),
-				...fontsRulesFactory(),
 			]
 		},
 		plugins: [
