@@ -1,0 +1,19 @@
+@import 'bootstrap';
+
+/* For setting up assets paths for imported style sheets */
+$assetRoot: '../';
+
+@import 'banners/b';
+
+body {
+	/* Use this kind of path interpolation for getting image preview */
+	background: #444 url(#{$assetRoot + 'assets/background/bg.png'}) repeat;
+	background-size: 256px;
+	image-rendering: pixelated;
+	color: #fff;
+}
+
+.box {
+	padding: 20px;
+	border: 1px solid #ddd;
+}

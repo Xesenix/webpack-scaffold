@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title><%= htmlWebpackPlugin.options.title %></title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1, user-scalable=0">
+
+	<!-- TODO -->
+	<!-- Startup configuration -->
+	<link rel="manifest" href="manifest.webmanifest">
+
+	<!-- Fallback application metadata for legacy browsers -->
+	<meta name="application-name" content="Hell Tower">
+
+	<link rel="icon" sizes="16x16" href="assets/icons/favicon_16x16.png">
+	<link rel="icon" sizes="32x32" href="assets/icons/favicon_32x32.png">
+</head>
+<body>
+	<div id="app"></div>
+	<div class="container">
+		<div class="box">
+			<code>
+				/src/styles/banners/a.scss<br/>
+				url(#{$assetRoot + 'assets/images/a.png'})
+			</code>
+			<div class="a"></div>
+		</div>
+
+		<div class="box">
+			<code>
+				/src/styles/styles.scss<br/>
+				@import /src/styles/banners/b.scss<br/>
+				url(#{$assetRoot + 'assets/images/b.png'})
+			</code>
+			<div class="b"></div>
+		</div>
+
+		<div class="box">
+
+			<code>
+				src/index.html<br/>
+				src="assets/images/c.png"
+			</code><br/>
+			<img src="assets/images/c.png"/><br/>
+		</div>
+
+		<div class="box">
+
+			<code>Bootstrap icons</code><br/>
+			<div class="glyphicon glyphicon-star"></div>
+			<div class="glyphicon glyphicon-knight"></div>
+		</div>
+	</div>
+</body>
+</html>
