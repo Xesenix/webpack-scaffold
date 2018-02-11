@@ -104,6 +104,7 @@ module.exports = (env) => {
 			],
 			hot: true,
 		},
+		devtool: "source-map",
 		resolve: {
 			modules: [
 				appConfig.rootPath,
@@ -114,7 +115,7 @@ module.exports = (env) => {
 			rules: [
 				...fontsRulesFactory(appConfig.rootPath),
 				...assetsRulesFactory(appConfig.rootPath),
-				...stylesRulesFactory(extractCssPlugin),
+				...stylesRulesFactory(extractCssPlugin, isProd),
 			]
 		},
 		plugins: [
@@ -137,7 +138,9 @@ module.exports = (env) => {
 				]
 				.filter(p => !!p)
 				.map(from => ({ from: path.join(appConfig.rootDir, from), to: path.join(appConfig.outPath, from) })),
-				{ debug: 'info' }
+				{
+					debug: 'info',
+				}
 			),
 			new CleanWebpackPlugin([ appConfig.outDir ]),
 			new DotenvWebpackPlugin({ path: '.env' }),
