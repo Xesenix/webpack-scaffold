@@ -1,10 +1,34 @@
 const path = require('path');
 const webpack = require('webpack');
 
+/**
+ * Handling page template.
+ */
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+/**
+ * Minify production build.
+ */
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+
+/**
+ * Add secret configuration options via .env file.
+ */
+const DotenvWebpackPlugin = require('dotenv-webpack');
+
+/**
+ * Clean up destinition directory.
+ */
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+
+/**
+ * Merge any additional project specific webpack configuration.
+ */
 const merge = require('webpack-merge');
+
+/**
+ * Preconfigured webpack configuration elements.
+ */
 
 const cssPluginFactory = require('./plugins/css');
 const fontsRulesFactory = require('./rules/fonts');
@@ -59,7 +83,7 @@ module.exports = (env) => {
 			filename: '[name].boundle.js',
 		},
 		devServer: {
-			contentBase: [appConfig.outPath], // assets needs project to be build before they load
+			contentBase: [ appConfig.outPath ], // assets needs project to be build before they load
 			hot: true,
 		},
 		module: {
@@ -83,8 +107,18 @@ module.exports = (env) => {
 					}
 				},
 			}),
+			new CleanWebpackPlugin([ appConfig.outDir ]),
+			new DotenvWebpackPlugin({ path: '.env' }),
+			new webpack.DefinePlugin({
+				'process.env.PRODUCTION': JSON.stringify(isProd),
+				'process.env.DEVELOPMENT': JSON.stringify(isDev),
+				'process.env.TEST': JSON.stringify(isTest),
+				'process.env.PACKAGE': JSON.stringify(package),
+				'process.env.APP': JSON.stringify(appConfig),
+			}),
 			isProd ? new UglifyJsPlugin() : null,
-			new CleanWebpackPlugin([appConfig.outDir]),
+			isDev ? new webpack.NamedModulesPlugin() : null,
+			isDev ? new webpack.HotModuleReplacementPlugin() : null,
 		].filter(p => !!p)
 	};
 
