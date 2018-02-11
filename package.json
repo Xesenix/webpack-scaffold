@@ -21,10 +21,7 @@
 			"title": "Webpack test configuration"
 		},
 		"assets": [
-			"assets/icons/favicon_16x16.png",
-			"assets/icons/favicon_32x32.png",
-			"assets/images/c.png",
-			"assets/svg/sign/sign-00.svg"
+			"assets"
 		],
 		"styles": [
 			"styles/styles.scss",

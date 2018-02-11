@@ -8,6 +8,7 @@ module.exports = (srcRoot) => {
 			// importing anything from node_modules will move it to some crazy long path in build
 			// also we should avoid loading svg fonts in stylesheets so we treat fonts seperatly from other assets
 			test: /\.(png|jpg|gif|svg)$/,
+			// this is mostly to seperate svgs loaded as fonts and svg images located in assets folder
 			include: (p) => path.normalize(p).startsWith(assetPath),
 			use: [{
 				loader: 'file-loader',

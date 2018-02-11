@@ -10,21 +10,27 @@ This is basic starting point for application using __webpack v3__ with some defa
 
 Its work in progress so workflow is kind of clunky:
 
-For development
+For development with HMR
 
-* Run `npm run build:dev` this will move all assets to `package.app.outPath` path
-* Run `npm run serve:dev` this will start `webpack-dev-server`
+* Run `npm run serve:dev` this will start `webpack-dev-server` if some assets won't appear you probably need to add them to `package.app.assets`
 
 For production build:
 
-* Run `npm run build:prod` this will move all assets to `package.app.outPath` path
+* Run `npm run build:prod` this will build project and move all assets to `package.app.outPath` path
+
+### Features
+
+* setting up build specific environmental variables
+* SASS
+* HMR for stylesheets
+* loading png, jpg, gif, svg assets from local project paths and node_modules
+* loading eot, svg, ttf, woff, woff2 fonts from local project paths and node_modules
 
 ### TODO
 
 This project is using __webpack v3__ and probably has a lot place for improvement like:
 * find a way to avoid need for using `$srcRoot` variable in stylesheet
-* auto detect assets included in html template
-* remove the need for building app before all assets are available for `webpack-dev-serve`
+* auto detect assets included in html template (this is problem if you override default behaviour of copying to production all assets)
 
 ## Documentation
 
@@ -37,8 +43,9 @@ You can provide application configuration via _package.json_ `app` param:
 | __package.app.rootDir__ | src | directory where all source code and other assets resides
 | __package.app.outDir__ | dist | directory in which to put builded application
 | __package.app.main__ | ['main.js'] | entry points to your application relative to `package.app.rootDir`
-| __package.app.assets__ | [] | all asset and resource you want to move to build assets directory
-| __package.app.styles__ | [] | all stylesheets you want to use as entry points
+| __package.app.assets__ | ['assets'] | all asset and resource you want to move to build assets directory (you can use glob patterns or just link to directory)
+| __package.app.fonts__ | ['fonts'] | all fonts resource you want to move to build fonts directory (you can use glob patterns or just link to directory)
+| __package.app.styles__ | ['styles/styles.scss'] | all stylesheets you want to use as entry points
 | __package.app.vendor__ | [] | all vendor scripts you want to push to vendor bundle
 | __package.app.template__ | index.html | html template that you want to use as template for website
 | __package.app.templateData__ | {} | html template is handled by ejs loader so you can put here additional data that will be passed to `htmlWebpackPlugin.options.data` you can also access _package.json_ from `htmlWebpackPlugin.options.package`
@@ -60,6 +67,7 @@ If anywhere in you code exist one of those phrases it will be replaced with data
 | __process.env.APP.outPath__ | string | | resolved system path to `package.app.outDir` |
 | __process.env.APP.main__ | string[] | | application entry scripts defined in `package.app.main` |
 | __process.env.APP.assets__ | string[] | | assets defined in `package.app.assets` |
+| __process.env.APP.fonts__ | string[] | | fonts defined in `package.app.fonts` |
 | __process.env.APP.styles__ | string[] | | styles entry points defined in `package.app.styles` |
 | __process.env.APP.vendor__ | string[] | | vendor scripts defined in `package.app.vendor` |
 | __process.env.APP.template__ | string | _index.html_ | main template name |
@@ -175,3 +183,9 @@ _file: package.json_
   }
 }
 ```
+
+# Rsources
+
+Some additional resources that can clarify concepts behind this scaffold project.
+
+* [Webpack plugins documentation](https://webpack.js.org/plugins/)

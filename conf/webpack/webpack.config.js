@@ -57,9 +57,9 @@ module.exports = (env) => {
 	appConfig.rootDir = retrivePackageAppConfig('rootDir', 'src');
 	appConfig.outDir = retrivePackageAppConfig('outDir', 'dist');
 	appConfig.main = retrivePackageAppConfig('main', [ './main.js' ]);
-	appConfig.assets = retrivePackageAppConfig('assets', []);
-	appConfig.fonts = retrivePackageAppConfig('fonts', []);
-	appConfig.styles = retrivePackageAppConfig('styles', []);
+	appConfig.assets = retrivePackageAppConfig('assets', [ './assets' ]);
+	appConfig.fonts = retrivePackageAppConfig('fonts', [ './fonts' ]);
+	appConfig.styles = retrivePackageAppConfig('styles', [ './styles/styles.scss' ]);
 	appConfig.vendor = retrivePackageAppConfig('vendor', []);
 	appConfig.template = retrivePackageAppConfig('template', 'index.html');
 	appConfig.templateData = retrivePackageAppConfig('templateData', {});
@@ -137,7 +137,11 @@ module.exports = (env) => {
 					...appConfig.fonts,
 				]
 				.filter(p => !!p)
-				.map(from => ({ from: path.join(appConfig.rootDir, from), to: path.join(appConfig.outPath, from) })),
+				.map(
+					from => typeof from === 'string'
+					? { from: path.join(appConfig.rootDir, from), to: path.join(appConfig.outPath, from) }
+					: from
+				),
 				{
 					debug: 'info',
 				}

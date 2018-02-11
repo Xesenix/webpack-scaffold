@@ -5,13 +5,11 @@ module.exports = (extractCssPlugin, isProd) => [
 			fallback: 'style-loader',
 			use: [
 				{ loader: 'css-loader', options: { sourceMap: true, importLoaders: 1 } },
-				// 'resolve-url-loader',
 				{ loader: 'sass-loader', options: { sourceMap: true } },
 			]
 		}) : [
 			{ loader: 'style-loader', options: { sourceMap: true } }, // required for HMR
-			{ loader: 'css-loader', options: { sourceMap: true, importLoaders: 1 } },
-			// 'resolve-url-loader',
+			{ loader: 'css-loader', options: { sourceMap: true } },
 			{ loader: 'sass-loader', options: { sourceMap: true } },
 		]
 	}
