@@ -1,6 +1,9 @@
 const path = require('path');
 const webpack = require('webpack');
 
+// TODO: find a better way to configure projectRoot
+const projectRoot = path.resolve(__dirname, '../..');
+
 /**
  * Handling page template.
  */
@@ -37,22 +40,27 @@ const stylesRulesFactory = require('./rules/styles');
 
 const package = require('../../package.json');
 
+const retrivePackageAppConfig = (key, defaultValue) => package.app && package.app[key] ? package.app[key] : defaultValue;
+
 module.exports = (env) => {
 	const isProd = !!env.prod;
 	const isTest = !!env.test;
 	const isDev = !!env.dev;
 
 	const appConfig = {};
-	appConfig.rootDir = package.app && package.app.rootDir ? package.app.rootDir : 'src';
-	appConfig.outDir = package.app && package.app.outDir ? package.app.outDir : 'dist';
-	appConfig.rootPath = path.normalize(path.resolve(__dirname + '/../..', appConfig.rootDir));
-	appConfig.outPath = path.normalize(path.resolve(__dirname + '/../..', appConfig.outDir));
-	appConfig.main = (package.app && package.app.main ? package.app.main : ['.main.js']).map(p => path.normalize(path.resolve(appConfig.rootPath, p)));
-	appConfig.assets = (package.app && package.app.assets ? package.app.assets : []).map(p => path.normalize(path.resolve(appConfig.rootPath, p)));
-	appConfig.styles = (package.app && package.app.styles ? package.app.styles : []).map(p => path.normalize(path.resolve(appConfig.rootPath, p)));
-	appConfig.template = package.app && package.app.template || '';
-	appConfig.templateData = package.app && package.app.templateData || {};
-	appConfig.appWebpackPath = package.app && package.app.webpack || null;
+
+	appConfig.rootDir = retrivePackageAppConfig('rootDir', 'src');
+	appConfig.outDir = retrivePackageAppConfig('outDir', 'dist');
+	appConfig.main = retrivePackageAppConfig('main', [ './main.js' ]);
+	appConfig.assets = retrivePackageAppConfig('assets', []);
+	appConfig.styles = retrivePackageAppConfig('styles', []);
+	appConfig.vendor = retrivePackageAppConfig('vendor', []);
+	appConfig.template = retrivePackageAppConfig('template', 'index.html');
+	appConfig.templateData = retrivePackageAppConfig('templateData', {});
+	appConfig.appWebpackPath = retrivePackageAppConfig('webpack', null);
+
+	appConfig.rootPath = path.normalize(path.resolve(projectRoot, appConfig.rootDir));
+	appConfig.outPath = path.normalize(path.resolve(projectRoot, appConfig.outDir));
 
 	const extractCssPlugin = cssPluginFactory();
 	const htmlPlugin = new HtmlWebpackPlugin({
@@ -72,19 +80,29 @@ module.exports = (env) => {
 		showErrors: true,
 	});
 
+	const entry = {};
+
+	['main', 'assets', 'styles', 'vendor']
+		.filter((key) => appConfig[key].length > 0)
+		.forEach((key) => entry[key] = appConfig[key]);
+
 	const webpackConfig = {
-		entry: [
-			...appConfig.main,
-			...appConfig.assets,
-			...appConfig.styles,
-		],
+		entry,
 		output: {
 			path: appConfig.outPath,
 			filename: '[name].boundle.js',
 		},
 		devServer: {
-			contentBase: [ appConfig.outPath ], // assets needs project to be build before they load
+			contentBase: [
+				appConfig.outPath, // assets needs project to be build before they load from that path
+			],
 			hot: true,
+		},
+		resolve: {
+			modules: [
+				appConfig.rootPath,
+				'node_modules',
+			],
 		},
 		module: {
 			rules: [

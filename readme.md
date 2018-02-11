@@ -38,14 +38,15 @@ You can provide application configuration via _package.json_ `app` param:
 | __package.app.outDir__ | dist | directory in which to put builded application
 | __package.app.main__ | ['main.js'] | entry points to your application relative to `package.app.rootDir`
 | __package.app.assets__ | [] | all asset and resource you want to move to build assets directory
-| __package.app.styles__ | [] | all stylesheets you want to use as entry point 
+| __package.app.styles__ | [] | all stylesheets you want to use as entry points
+| __package.app.vendor__ | [] | all vendor scripts you want to push to vendor bundle
 | __package.app.template__ | index.html | html template that you want to use as template for website
 | __package.app.templateData__ | {} | html template is handled by ejs loader so you can put here additional data that will be passed to `htmlWebpackPlugin.options.data` you can also access _package.json_ from `htmlWebpackPlugin.options.package`
 | __package.app.webpack__ | null | path to script that can extend basic webpack configuration function exported by this scrip recives 3 params: `env`, `webpackConfig`, `appConfig`
 
 ### Source code phrase replacement
 
-If anywhere in you code exist on of those phrases it will be replaced with data injected via __webpack.DefinePlugin__
+If anywhere in you code exist one of those phrases it will be replaced with data injected via __webpack.DefinePlugin__
 
 | __phrase__ | __type__ | __default__ | __meaning__ |
 |---|---|---|---|
@@ -57,16 +58,17 @@ If anywhere in you code exist on of those phrases it will be replaced with data 
 | __process.env.APP.outDir__ | string | _dist_ | `package.app.outDir` |
 | __process.env.APP.rootPath__ | string | | resolved system path to `package.app.rootDir` |
 | __process.env.APP.outPath__ | string | | resolved system path to `package.app.outDir` |
-| __process.env.APP.main__ | string[] | | resolved system paths to `package.app.main` |
-| __process.env.APP.assets__ | string[] | | resolved system paths to `package.app.assets` |
-| __process.env.APP.styles__ | string[] | | resolved system paths to `package.app.styles` |
+| __process.env.APP.main__ | string[] | | application entry scripts defined in `package.app.main` |
+| __process.env.APP.assets__ | string[] | | assets defined in `package.app.assets` |
+| __process.env.APP.styles__ | string[] | | styles entry points defined in `package.app.styles` |
+| __process.env.APP.vendor__ | string[] | | vendor scripts defined in `package.app.vendor` |
 | __process.env.APP.template__ | string | _index.html_ | main template name |
 | __process.env.APP.templateData__ | string | | data injected into template `htmlWebpackPlugin.options.data` |
 | __process.env.APP.appWebpackPath__ | string | | path to additional webpack configuration script |
 
 __process.env__ won't have those phrases listed as its params when trying to call it after build. So it secure, in sense that you can use only what you really need.
 
-### Additional enviromental configuration via _.env_ file
+### Additional environmental configuration via _.env_ file
 
 If you need to add any secret configuration to your project you can use similar proccess of replacing source code as above with variables provided in _.env_ file.
 For example:
