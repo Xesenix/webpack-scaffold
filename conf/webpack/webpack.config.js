@@ -25,6 +25,11 @@ const DotenvWebpackPlugin = require('dotenv-webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 /**
+ * Copy assets and fonts.
+ */
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+
+/**
  * Merge any additional project specific webpack configuration.
  */
 const merge = require('webpack-merge');
@@ -53,6 +58,7 @@ module.exports = (env) => {
 	appConfig.outDir = retrivePackageAppConfig('outDir', 'dist');
 	appConfig.main = retrivePackageAppConfig('main', [ './main.js' ]);
 	appConfig.assets = retrivePackageAppConfig('assets', []);
+	appConfig.fonts = retrivePackageAppConfig('fonts', []);
 	appConfig.styles = retrivePackageAppConfig('styles', []);
 	appConfig.vendor = retrivePackageAppConfig('vendor', []);
 	appConfig.template = retrivePackageAppConfig('template', 'index.html');
@@ -82,7 +88,7 @@ module.exports = (env) => {
 
 	const entry = {};
 
-	['main', 'assets', 'styles', 'vendor']
+	['main', 'styles', 'vendor']
 		.filter((key) => appConfig[key].length > 0)
 		.forEach((key) => entry[key] = appConfig[key]);
 
@@ -125,6 +131,14 @@ module.exports = (env) => {
 					}
 				},
 			}),
+			new CopyWebpackPlugin([
+					...appConfig.assets,
+					...appConfig.fonts,
+				]
+				.filter(p => !!p)
+				.map(from => ({ from: path.join(appConfig.rootDir, from), to: path.join(appConfig.outPath, from) })),
+				{ debug: 'info' }
+			),
 			new CleanWebpackPlugin([ appConfig.outDir ]),
 			new DotenvWebpackPlugin({ path: '.env' }),
 			new webpack.DefinePlugin({

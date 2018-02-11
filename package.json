@@ -35,9 +35,11 @@
 	"license": "ISC",
 	"devDependencies": {
 		"@types/clean-webpack-plugin": "^0.1.0",
+		"@types/copy-webpack-plugin": "^4.0.1",
 		"@types/webpack-merge": "^4.1.1",
 		"bootstrap-sass": "^3.3.7",
 		"clean-webpack-plugin": "^0.1.18",
+		"copy-webpack-plugin": "^4.4.1",
 		"css-loader": "^0.28.9",
 		"dotenv-webpack": "^1.5.4",
 		"ejs-loader": "^0.3.0",
