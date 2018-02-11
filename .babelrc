@@ -1,0 +1,15 @@
+{
+	"compact": false,
+	"presets": [
+		["env", {
+			"targets": {
+				"browsers": ["last 2 versions", "safari >= 7"]
+			},
+			"loose": true,
+			"modules": false,
+			"debug": true,
+			"spec": false
+		}],
+		"react"
+	]
+}
