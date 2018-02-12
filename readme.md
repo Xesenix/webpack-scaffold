@@ -17,6 +17,11 @@ For development with HMR
 For production build:
 
 * Run `npm run build:prod` this will build project and move all assets to `package.app.outPath` path
+* Run `npm start` to test build in browser `localhost:8080`
+
+If you want analyze build size and dependencies use:
+
+* Run `npm run build:analyze`
 
 ### Features
 
