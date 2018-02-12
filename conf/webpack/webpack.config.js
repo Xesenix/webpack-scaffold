@@ -30,6 +30,11 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 /**
+ * Analyze project size.
+ */
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
+/**
  * Merge any additional project specific webpack configuration.
  */
 const merge = require('webpack-merge');
@@ -51,6 +56,7 @@ module.exports = (env) => {
 	const isProd = !!env.prod;
 	const isTest = !!env.test;
 	const isDev = !!env.dev;
+	const analyze = !!env.analyze;
 
 	const appConfig = {};
 
@@ -155,6 +161,12 @@ module.exports = (env) => {
 				'process.env.PACKAGE': JSON.stringify(package),
 				'process.env.APP': JSON.stringify(appConfig),
 			}),
+			analyze ? new BundleAnalyzerPlugin({
+				analyzerMode: 'server',
+				openAnalyzer: true,
+				// statsFilename: path.join(appConfig.outPath, 'stats.json'),
+				generateStatsFile: true,
+			}) : null,
 			isProd ? new UglifyJsPlugin() : null,
 			isDev ? new webpack.NamedModulesPlugin() : null,
 			isDev ? new webpack.HotModuleReplacementPlugin() : null,

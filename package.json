@@ -8,7 +8,8 @@
 		"start": "http-server ./dist/",
 		"start:dev": "webpack-dev-server --env.dev --config conf/webpack/webpack.config.js",
 		"build:dev": "webpack --env.dev --config conf/webpack/webpack.config.js",
-		"build:prod": "webpack --env.prod --config conf/webpack/webpack.config.js"
+		"build:prod": "webpack --env.prod --config conf/webpack/webpack.config.js",
+		"build:analyze": "webpack --env.prod --env.analyze --config conf/webpack/webpack.config.js"
 	},
 	"app": {
 		"root": "src",
@@ -33,6 +34,7 @@
 	"devDependencies": {
 		"@types/clean-webpack-plugin": "^0.1.0",
 		"@types/copy-webpack-plugin": "^4.0.1",
+		"@types/webpack-bundle-analyzer": "^2.9.0",
 		"@types/webpack-merge": "^4.1.1",
 		"bootstrap-sass": "^3.3.7",
 		"clean-webpack-plugin": "^0.1.18",
@@ -50,6 +52,7 @@
 		"svg-inline-loader": "^0.8.0",
 		"uglifyjs-webpack-plugin": "^1.1.8",
 		"webpack": "^3.10.0",
+		"webpack-bundle-analyzer": "^2.10.0",
 		"webpack-dev-server": "^2.11.1",
 		"webpack-merge": "^4.1.1"
 	},
