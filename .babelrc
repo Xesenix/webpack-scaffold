@@ -1,7 +1,7 @@
 {
 	"compact": false,
 	"presets": [
-		["env", {
+		["@babel/preset-env", {
 			"targets": {
 				"browsers": ["last 2 versions", "safari >= 7"]
 			},
@@ -10,6 +10,7 @@
 			"debug": true,
 			"spec": false
 		}],
-		"react"
+		"@babel/preset-react",
+		"@babel/preset-typescript"
 	]
 }

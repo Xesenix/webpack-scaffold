@@ -1,10 +1,12 @@
-import { A } from './lib';
+import { A, C } from './lib';
 import config from './data/config';
 import start from './app';
 
 const a = new A();
-
 a.execute();
+
+const c = new C();
+c.execute();
 
 const pckg = process.env.PACKAGE;
 
