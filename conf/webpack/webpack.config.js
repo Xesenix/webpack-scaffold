@@ -46,6 +46,7 @@ const merge = require('webpack-merge');
 const cssPluginFactory = require('./plugins/css');
 const fontsRulesFactory = require('./rules/fonts');
 const assetsRulesFactory = require('./rules/assets');
+const babelRulesFactory = require('./rules/babel');
 const stylesRulesFactory = require('./rules/styles');
 
 const package = require('../../package.json');
@@ -110,8 +111,9 @@ module.exports = (env) => {
 			],
 			hot: true,
 		},
-		devtool: "source-map",
+		devtool: isProd ? 'none' : 'cheap-eval-source-map', // https://webpack.js.org/configuration/devtool/
 		resolve: {
+			extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
 			modules: [
 				appConfig.rootPath,
 				'node_modules',
@@ -122,6 +124,7 @@ module.exports = (env) => {
 				...fontsRulesFactory(appConfig.rootPath),
 				...assetsRulesFactory(appConfig.rootPath),
 				...stylesRulesFactory(extractCssPlugin, isProd),
+				...babelRulesFactory(),
 			]
 		},
 		plugins: [
@@ -147,13 +150,15 @@ module.exports = (env) => {
 					from => typeof from === 'string'
 					? { from: path.join(appConfig.rootDir, from), to: path.join(appConfig.outPath, from) }
 					: from
-				),
-				{
+				), {
 					debug: 'info',
 				}
 			),
-			new CleanWebpackPlugin([ appConfig.outDir ]),
+			new CleanWebpackPlugin([ appConfig.outPath ]),
 			new DotenvWebpackPlugin({ path: '.env' }),
+			new webpack.EnvironmentPlugin({
+				NODE_ENV: isProd ? 'production' : isTest ? 'test' : 'development',
+			}),
 			new webpack.DefinePlugin({
 				'process.env.PRODUCTION': JSON.stringify(isProd),
 				'process.env.DEVELOPMENT': JSON.stringify(isDev),
