@@ -1,0 +1,19 @@
+{
+	"compact": false,
+	"presets": [
+		["@babel/preset-env", {
+			"targets": {
+				"browsers": ["last 2 versions", "safari >= 7"]
+			},
+			"loose": true,
+			"modules": false,
+			"debug": true,
+			"spec": false
+		}]
+	],
+	"env": {
+		"test": {
+			"plugins": ["transform-es2015-modules-commonjs"]
+		}
+	}
+}
