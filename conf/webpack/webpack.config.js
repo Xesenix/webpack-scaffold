@@ -49,9 +49,9 @@ const assetsRulesFactory = require('./rules/assets');
 const babelRulesFactory = require('./rules/babel');
 const stylesRulesFactory = require('./rules/styles');
 
-const package = require('../../package.json');
+const packageConfig = require('../../package.json');
 
-const retrivePackageAppConfig = (key, defaultValue) => package.app && package.app[key] ? package.app[key] : defaultValue;
+const retrivePackageAppConfig = (key, defaultValue) => packageConfig.app && packageConfig.app[key] ? packageConfig.app[key] : defaultValue;
 
 module.exports = (env) => {
 	const isProd = !!env.prod;
@@ -77,9 +77,9 @@ module.exports = (env) => {
 
 	const extractCssPlugin = cssPluginFactory();
 	const htmlPlugin = new HtmlWebpackPlugin({
-		package,
+		packageConfig,
 		data: {
-			title: `${package.name} - ${package.version}`,
+			title: `${packageConfig.name} - ${packageConfig.version}`,
 			...appConfig.templateData
 		},
 		template: `!!ejs-loader!${appConfig.rootDir}/${appConfig.template}`,
@@ -163,7 +163,7 @@ module.exports = (env) => {
 				'process.env.PRODUCTION': JSON.stringify(isProd),
 				'process.env.DEVELOPMENT': JSON.stringify(isDev),
 				'process.env.TEST': JSON.stringify(isTest),
-				'process.env.PACKAGE': JSON.stringify(package),
+				'process.env.PACKAGE': JSON.stringify(packageConfig),
 				'process.env.APP': JSON.stringify(appConfig),
 			}),
 			analyze ? new BundleAnalyzerPlugin({

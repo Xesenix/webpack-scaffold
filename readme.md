@@ -53,7 +53,7 @@ You can provide application configuration via _package.json_ `app` param:
 | __package.app.styles__ | ['styles/styles.scss'] | all stylesheets you want to use as entry points
 | __package.app.vendor__ | [] | all vendor scripts you want to push to vendor bundle
 | __package.app.template__ | index.html | html template that you want to use as template for website
-| __package.app.templateData__ | {} | html template is handled by ejs loader so you can put here additional data that will be passed to `htmlWebpackPlugin.options.data` you can also access _package.json_ from `htmlWebpackPlugin.options.package`
+| __package.app.templateData__ | {} | html template is handled by ejs loader so you can put here additional data that will be passed to `htmlWebpackPlugin.options.data` you can also access _package.json_ from `htmlWebpackPlugin.options.packageConfig`
 | __package.app.webpack__ | null | path to script that can extend basic webpack configuration function exported by this scrip recives 3 params: `env`, `webpackConfig`, `appConfig`
 
 ### Source code phrase replacement
