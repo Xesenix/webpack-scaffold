@@ -4,11 +4,11 @@
 	"description": "",
 	"main": "src/main.js",
 	"scripts": {
+		"analyze": "webpack --env.prod --env.analyze --config conf/webpack/webpack.config.js",
 		"test": "cross-env BABEL_ENV=test karma start",
 		"start": "http-server ./dist/",
 		"start:dev": "webpack-dev-server --env.dev --config conf/webpack/webpack.config.js",
 		"build:dev": "webpack --env.dev --config conf/webpack/webpack.config.js",
-		"build:analyze": "webpack --env.prod --env.analyze --config conf/webpack/webpack.config.js",
 		"build:prod": "webpack --env.prod --config conf/webpack/webpack.config.js"
 	},
 	"app": {

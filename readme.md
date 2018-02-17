@@ -21,7 +21,7 @@ For production build:
 
 If you want analyze build size and dependencies use:
 
-* Run `npm run build:analyze`
+* Run `npm run analyze`
 
 ### Features
 
