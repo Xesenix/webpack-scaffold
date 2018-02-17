@@ -1,3 +1,5 @@
+[![Known Vulnerabilities](https://snyk.io/test/github/xesenix/webpack-3-scaffold/badge.svg?targetFile=package.json)](https://snyk.io/test/github/xesenix/webpack-3-scaffold?targetFile=package.json)
+
 # Webpack 3 scaffold project
 
 ![Run result](docs/images/screen-00.png)
