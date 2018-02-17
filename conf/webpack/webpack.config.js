@@ -128,8 +128,8 @@ module.exports = (env) => {
 			]
 		},
 		plugins: [
-			htmlPlugin,
-			extractCssPlugin,
+			!isTest ? htmlPlugin : null,
+			!isTest ? extractCssPlugin : null,
 			new webpack.LoaderOptionsPlugin({
 				minimize: isProd,
 				debug: !isProd,
@@ -141,7 +141,7 @@ module.exports = (env) => {
 					}
 				},
 			}),
-			new CopyWebpackPlugin([
+			!isTest ? new CopyWebpackPlugin([
 					...appConfig.assets,
 					...appConfig.fonts,
 				]
@@ -153,8 +153,8 @@ module.exports = (env) => {
 				), {
 					debug: 'info',
 				}
-			),
-			new CleanWebpackPlugin([ appConfig.outPath ]),
+			) : null,
+			!isTest ? new CleanWebpackPlugin([ appConfig.outPath ]) : null,
 			new DotenvWebpackPlugin({ path: '.env' }),
 			new webpack.EnvironmentPlugin({
 				NODE_ENV: isProd ? 'production' : isTest ? 'test' : 'development',
