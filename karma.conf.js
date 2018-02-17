@@ -1,12 +1,20 @@
+const path = require('path');
 const webpack = require('./conf/webpack/webpack.config.js')({ test: true });
 
 webpack.devtool = 'inline-source-map';
+webpack.module.rules.push({
+	test: /(j|t)sx?$/,
+	use: { loader: 'istanbul-instrumenter-loader' },
+	include: path.resolve('./src'),
+	exclude: /\.spec\.(j|t)sx?$/,
+	enforce: 'post',
+});
 
 // Karma configuration
 // Generated on Tue Feb 13 2018 21:50:36 GMT+0100 (Środkowoeuropejski czas stand.)
 
 module.exports = function(config) {
-	config.set({
+	const options = {
 
 		// base path that will be used to resolve all patterns (eg. files, exclude)
 		basePath: '',
@@ -45,6 +53,11 @@ module.exports = function(config) {
 			'kjhtml',
 			'coverage',
 		],
+
+		coverageReporter: {
+			type: 'lcov',
+			dir: 'coverage/',
+		},
 
 
 		client: {
@@ -87,5 +100,19 @@ module.exports = function(config) {
 		// Concurrency level
 		// how many browser should be started simultaneous
 		concurrency: Infinity
-	})
+	}
+
+	if (process.env.TRAVIS) {
+		options = {
+			customLaunchers: {
+				'Chrome_travis_ci': {
+					base: 'Chrome',
+					flags: ['--no-sandbox'],
+				},
+			},
+			browsers: ['Chrome_travis_ci'],
+		};
+	}
+
+	config.set(options);
 }
