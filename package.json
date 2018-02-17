@@ -5,7 +5,8 @@
 	"main": "src/main.js",
 	"scripts": {
 		"analyze": "webpack --env.prod --env.analyze --config conf/webpack/webpack.config.js",
-		"test": "cross-env BABEL_ENV=test karma start",
+		"tdd": "cross-env BABEL_ENV=test karma start",
+		"test": "karma start --single-run --coverage",
 		"start": "http-server ./dist/",
 		"start:dev": "webpack-dev-server --env.dev --config conf/webpack/webpack.config.js",
 		"build:dev": "webpack --env.dev --config conf/webpack/webpack.config.js",
@@ -28,9 +29,6 @@
 			"styles/styles.scss",
 			"styles/banners/a.scss"
 		]
-	},
-	"jest": {
-		"collectCoverage": true
 	},
 	"author": "",
 	"license": "ISC",

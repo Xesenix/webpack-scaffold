@@ -1,5 +1,7 @@
 const webpack = require('./conf/webpack/webpack.config.js')({ test: true });
 
+webpack.devtool = 'inline-source-map';
+
 // Karma configuration
 // Generated on Tue Feb 13 2018 21:50:36 GMT+0100 (Środkowoeuropejski czas stand.)
 
@@ -17,8 +19,7 @@ module.exports = function(config) {
 
 		// list of files / patterns to load in the browser
 		files: [
-			{ pattern: 'src/**/*.spec.js', included: true },
-			{ pattern: 'src/**/*.spec.ts', included: true }
+			'./src/main.test.js'
 		],
 
 
@@ -30,10 +31,8 @@ module.exports = function(config) {
 		// preprocess matching files before serving them to the browser
 		// available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
 		preprocessors: {
-			'./src/**/*': ['webpack'],
-			'./src/**/!(*.spec)+(.js)': [
-				'coverage'
-			]
+			// Alternative usage one entry point https://github.com/webpack-contrib/karma-webpack#alternative-usage
+			'./src/main.test.js': ['webpack', 'sourcemap']
 		},
 
 		webpack,
