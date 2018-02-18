@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/Xesenix/webpack-3-scaffold.svg?branch=master)](https://travis-ci.org/Xesenix/webpack-3-scaffold)
 [![Known Vulnerabilities](https://snyk.io/test/github/xesenix/webpack-3-scaffold/badge.svg?targetFile=package.json)](https://snyk.io/test/github/xesenix/webpack-3-scaffold?targetFile=package.json)
 
 # Webpack 3 scaffold project
