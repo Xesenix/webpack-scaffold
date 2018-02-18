@@ -198,3 +198,6 @@ Some additional resources that can clarify concepts behind this scaffold project
 * [Webpack plugins documentation](https://webpack.js.org/plugins/)
 * [Babel 7 and TypeScript](http://artsy.github.io/blog/2017/11/27/Babel-7-and-TypeScript/)
 * [React Router](https://reacttraining.com/react-router/web/api/BrowserRouter)
+* [React testing with Karma](https://www.codementor.io/kimagure/testing-reactjs-components-with-karma-and-webpack-8sdzi6hkf)
+* [Istanbul Test Coverage](https://github.com/webpack-contrib/istanbul-instrumenter-loader)
+* [Testing React with Enzyme](https://github.com/airbnb/enzyme/tree/master/packages/enzyme-adapter-react-16)

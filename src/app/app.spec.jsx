@@ -1,13 +1,20 @@
+import { mount } from 'enzyme';
+import jasmineEnzyme from 'jasmine-enzyme';
 import React from 'react';
-import ReactTestUtils from 'react-dom/test-utils';
+
 import App from './app';
 
 describe('App', () => {
-	describe('render', () => {
-		it('should work', () => {
-			const component = ReactTestUtils.renderIntoDocument(<App/>);
+	beforeEach(() => {
+		jasmineEnzyme();
+	});
 
-			expect(component).toBeTruthy();
+	describe('render', () => {
+		it('should render', () => {
+			const component = mount(<App/>);
+
+			expect(component.find('strong')).toHaveText('REACT is working');
+			expect(component.find('img')).toHaveProp('src', 'assets/images/d.png');
 		});
 	});
 });
