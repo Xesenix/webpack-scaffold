@@ -25,4 +25,11 @@ console.log(pckg.app);
 
 // React
 // TODO: this kills tests needs to fix
-start();
+window.onload = () => {
+	try {
+		start();
+	}
+	catch (err) {
+		console.error(err);
+	}
+}

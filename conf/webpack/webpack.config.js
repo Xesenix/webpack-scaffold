@@ -109,7 +109,7 @@ module.exports = (env) => {
 			contentBase: [
 				appConfig.outPath, // assets needs project to be build before they load from that path
 			],
-			hot: true,
+			hot: !isTest,
 		},
 		devtool: isProd ? 'none' : 'cheap-eval-source-map', // https://webpack.js.org/configuration/devtool/
 		resolve: {
@@ -128,8 +128,8 @@ module.exports = (env) => {
 			]
 		},
 		plugins: [
-			!isTest ? htmlPlugin : null,
-			!isTest ? extractCssPlugin : null,
+			isTest ? null : htmlPlugin,
+			isTest ? null : extractCssPlugin,
 			new webpack.LoaderOptionsPlugin({
 				minimize: isProd,
 				debug: !isProd,
@@ -138,10 +138,10 @@ module.exports = (env) => {
 					tslint: {
 						emitErrors: true,
 						failOnHint: true
-					}
+					},
 				},
 			}),
-			!isTest ? new CopyWebpackPlugin([
+			isTest ? null : new CopyWebpackPlugin([
 					...appConfig.assets,
 					...appConfig.fonts,
 				]
@@ -150,11 +150,12 @@ module.exports = (env) => {
 					from => typeof from === 'string'
 					? { from: path.join(appConfig.rootDir, from), to: path.join(appConfig.outPath, from) }
 					: from
-				), {
+				),
+				{
 					debug: 'info',
 				}
-			) : null,
-			!isTest ? new CleanWebpackPlugin([ appConfig.outPath ]) : null,
+			),
+			isTest ? null : new CleanWebpackPlugin([ appConfig.outPath ]),
 			new DotenvWebpackPlugin({ path: '.env' }),
 			new webpack.EnvironmentPlugin({
 				NODE_ENV: isProd ? 'production' : isTest ? 'test' : 'development',

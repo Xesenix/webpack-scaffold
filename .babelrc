@@ -3,9 +3,10 @@
 	"presets": [
 		["@babel/preset-env", {
 			"targets": {
-				"browsers": ["last 2 versions", "safari >= 7"]
+				"browsers": ["last 2 Chrome versions"]
 			},
 			"loose": true,
+			"useBuiltIns": "usage",
 			"modules": false,
 			"debug": true,
 			"spec": false
@@ -18,15 +19,14 @@
 			"presets": [
 				["@babel/preset-env", {
 					"targets": {
-						"browsers": ["last 2 versions", "safari >= 7"]
+						"esmodules": true
 					},
 					"loose": true,
-					"modules": "commonjs",
-					"debug": true,
-					"spec": false
-				}]
-			],
-			"plugins": ["transform-es2015-modules-commonjs"]
+					"modules": false
+				}],
+				"@babel/preset-react",
+				"@babel/preset-typescript"
+			]
 		}
 	}
 }

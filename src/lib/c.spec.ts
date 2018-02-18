@@ -16,4 +16,17 @@ describe('C', () => {
 			expect(spy).toHaveBeenCalledWith('Execute C');
 		});
 	});
+
+	describe('generator', () => {
+		it('should generate secret code sequence', () => {
+			const instance = new C();
+			const result = [];
+
+			for (const val of instance.generator()) {
+				result.push(val);
+			}
+
+			expect(result).toEqual([1, 3, 7]);
+		});
+	});
 })

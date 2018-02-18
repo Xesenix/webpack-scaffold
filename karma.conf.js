@@ -3,11 +3,14 @@ const webpack = require('./conf/webpack/webpack.config.js')({ test: true });
 
 webpack.devtool = 'inline-source-map';
 webpack.module.rules.push({
-	test: /(j|t)sx?$/,
-	use: { loader: 'istanbul-instrumenter-loader' },
+	test: /\.(j|t)sx?$/,
+	use: {
+		loader: 'istanbul-instrumenter-loader',
+		options: { esModules: true },
+	},
 	include: path.resolve('./src'),
 	exclude: /\.spec\.(j|t)sx?$/,
-	enforce: 'post',
+	enforce: 'post', // important to apply after its ready
 });
 
 // Karma configuration
@@ -22,7 +25,7 @@ module.exports = function(config) {
 
 		// frameworks to use
 		// available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-		frameworks: ['jasmine'],
+		frameworks: ['jasmine', 'mocha'],
 
 
 		// list of files / patterns to load in the browser
@@ -60,6 +63,12 @@ module.exports = function(config) {
 		},
 
 
+		coverageIstanbulReporter: {
+			reports: [ 'text-summary' ],
+			fixWebpackSourcePaths: true
+		},
+
+
 		client: {
 			clearContext: false // leave Jasmine Spec Runner output visible in browser
 		},
@@ -75,7 +84,7 @@ module.exports = function(config) {
 
 		// level of logging
 		// possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-		logLevel: config.LOG_INFO,
+		// logLevel: config.LOG_INFO,
 
 
 		// enable / disable watching file and executing tests whenever any file changes
