@@ -1,7 +1,8 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import { hot } from 'react-hot-loader';
 
-export default class App extends React.Component {
+class App extends React.Component {
 	render() {
 		return (<div className="box">
 			<strong>REACT is working</strong><br/>
@@ -10,3 +11,5 @@ export default class App extends React.Component {
 		</div>);
 	}
 }
+
+export default hot(module)(App);

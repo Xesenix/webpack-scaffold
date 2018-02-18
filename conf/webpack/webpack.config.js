@@ -109,7 +109,7 @@ module.exports = (env) => {
 			contentBase: [
 				appConfig.outPath, // assets needs project to be build before they load from that path
 			],
-			hot: !isTest,
+			hot: !isTest && !isProd,
 		},
 		devtool: isProd ? 'none' : 'cheap-eval-source-map', // https://webpack.js.org/configuration/devtool/
 		resolve: {
