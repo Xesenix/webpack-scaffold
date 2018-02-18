@@ -156,7 +156,7 @@ module.exports = (env) => {
 				}
 			),
 			isTest ? null : new CleanWebpackPlugin([ appConfig.outPath ]),
-			new DotenvWebpackPlugin({ path: '.env' }),
+			new DotenvWebpackPlugin({ path: '.env', silent: true }),
 			new webpack.EnvironmentPlugin({
 				NODE_ENV: isProd ? 'production' : isTest ? 'test' : 'development',
 			}),
