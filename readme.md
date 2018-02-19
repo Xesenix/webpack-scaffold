@@ -54,6 +54,7 @@ You can provide application configuration via _package.json_ `app` param:
 | __package.app.assets__ | ['assets'] | all asset and resource you want to move to build assets directory (you can use glob patterns or just link to directory)
 | __package.app.fonts__ | ['fonts'] | all fonts resource you want to move to build fonts directory (you can use glob patterns or just link to directory)
 | __package.app.styles__ | ['styles/styles.scss'] | all stylesheets you want to use as entry points
+| __package.app.stylesIncludePaths__ | ['./styles'] | list of relative path on which to look for included stylesheet via `@import`
 | __package.app.vendor__ | [] | all vendor scripts you want to push to vendor bundle
 | __package.app.template__ | index.html | html template that you want to use as template for website
 | __package.app.templateData__ | {} | html template is handled by ejs loader so you can put here additional data that will be passed to `htmlWebpackPlugin.options.data` you can also access _package.json_ from `htmlWebpackPlugin.options.packageConfig`
@@ -75,8 +76,9 @@ If anywhere in you code exist one of those phrases it will be replaced with data
 | __process.env.APP.outPath__ | string | | resolved system path to `package.app.outDir` |
 | __process.env.APP.main__ | string[] | | application entry scripts defined in `package.app.main` |
 | __process.env.APP.assets__ | string[] | | assets defined in `package.app.assets` |
-| __process.env.APP.fonts__ | string[] | | fonts defined in `package.app.fonts` |
-| __process.env.APP.styles__ | string[] | | styles entry points defined in `package.app.styles` |
+| __process.env.APP.fonts__ | string[] | ['./fonts'] | fonts defined in `package.app.fonts` |
+| __process.env.APP.styles__ | string[] | ['./styles/styles.scss'] | styles entry points defined in `package.app.styles` |
+| __process.env.APP.stylesIncludePaths__ | string[] | ['./styles'] | styles lookup paths `package.app.stylesIncludePaths` |
 | __process.env.APP.vendor__ | string[] | | vendor scripts defined in `package.app.vendor` |
 | __process.env.APP.template__ | string | _index.html_ | main template name |
 | __process.env.APP.templateData__ | string | | data injected into template `htmlWebpackPlugin.options.data` |
@@ -197,8 +199,10 @@ _file: package.json_
 Some additional resources that can clarify concepts behind this scaffold project.
 
 * [Webpack plugins documentation](https://webpack.js.org/plugins/)
+* [List of webpack plugins](https://github.com/webpack-contrib/awesome-webpack)
 * [Babel 7 and TypeScript](http://artsy.github.io/blog/2017/11/27/Babel-7-and-TypeScript/)
 * [React Router](https://reacttraining.com/react-router/web/api/BrowserRouter)
 * [React testing with Karma](https://www.codementor.io/kimagure/testing-reactjs-components-with-karma-and-webpack-8sdzi6hkf)
 * [Istanbul Test Coverage](https://github.com/webpack-contrib/istanbul-instrumenter-loader)
 * [Testing React with Enzyme](https://github.com/airbnb/enzyme/tree/master/packages/enzyme-adapter-react-16)
+

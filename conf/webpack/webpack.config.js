@@ -68,7 +68,10 @@ module.exports = (env) => {
 	appConfig.main = retrivePackageAppConfig('main', [ './main.js' ]);
 	appConfig.assets = retrivePackageAppConfig('assets', [ './assets' ]);
 	appConfig.fonts = retrivePackageAppConfig('fonts', [ './fonts' ]);
+	// list of entry point stylesheets
 	appConfig.styles = retrivePackageAppConfig('styles', [ './styles/styles.scss' ]);
+	// list of paths to directories on which to look for stylesheets when resolving @import in stylesheets
+	appConfig.stylesIncludePaths = retrivePackageAppConfig('stylesIncludePaths', [ './styles' ]).map(p => path.join(appConfig.rootDir, p));
 	appConfig.vendor = retrivePackageAppConfig('vendor', []);
 	appConfig.template = retrivePackageAppConfig('template', 'index.html');
 	appConfig.templateData = retrivePackageAppConfig('templateData', {});
@@ -78,6 +81,10 @@ module.exports = (env) => {
 	appConfig.outPath = path.normalize(path.resolve(projectRoot, appConfig.outDir));
 
 	const extractCssPlugin = cssPluginFactory();
+
+	// order of chunks is important for style overriding (more specific styles source later)
+	const chunks = ['vendor', 'styles', 'main'];
+
 	const htmlPlugin = new HtmlWebpackPlugin({
 		packageConfig,
 		data: {
@@ -86,6 +93,8 @@ module.exports = (env) => {
 		},
 		template: `!!ejs-loader!${appConfig.rootDir}/${appConfig.template}`,
 		inject: true,
+		// order of injected style tags
+		chunksSortMode: (a, b) => chunks.indexOf(a.names[0]) > chunks.indexOf(b.names[0]) ? 1 : -1,
 		minify: {
 			removeComments: true,
 			preserveLineBreaks: true
@@ -97,7 +106,8 @@ module.exports = (env) => {
 
 	const entry = {};
 
-	['main', 'styles', 'vendor']
+	// compose entry points
+	chunks
 		.filter((key) => appConfig[key].length > 0)
 		.forEach((key) => entry[key] = appConfig[key]);
 
@@ -125,7 +135,7 @@ module.exports = (env) => {
 			rules: [
 				...fontsRulesFactory(appConfig.rootPath),
 				...assetsRulesFactory(appConfig.rootPath),
-				...stylesRulesFactory(extractCssPlugin, isProd),
+				...stylesRulesFactory(extractCssPlugin, isProd, appConfig.stylesIncludePaths),
 				...babelRulesFactory(),
 			]
 		},
