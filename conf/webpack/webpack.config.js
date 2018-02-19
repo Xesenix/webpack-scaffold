@@ -57,6 +57,7 @@ module.exports = (env) => {
 	const isProd = !!env.prod;
 	const isTest = !!env.test;
 	const isDev = !!env.dev;
+	const hmr = !!env.hmr;
 	const analyze = !!env.analyze;
 
 	const appConfig = {};
@@ -109,7 +110,7 @@ module.exports = (env) => {
 			contentBase: [
 				appConfig.outPath, // assets needs project to be build before they load from that path
 			],
-			hot: !isTest && !isProd,
+			hot: hmr,
 		},
 		devtool: isProd ? 'none' : 'cheap-eval-source-map', // https://webpack.js.org/configuration/devtool/
 		resolve: {
@@ -174,8 +175,13 @@ module.exports = (env) => {
 				generateStatsFile: true,
 			}) : null,
 			isProd ? new UglifyJsPlugin() : null,
-			isDev ? new webpack.NamedModulesPlugin() : null,
-			isDev ? new webpack.HotModuleReplacementPlugin() : null,
+			// This plugin will cause the relative path of the module to be displayed when HMR is enabled. Suggested for use in development.
+			// https://webpack.js.org/plugins/named-modules-plugin/
+			isDev && hmr ? new webpack.NamedModulesPlugin() : null,
+			isDev && hmr ? new webpack.HotModuleReplacementPlugin() : null,
+			// Use the NoEmitOnErrorsPlugin to skip the emitting phase whenever there are errors while compiling.
+			// This ensures that no assets are emitted that include errors. The emitted flag in the stats is false for all assets.
+			new webpack.NoEmitOnErrorsPlugin(),
 		].filter(p => !!p)
 	};
 
