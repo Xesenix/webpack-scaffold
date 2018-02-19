@@ -15,6 +15,7 @@ Its work in progress so workflow is kind of clunky:
 
 For development with HMR
 
+* Run `npm run build:dev` this will copy vendor assets to local folder where from they can be served (if some assets are missing during development run this)
 * Run `npm run serve:dev` this will start `webpack-dev-server` if some assets won't appear you probably need to add them to `package.app.assets`
 
 For production build:

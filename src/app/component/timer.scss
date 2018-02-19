@@ -8,4 +8,13 @@ $timer-color: red !default;
 	border: 1px dashed $timer-color;
 	background-color: rgba($timer-color, 0.2);
 	background: linear-gradient(to left, rgba($timer-color, .5), rgba(black, .5));
+
+	&::after {
+		content: "";
+		display: block;
+		width: 64px;
+		height: 64px;
+		background: transparent url('/assets/images/e.png') no-repeat;
+		background-size: 64px 64px;
+	}
 }
