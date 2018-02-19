@@ -1,4 +1,5 @@
 const path = require('path');
+const pathExists = require('path-exists');
 const webpack = require('webpack');
 
 // TODO: find a better way to configure projectRoot
@@ -147,13 +148,14 @@ module.exports = (env) => {
 					...appConfig.fonts,
 				]
 				.filter(p => !!p)
+				.filter(p => pathExists.sync(path.join(appConfig.rootDir, p)))
 				.map(
 					from => typeof from === 'string'
 					? { from: path.join(appConfig.rootDir, from), to: path.join(appConfig.outPath, from) }
 					: from
 				),
 				{
-					debug: 'info',
+					debug: isProd ? 'warning' : 'info',
 				}
 			),
 			isTest ? null : new CleanWebpackPlugin([ appConfig.outPath ]),
