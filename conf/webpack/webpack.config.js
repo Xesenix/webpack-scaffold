@@ -85,6 +85,7 @@ module.exports = (env) => {
 	// order of chunks is important for style overriding (more specific styles source later)
 	const chunks = ['vendor', 'styles', 'main'];
 
+	// https://github.com/jantimon/html-webpack-plugin#configuration
 	const htmlPlugin = new HtmlWebpackPlugin({
 		packageConfig,
 		data: {
@@ -193,7 +194,7 @@ module.exports = (env) => {
 			isDev && hmr ? new webpack.HotModuleReplacementPlugin() : null,
 			// Use the NoEmitOnErrorsPlugin to skip the emitting phase whenever there are errors while compiling.
 			// This ensures that no assets are emitted that include errors. The emitted flag in the stats is false for all assets.
-			new webpack.NoEmitOnErrorsPlugin(),
+			isTest ? null : new webpack.NoEmitOnErrorsPlugin(),
 		].filter(p => !!p)
 	};
 
