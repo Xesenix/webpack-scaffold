@@ -2,12 +2,16 @@
 
 $timer-color: red !default;
 
+:root {
+	--timerColor: $timer-color;
+}
+
 .timer {
 	display: block;
 	padding: 10px;
-	border: 1px dashed $timer-color;
-	background-color: rgba($timer-color, 0.2);
-	background: linear-gradient(to left, rgba($timer-color, .5), rgba(black, .5));
+	border: 1px dashed var(--timerColor);
+	background-color: var(--timerColor);
+	background: linear-gradient(to left, var(--timerColor), rgba(black, .5));
 
 	&::after {
 		content: "";

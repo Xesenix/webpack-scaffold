@@ -5,6 +5,10 @@ $srcRoot: '../' !default;
 /* We import any other stylesheet that uses $srcRoot after setting up $srcRoot */
 @import 'banners/b';
 
+:root {
+	--timerColor: #fff; // this one will be overriden by same definition in app/component/timer.scss
+}
+
 body {
 	/* Use this kind of path interpolation for getting image preview in Visual Code */
 	background: #444 url(#{$srcRoot + 'assets/background/bg.png'}) repeat;
@@ -15,5 +19,5 @@ body {
 
 .box {
 	padding: 20px;
-	border: 1px solid #ddd;
+	border: 1px solid var(--timerColor);
 }
