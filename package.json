@@ -20,7 +20,7 @@
 		],
 		"template": "templates/debug.html",
 		"templateData": {
-			"title": "Webpack test configuration"
+			"title": "Demo Webpack Scaffold"
 		},
 		"assets": [
 			"assets"
