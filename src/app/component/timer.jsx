@@ -27,7 +27,9 @@ class Timer extends React.Component {
 		const { start = 0 } = this.state;
 
 		return (
-			<span className="timer">Time: { (new Date(Date.now() - start)).toLocaleTimeString() }<br/></span>
+			<span className="timer">
+				<p>Time: { (new Date(Date.now() - start)).toLocaleTimeString() }</p>
+			</span>
 		);
 	}
 }

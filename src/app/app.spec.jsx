@@ -13,7 +13,7 @@ describe('App', () => {
 		it('should render', () => {
 			const component = mount(<App/>);
 
-			expect(component.find('strong')).toHaveText('REACT is working');
+			expect(component.find('.box')).toIncludeText('REACT is working');
 			expect(component.find('img')).toHaveProp('src', 'assets/images/d.png');
 		});
 	});

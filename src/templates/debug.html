@@ -35,27 +35,30 @@
 
 			<code>
 				src/index.html<br/>
-				src="assets/images/c.png"
-			</code><br/>
+				&lt;img src="assets/images/c.png"/&gt;
+			</code>
 			<img src="assets/images/c.png"/><br/>
 		</div>
 
 		<h2>Test fonts loading</h2>
 
 		<div class="box">
-			<code>Bootstrap icons from fonts located in node_modules</code><br/>
+			<code>
+				Bootstrap icons from fonts located in node_modules. This may require running:<br/>
+				<code>npm run build:dev</code>
+			</code>
 			<div class="glyphicon glyphicon-star"></div>
 			<div class="glyphicon glyphicon-knight"></div>
 		</div>
 
 		<h2>Test svg loading</h2>
 		<div class="box">
-			<code>src="assets/svg/sign/sign-00.svg"</code><br/>
+			<code>&lt;img src="assets/svg/sign/sign-00.svg"/&gt;</code>
 			<img src="assets/svg/sign/sign-00.svg"/>
 		</div>
 
 		<h1>Test javascript configuration</h1>
-		<div id="app"><strong>React didn't ran</strong></div>
+		<div id="app"><h3>React didn't ran</h3></div>
 	</div>
 </body>
 </html>

@@ -18,7 +18,7 @@
 		"main": [
 			"main.js"
 		],
-		"template": "index.html",
+		"template": "templates/debug.html",
 		"templateData": {
 			"title": "Webpack test configuration"
 		},
@@ -28,6 +28,9 @@
 		"styles": [
 			"styles/styles.scss",
 			"styles/banners/a.scss"
+		],
+		"stylesIncludePaths": [
+			"./styles"
 		]
 	},
 	"author": "",
@@ -48,6 +51,7 @@
 		"@types/karma-coverage": "^0.5.33",
 		"@types/karma-webpack": "^2.0.3",
 		"@types/mocha": "^2.2.48",
+		"@types/path-exists": "^3.0.0",
 		"@types/react-hot-loader": "^3.0.6",
 		"@types/react-test-renderer": "^16.0.1",
 		"@types/webpack-bundle-analyzer": "^2.9.0",
