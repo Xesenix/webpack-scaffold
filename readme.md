@@ -2,7 +2,7 @@
 [![Appveyor Windows Build Status](https://ci.appveyor.com/api/projects/status/github/xesenix/webpack-3-scaffold?svg=true)](https://ci.appveyor.com/project/xesenix/webpack-3-scaffold)
 [![Known Vulnerabilities](https://snyk.io/test/github/xesenix/webpack-3-scaffold/badge.svg?targetFile=package.json)](https://snyk.io/test/github/xesenix/webpack-3-scaffold?targetFile=package.json)
 
-[![node](https://img.shields.io/node/v/xesenix/webpack-3-scaffold.svg)]()
+![Required node version >= 8.0.0](https://img.shields.io/badge/required%20node-%3E%3D%208.0.0-brightgreen.svg)
 
 # Webpack 3 scaffold project
 
@@ -209,4 +209,10 @@ Some additional resources that can clarify concepts behind this scaffold project
 * [React testing with Karma](https://www.codementor.io/kimagure/testing-reactjs-components-with-karma-and-webpack-8sdzi6hkf)
 * [Istanbul Test Coverage](https://github.com/webpack-contrib/istanbul-instrumenter-loader)
 * [Testing React with Enzyme](https://github.com/airbnb/enzyme/tree/master/packages/enzyme-adapter-react-16)
+
+## Project managment related resources
+
+* [Continous Integration Travis](https://docs.travis-ci.com)
+* [Continous Integration for Windows with Appveyor](https://www.appveyor.com/docs/)
+* [Badges](https://shields.io/)
 
