@@ -2,6 +2,8 @@
 [![Appveyor Windows Build Status](https://ci.appveyor.com/api/projects/status/github/xesenix/webpack-3-scaffold?svg=true)](https://ci.appveyor.com/project/xesenix/webpack-3-scaffold)
 [![Known Vulnerabilities](https://snyk.io/test/github/xesenix/webpack-3-scaffold/badge.svg?targetFile=package.json)](https://snyk.io/test/github/xesenix/webpack-3-scaffold?targetFile=package.json)
 
+[![node](https://img.shields.io/node/v/xesenix/webpack-3-scaffold.svg)]()
+
 # Webpack 3 scaffold project
 
 ![Run result](docs/images/screen-00.png)
