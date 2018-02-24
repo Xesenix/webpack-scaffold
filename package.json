@@ -8,7 +8,7 @@
 		"tdd": "cross-env BABEL_ENV=test karma start",
 		"test": "cross-env BABEL_ENV=test karma start --single-run",
 		"start": "http-server ./dist/",
-		"start:dev": "webpack-dev-server --env.dev --env.hmr --config conf/webpack/webpack.config.js",
+		"serve:dev": "webpack-dev-server --env.dev --env.hmr --config conf/webpack/webpack.config.js",
 		"build:dev": "webpack --env.dev --config conf/webpack/webpack.config.js",
 		"build:prod": "webpack --env.prod --config conf/webpack/webpack.config.js"
 	},
