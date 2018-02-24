@@ -43,12 +43,34 @@
 		<h2>Test fonts loading</h2>
 
 		<div class="box">
+			<p>Bootstrap icons from fonts located in node_modules. In development mode if it weren't called before this requires running:</p>
 			<code>
-				Bootstrap icons from fonts located in node_modules. This may require running:<br/>
-				<code>npm run build:dev</code>
+				npm run build:dev
 			</code>
-			<div class="glyphicon glyphicon-star"></div>
-			<div class="glyphicon glyphicon-knight"></div>
+			<%
+				[
+					'star',
+					'star-empty',
+					'heart',
+					'heart-empty',
+					'leaf',
+					'tree-conifer',
+					'tree-deciduous',
+					'picture',
+					'film',
+					'pawn',
+					'knight',
+					'bishop',
+					'tower',
+					'king',
+					'queen',
+					'screenshot',
+					'phone',
+					'piggy-bank',
+				].forEach(icon => {
+			%>
+				<div class="glyphicon glyphicon-<%= icon %>"></div>
+			<% }) %>
 		</div>
 
 		<h2>Test svg loading</h2>
