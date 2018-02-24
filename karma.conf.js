@@ -60,12 +60,16 @@ module.exports = function(config) {
 		coverageReporter: {
 			type: 'lcov',
 			dir: 'coverage/',
+			reporters: [
+				// reporters not supporting the `file` property
+				{ type: 'lcov', subdir: 'report-lcov' },
+			],
 		},
 
 
 		coverageIstanbulReporter: {
 			reports: [ 'text-summary' ],
-			fixWebpackSourcePaths: true
+			fixWebpackSourcePaths: true,
 		},
 
 

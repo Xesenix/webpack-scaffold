@@ -10,7 +10,8 @@
 		"start": "http-server ./dist/",
 		"serve:dev": "webpack-dev-server --env.dev --env.hmr --config conf/webpack/webpack.config.js",
 		"build:dev": "webpack --env.dev --config conf/webpack/webpack.config.js",
-		"build:prod": "webpack --env.prod --config conf/webpack/webpack.config.js"
+		"build:prod": "webpack --env.prod --config conf/webpack/webpack.config.js",
+		"report-coverage": "cat ./coverage/report-lcov/lcov.info | coveralls"
 	},
 	"app": {
 		"root": "src",
@@ -64,6 +65,7 @@
 		"bootstrap-sass": "^3.3.7",
 		"clean-webpack-plugin": "^0.1.18",
 		"copy-webpack-plugin": "^4.4.2",
+		"coveralls": "^3.0.0",
 		"css-loader": "^0.28.10",
 		"dotenv-webpack": "^1.5.4",
 		"ejs-loader": "^0.3.0",
