@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/Xesenix/webpack-3-scaffold.svg?branch=master)](https://travis-ci.org/Xesenix/webpack-3-scaffold)
+[![Appveyor Windows Build Status](https://ci.appveyor.com/api/projects/status/github/xesenix/webpack-3-scaffold?svg=true)](https://ci.appveyor.com/project/xesenix/webpack-3-scaffold)
 [![Known Vulnerabilities](https://snyk.io/test/github/xesenix/webpack-3-scaffold/badge.svg?targetFile=package.json)](https://snyk.io/test/github/xesenix/webpack-3-scaffold?targetFile=package.json)
 
 # Webpack 3 scaffold project
