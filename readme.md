@@ -8,7 +8,11 @@
 
 # Webpack 3 scaffold project
 
-![Run result](docs/images/screen-00.png)
+[![Demo application](docs/images/screen-00.png)](https://webpack-3-scaffold.herokuapp.com/)
+
+## DEMO
+
+Check live [demo](https://webpack-3-scaffold.herokuapp.com) of running this scaffold.
 
 ## About
 
