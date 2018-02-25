@@ -211,9 +211,11 @@ Some additional resources that can clarify concepts behind this scaffold project
 * [React testing with Karma](https://www.codementor.io/kimagure/testing-reactjs-components-with-karma-and-webpack-8sdzi6hkf)
 * [Istanbul Test Coverage](https://github.com/webpack-contrib/istanbul-instrumenter-loader)
 * [Testing React with Enzyme](https://github.com/airbnb/enzyme/tree/master/packages/enzyme-adapter-react-16)
+* [Authentication with PassportJs](http://www.passportjs.org/docs)
 
 ## Project managment related resources
-
+* [Travis CLI installation](https://github.com/travis-ci/travis.rb#installation)
+* [Setup Travis Heroku build](https://docs.travis-ci.com/user/deployment/heroku/)
 * [Continous Integration Travis](https://docs.travis-ci.com)
 * [Continous Integration for Windows with Appveyor](https://www.appveyor.com/docs/)
 * [Badges](https://shields.io/)
