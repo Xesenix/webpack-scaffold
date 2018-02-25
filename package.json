@@ -3,6 +3,10 @@
 	"version": "0.1.0",
 	"description": "",
 	"main": "src/main.js",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Xesenix/webpack-3-scaffold"
+	},
 	"scripts": {
 		"analyze": "webpack --env.prod --env.analyze --config conf/webpack/webpack.config.js",
 		"tdd": "cross-env BABEL_ENV=test karma start",
@@ -19,7 +23,7 @@
 		"main": [
 			"main.js"
 		],
-		"template": "templates/debug.html",
+		"template": "templates/demo.html",
 		"templateData": {
 			"title": "Demo Webpack Scaffold"
 		},
