@@ -1,0 +1,28 @@
+{
+	"defaultSeverity": "error",
+	"extends": [
+		"tslint:recommended"
+	],
+	"jsRules": {},
+	"rules": {
+		"indent": [true, "tabs", 2],
+		"trailing-comma": [
+			true,
+			{
+				"multiline": "always",
+				"single": "never",
+				"esSpecCompilant": true
+			}
+		],
+		"no-redundant-jsdoc": true,
+		"no-console": false,
+		"prefer-template": [true, "allow-single-concat"],
+		"quotemark": [true, "single", "jsx-double"],
+		"semicolon": [true, "always"],
+		"whitespace": [true, "check-branch", "check-decl", "check-operator", "check-module", "check-rest-spread", "check-type", "check-typecast", "check-type-operator"],
+		"experimentalDecorators": true,
+		"import-sources-order": [true, "lowercase-first"],
+		"object-literal-sort-keys": false
+	},
+	"rulesDirectory": []
+}

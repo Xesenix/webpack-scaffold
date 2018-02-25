@@ -7,7 +7,7 @@ import Theme from './component/theme';
 
 class App extends React.Component {
 	render() {
-		return (<div className="box">
+		return (<div className="box inverse">
 			<h3>REACT is working</h3>
 			<code>&lt;img src="assets/images/d.png"/&gt;</code>
 			<img src="assets/images/d.png"/>

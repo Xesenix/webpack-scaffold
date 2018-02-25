@@ -1,0 +1,67 @@
+/**!
+ * Extract CSS variables name in form of var(--name, default)
+ */
+ @function css-variable-name($value) {
+	@if (str-index($value, ')')) {
+		@if (str-index($value, ',')) {
+			@return str-slice($value, 7, min(str-index($value, ',') - 1, str-index($value, ')') - 1));
+		}
+		@return str-slice($value, 7, str-index($value, ')') - 1);
+	} @else {
+		@if (str-index($value, ',')) {
+			@return str-slice($value, 7, str-index($value, ',') - 1);
+		}
+	}
+	@return $value;
+}
+
+/**!
+ * Extract CSS variables name in form of var(--name, default)
+ */
+@function css-variable-default($value) {
+	@if (str-index($value, ')')) {
+		@if (str-index($value, ',')) {
+			@return str-slice($value, str-index($value, ',') - 1, str-length($value) - 1);
+		}
+	}
+	@return null;
+}
+
+@function css-variable-with-alpha($name, $alpha) {
+	@if (str-index(#{$name}, 'var')) {
+		$target: css-variable-name($name);
+		@return var(--#{$target}-alpha-#{$alpha});
+	}
+	@return rgba($name, $alpha / 100);
+}
+
+@function css-variable-value($value) {
+	@if (str-index(#{$value}, 'var')) {
+		@return $value;
+	}
+	@return $value;
+}
+
+/**!
+ * Define base set of CSS variables with diffrent amount of transparency.
+ */
+@mixin define-css-color-variable($name, $color) {
+	@if (str-index(#{$color}, 'var')) {
+		$target: css-variable-name($color);
+		--#{$name}: var(--#{$target});
+		--#{$name}-alpha-10: var(--#{$target}-alpha-10);
+		--#{$name}-alpha-25: var(--#{$target}-alpha-25);
+		--#{$name}-alpha-50: var(--#{$target}-alpha-50);
+		--#{$name}-alpha-75: var(--#{$target}-alpha-75);
+		--#{$name}-alpha-90: var(--#{$target}-alpha-90);
+		--#{$name}-alpha-100: var(--#{$target}-alpha-100);
+	} @else {
+		--#{$name}: $color;
+		--#{$name}-alpha-10: rgba($color, .1);
+		--#{$name}-alpha-25: rgba($color, .25);
+		--#{$name}-alpha-50: rgba($color, .5);
+		--#{$name}-alpha-75: rgba($color, .75);
+		--#{$name}-alpha-90: rgba($color, .9);
+		--#{$name}-alpha-100: $color;
+	}
+}

@@ -1,1 +1,14 @@
-$timer-color: violet;
+@import 'mixins';
+
+$bodyColor: grey;
+$boxColor: var(--neutralColor, blue);
+$headersColor: var(--primaryColor);
+$iconsColor: var(--secondaryColor);
+$codeBlockColor: black;
+$timerColor: var(--secondaryColor);
+$glowIntensity: var(--glowIntensity, 1);
+
+:root {
+	@include define-css-color-variable(primaryColor, #fff);
+	@include define-css-color-variable(secondaryColor, #000);
+}

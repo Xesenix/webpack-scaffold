@@ -1,0 +1,9 @@
+@import 'css-variables/mixins';
+
+@mixin box-glow($color, $intensity) {
+	box-shadow: 0 0 calc(#{css-variable-value($intensity)} * .5rem) $color, 0 0 calc(#{css-variable-value($intensity)} * 2rem) $color;
+}
+
+@mixin text-glow($color, $intensity) {
+	text-shadow: 0 0 calc(#{css-variable-value($intensity)} * .5rem) $color, 0 0 calc(#{css-variable-value($intensity)} * 2rem) $color;
+}

@@ -112,8 +112,15 @@ module.exports = (env) => {
 		.filter((key) => appConfig[key].length > 0)
 		.forEach((key) => entry[key] = appConfig[key]);
 
+	// entry['react'] = ['react', 'react-dom'];
+	const externals = {
+	//	'react': './node_modules/react/umd/react.production.min.js',
+	//	'react-dom': './node_modules/react-dom/umd/react-dom.production.min.js',
+	};
+
 	const webpackConfig = {
 		entry,
+		externals,
 		output: {
 			path: appConfig.outPath,
 			filename: '[name].boundle.js',
@@ -169,7 +176,7 @@ module.exports = (env) => {
 					debug: isProd ? 'warning' : 'info',
 				}
 			),
-			isTest ? null : new CleanWebpackPlugin([ appConfig.outPath ], { root: projectRoot, verbos: isDev }),
+			!isProd ? null : new CleanWebpackPlugin([ appConfig.outPath ], { root: projectRoot, verbos: isDev }),
 			new DotenvWebpackPlugin({ path: '.env', silent: true }),
 			new webpack.EnvironmentPlugin({
 				NODE_ENV: isProd ? 'production' : isTest ? 'test' : 'development',

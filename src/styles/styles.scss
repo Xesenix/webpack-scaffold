@@ -1,18 +1,17 @@
 /* This script doesn't really on $srcRoot */
 @import 'bootstrap';
+@import 'variables';
 /* For setting up assets paths for imported style sheets */
 $srcRoot: '../' !default;
-$codeBgColor: black;
+$neutralColor: black !default;
+$boxColor: white !default;
+$glowIntensity: 1 !default;
 /* We import any other stylesheet that uses $srcRoot after setting up $srcRoot */
 @import 'banners/b';
 
-:root {
-	--timerColor: #fff; // this one will be overriden by same definition in app/component/timer.scss
-}
-
 body {
 	/* Use this kind of path interpolation for getting image preview in Visual Code */
-	background: #444 url(#{$srcRoot + 'assets/background/bg.png'}) repeat;
+	background: $neutralColor url(#{$srcRoot + 'assets/background/bg.png'}) repeat;
 	background-size: 256px;
 	image-rendering: pixelated;
 	color: #fff;
@@ -21,10 +20,10 @@ body {
 .box {
 	padding: 2rem;
 	margin-bottom: 2rem;
-	border: 1px solid var(--timerColor);
+	border: 1px solid $boxColor;
 	border-radius: 1rem;
-	background-color: #fff2;
-	box-shadow: 0 0 .5rem var(--timerColor), 0 0 2rem var(--timerColor);
+	background-color: css-variable-with-alpha($boxColor, 10);
+	@include box-glow($boxColor, $glowIntensity);
 }
 
 .glyphicon {
@@ -32,16 +31,20 @@ body {
 	font-size: 5rem;
 }
 
-h1, h2, h3, .glyphicon {
-	text-shadow: 0 0 .5rem var(--timerColor), 0 0 2rem var(--timerColor);
+h1, h2, h3 {
+	@include text-glow($headersColor, $glowIntensity);
+}
+
+.glyphicon {
+	@include text-glow($iconsColor, $glowIntensity);
 }
 
 code {
 	display: block;
 	padding: 1rem;
-	border: 1px solid rgba($codeBgColor, 0.5);
+	border: 1px solid css-variable-with-alpha($codeBlockColor, 50);
 	border-radius: .5rem;
 	margin-bottom: 1rem;
-	background-color: rgba($codeBgColor, 0.2);
-	box-shadow: 0 0 .5rem $codeBgColor inset, 0 0 2rem $codeBgColor inset;
+	background-color: css-variable-with-alpha($codeBlockColor, 25);
+	@include box-glow($codeBlockColor, 1);
 }

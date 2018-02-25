@@ -1,17 +1,13 @@
 @import 'variables';
 
-$timer-color: red !default;
-
-:root {
-	--timerColor: $timer-color;
-}
+$timerColor: red !default;
 
 .timer {
 	display: block;
 	padding: 10px;
-	border: 1px dashed var(--timerColor);
-	background-color: var(--timerColor);
-	background: linear-gradient(to left, var(--timerColor), rgba(black, .5));
+	border: 1px dashed $timerColor;
+	background-color: $timerColor;
+	background: linear-gradient(to left, css-variable-with-alpha($timerColor, 50), rgba(black, .5));
 
 	&::after {
 		content: "";
