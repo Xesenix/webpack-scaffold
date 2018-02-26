@@ -215,6 +215,8 @@ Some additional resources that can clarify concepts behind this scaffold project
 * [React testing with Karma](https://www.codementor.io/kimagure/testing-reactjs-components-with-karma-and-webpack-8sdzi6hkf)
 * [Istanbul Test Coverage](https://github.com/webpack-contrib/istanbul-instrumenter-loader)
 * [Testing React with Enzyme](https://github.com/airbnb/enzyme/tree/master/packages/enzyme-adapter-react-16)
+* [Enzyme Jasmine Matchers](https://github.com/FormidableLabs/enzyme-matchers)
+* [Testing with Jasmine React](https://github.com/tommyh/jasmine-react)
 * [Authentication with PassportJs](http://www.passportjs.org/docs)
 
 ## Project managment related resources
