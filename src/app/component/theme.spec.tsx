@@ -61,7 +61,7 @@ describe('Theme', () => {
 				const style = document.documentElement.style;
 				const component = mount(<Theme/>);
 				const inputTag = component.find(`[data-key="${name}"] input`);
-				inputTag.instance().value = color;
+				(inputTag.instance() as any).value = color;
 				inputTag.simulate('change');
 				expect(style.getPropertyValue(`--${name}`)).toEqual(color + 'ff');
 				expect(style.getPropertyValue(`--${name}-alpha-10`)).toEqual(color + '1a');
@@ -88,7 +88,7 @@ describe('Theme', () => {
 				const style = document.documentElement.style;
 				const component = mount(<Theme/>);
 				const inputTag = component.find(`[data-key="${name}"] input`);
-				inputTag.instance().value = value;
+				(inputTag.instance() as any).value = value;
 				inputTag.simulate('change');
 				expect(style.getPropertyValue(`--${name}`)).toEqual(value);
 			});

@@ -49,7 +49,9 @@
 		],
 		"types": [                                /* Type declaration files to be included in compilation. */
 			"node",
-			"jasmine"
+			"jasmine",
+			"jasmine-enzyme",
+			"enzyme",
 		],
 		"allowSyntheticDefaultImports": true,     /* Allow default imports from modules with no default export. This does not affect code emit, just typechecking. */
 
@@ -71,7 +73,8 @@
 		"./src/main.js"
 	],
 	"include": [
-		"src/**/*.ts"
+		"src/**/*.ts",
+		"src/**/*.tsx"
 	],
 	"exclude": [
 		"node_modules"

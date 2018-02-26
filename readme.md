@@ -47,8 +47,10 @@ If you want analyze build size and dependencies use:
 ### TODO
 
 This project is using __webpack v3__ and probably has a lot place for improvement like:
-* find a way to avoid need for using `$srcRoot` variable in stylesheet
+* find a way to avoid need for using `$srcRoot` variable in stylesheet (without copying every asset)
 * auto detect assets included in html template (this is problem if you override default behaviour of copying to production all assets)
+* provide a translation functionality
+* split into multi application setup
 
 ## Documentation
 
@@ -211,13 +213,17 @@ Some additional resources that can clarify concepts behind this scaffold project
 * [Webpack plugins documentation](https://webpack.js.org/plugins/)
 * [List of webpack plugins](https://github.com/webpack-contrib/awesome-webpack)
 * [Babel 7 and TypeScript](http://artsy.github.io/blog/2017/11/27/Babel-7-and-TypeScript/)
+* [Typescript JSX](https://www.typescriptlang.org/docs/handbook/jsx.html)
 * [React Router](https://reacttraining.com/react-router/web/api/BrowserRouter)
+* [Authentication with PassportJs](http://www.passportjs.org/docs)
+
+## Testing
+
 * [React testing with Karma](https://www.codementor.io/kimagure/testing-reactjs-components-with-karma-and-webpack-8sdzi6hkf)
 * [Istanbul Test Coverage](https://github.com/webpack-contrib/istanbul-instrumenter-loader)
 * [Testing React with Enzyme](https://github.com/airbnb/enzyme/tree/master/packages/enzyme-adapter-react-16)
 * [Enzyme Jasmine Matchers](https://github.com/FormidableLabs/enzyme-matchers)
 * [Testing with Jasmine React](https://github.com/tommyh/jasmine-react)
-* [Authentication with PassportJs](http://www.passportjs.org/docs)
 
 ## Project managment related resources
 * [Travis CLI installation](https://github.com/travis-ci/travis.rb#installation)
