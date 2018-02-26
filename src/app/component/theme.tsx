@@ -18,7 +18,7 @@ class Theme extends React.Component {
 
 	public updateThemeColor(name: string, value: string): void {
 		const color = tinycolor(value);
-		console.log('color', name, color);
+		// console.log('color', name, color);
 		this.style.setProperty(`--${name}`, '#' + color.toHex8());
 		// you can not modify variables color inside css so we predefine set of modified colors
 		this.style.setProperty(`--${name}-alpha-10`, '#' + color.setAlpha(.1).toHex8());
@@ -38,7 +38,7 @@ class Theme extends React.Component {
 			<div className="theme-box">
 				<h3>Swap theme color via style property variable</h3>
 				<p>This works post sass so no sass functionality may be used over this color variable.</p>
-				<div className="form-group">
+				<div className="form-group" data-key="primaryColor">
 					<label>Primary Color</label>
 					<input
 						className="form-control"
@@ -47,7 +47,7 @@ class Theme extends React.Component {
 						onChange={(input) => this.updateThemeColor('primaryColor', this.primaryColorInput.value)}
 					/>
 				</div>
-				<div className="form-group">
+				<div className="form-group" data-key="secondaryColor">
 					<label>Secondary Color</label>
 					<input
 						className="form-control"
@@ -56,7 +56,7 @@ class Theme extends React.Component {
 						onChange={(input) => this.updateThemeColor('secondaryColor', this.secondaryColorInput.value)}
 					/>
 				</div>
-				<div className="form-group">
+				<div className="form-group" data-key="neutralColor">
 					<label>Neutral Color</label>
 					<input
 						className="form-control"
@@ -65,7 +65,7 @@ class Theme extends React.Component {
 						onChange={(input) => this.updateThemeColor('neutralColor', this.neutralColorInput.value)}
 					/>
 				</div>
-				<div className="form-group">
+				<div className="form-group" data-key="glowIntensity">
 					<label>Glow Intensity</label>
 					<input
 						className="form-control"
