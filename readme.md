@@ -50,7 +50,7 @@ This project is using __webpack v3__ and probably has a lot place for improvemen
 * find a way to avoid need for using `$srcRoot` variable in stylesheet (without copying every asset)
 * auto detect assets included in html template (this is problem if you override default behaviour of copying to production all assets)
 * provide a translation functionality
-* split into multi application setup
+* provide better per app configuration for tests (seperate coverage and entry points)
 
 ## Documentation
 
