@@ -43,6 +43,9 @@ If you want analyze build size and dependencies use:
 * HMR for stylesheets
 * loading png, jpg, gif, svg assets from local project paths and node_modules
 * loading eot, svg, ttf, woff, woff2 fonts from local project paths and node_modules
+* testing karma, jasmine, enzyme
+* Typescript
+* simple theming with css variables
 
 ### TODO
 
@@ -218,6 +221,7 @@ Some additional resources that can clarify concepts behind this scaffold project
 * [List of webpack plugins](https://github.com/webpack-contrib/awesome-webpack)
 * [Babel 7 and TypeScript](http://artsy.github.io/blog/2017/11/27/Babel-7-and-TypeScript/)
 * [Typescript JSX](https://www.typescriptlang.org/docs/handbook/jsx.html)
+* [Jsx in depth](https://reactjs.org/docs/jsx-in-depth.html)
 * [React Router](https://reacttraining.com/react-router/web/api/BrowserRouter)
 * [Authentication with PassportJs](http://www.passportjs.org/docs)
 
