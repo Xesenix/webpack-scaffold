@@ -35,6 +35,11 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 /**
+ * https://survivejs.com/webpack/styling/eliminating-unused-css/#critical-path-rendering
+ */
+const HtmlCriticalPlugin = require("html-critical-webpack-plugin");
+
+/**
  * Merge any additional project specific webpack configuration.
  */
 const merge = require('webpack-merge');
@@ -88,6 +93,20 @@ const scaffoldConfig = (env) => {
 		showErrors: true,
 	});
 
+	const htmlCriticalPlugin = new HtmlCriticalPlugin({
+		base: config.outPath,
+		src: 'index.html',
+		dest: 'index.html',
+		inline: true,
+		minify: true,
+		extract: true,
+		width: 375,
+		height: 565,
+		penthouse: {
+			blockJSRequests: false,
+		}
+	});
+
 	const entry = {};
 
 	// compose entry points
@@ -133,6 +152,7 @@ const scaffoldConfig = (env) => {
 		plugins: [
 			isTest ? null : htmlPlugin,
 			isTest ? null : extractCssPlugin,
+			!isProd ? null : htmlCriticalPlugin,
 			new webpack.LoaderOptionsPlugin({
 				minimize: isProd,
 				debug: !isProd,
