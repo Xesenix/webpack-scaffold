@@ -28,7 +28,7 @@ test_script:
 
 build_script:
   # run production build
-  - npm run build:prod
+  - npm run demo:build:prod
 
 cache:
   - node_modules

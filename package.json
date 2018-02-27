@@ -8,35 +8,44 @@
 		"url": "https://github.com/Xesenix/webpack-3-scaffold"
 	},
 	"scripts": {
-		"analyze": "webpack --env.prod --env.analyze --config conf/webpack/webpack.config.js",
+		"analyze": "webpack --env.prod --env.analyze --config webpack.config.js",
 		"tdd": "cross-env BABEL_ENV=test karma start",
 		"test": "cross-env BABEL_ENV=test karma start --single-run",
-		"start": "http-server ./dist/",
-		"serve:dev": "webpack-dev-server --env.dev --env.hmr --config conf/webpack/webpack.config.js",
-		"build:dev": "webpack --env.dev --config conf/webpack/webpack.config.js",
-		"build:prod": "webpack --env.prod --config conf/webpack/webpack.config.js",
+		"start": "http-server ./dist/demo",
+		"serve": "webpack-dev-server --env.dev --env.hmr --config webpack.config.js",
+		"build:dev": "webpack --env.dev --config webpack.config.js",
+		"build:prod": "webpack --env.prod --config webpack.config.js",
+		"demo:analyze": "cross-env APP=demo npm run analyze",
+		"demo:tdd": "cross-env APP=demo npm run tdd",
+		"demo:test": "cross-env APP=demo npm run test",
+		"demo:start": "cross-env APP=demo npm run start",
+		"demo:serve": "cross-env APP=demo npm run serve",
+		"demo:build:dev": "cross-env APP=demo npm run build:dev",
+		"demo:build:prod": "cross-env APP=demo npm run build:prod",
 		"report-coverage": "cat ./coverage/report-lcov/lcov.info | coveralls"
 	},
-	"app": {
-		"root": "src",
-		"outDir": "dist",
-		"main": [
-			"main.js"
-		],
-		"template": "templates/demo.html",
-		"templateData": {
-			"title": "Demo Webpack Scaffold"
-		},
-		"assets": [
-			"assets"
-		],
-		"styles": [
-			"styles/styles.scss",
-			"styles/banners/a.scss"
-		],
-		"stylesIncludePaths": [
-			"./styles"
-		]
+	"apps": {
+		"demo": {
+			"root": "src",
+			"outDir": "dist/demo",
+			"main": [
+				"main.js"
+			],
+			"template": "templates/demo.html",
+			"templateData": {
+				"title": "Demo Webpack Scaffold"
+			},
+			"assets": [
+				"assets"
+			],
+			"styles": [
+				"styles/styles.scss",
+				"styles/banners/a.scss"
+			],
+			"stylesIncludePaths": [
+				"./styles"
+			]
+		}
 	},
 	"author": "",
 	"license": "ISC",
@@ -46,6 +55,7 @@
 		"@babel/preset-react": "^7.0.0-beta.40",
 		"@babel/preset-typescript": "^7.0.0-beta.40",
 		"@types/babel-core": "^6.25.3",
+		"@types/chalk": "^2.2.0",
 		"@types/clean-webpack-plugin": "^0.1.1",
 		"@types/copy-webpack-plugin": "^4.4.0",
 		"@types/enzyme": "^3.1.9",
@@ -70,6 +80,7 @@
 		"babel-jest": "^22.4.1",
 		"babel-loader": "^8.0.0-beta.0",
 		"bootstrap-sass": "^3.3.7",
+		"chalk": "^2.3.1",
 		"clean-webpack-plugin": "^0.1.18",
 		"copy-webpack-plugin": "^4.4.2",
 		"coveralls": "^3.0.0",

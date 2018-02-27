@@ -25,11 +25,11 @@ Its work in progress so workflow is kind of clunky:
 For development with HMR
 
 * Run `npm run build:dev` this will copy vendor assets to local folder where from they can be served (if some assets are missing during development run this)
-* Run `npm run serve:dev` this will start `webpack-dev-server` if some assets won't appear you probably need to add them to `package.app.assets`
+* Run `npm run serve:dev` this will start `webpack-dev-server` if some assets won't appear you probably need to add them to `package.apps.[appName].assets`
 
 For production build:
 
-* Run `npm run build:prod` this will build project and move all assets to `package.app.outPath` path
+* Run `npm run build:prod` this will build project and move all assets to `package.apps.[appName].outPath` path
 * Run `npm start` to test build in browser `localhost:8080`
 
 If you want analyze build size and dependencies use:
@@ -60,17 +60,17 @@ You can provide application configuration via _package.json_ `app` param:
 
 | __param__ | __default__ | __description__
 | --- | --- | --- |
-| __package.app.rootDir__ | src | directory where all source code and other assets resides
-| __package.app.outDir__ | dist | directory in which to put builded application
-| __package.app.main__ | ['main.js'] | entry points to your application relative to `package.app.rootDir`
-| __package.app.assets__ | ['assets'] | all asset and resource you want to move to build assets directory (you can use glob patterns or just link to directory)
-| __package.app.fonts__ | ['fonts'] | all fonts resource you want to move to build fonts directory (you can use glob patterns or just link to directory)
-| __package.app.styles__ | ['styles/styles.scss'] | all stylesheets you want to use as entry points
-| __package.app.stylesIncludePaths__ | ['./styles'] | list of relative path on which to look for included stylesheet via `@import`
-| __package.app.vendor__ | [] | all vendor scripts you want to push to vendor bundle
-| __package.app.template__ | index.html | html template that you want to use as template for website
-| __package.app.templateData__ | {} | html template is handled by ejs loader so you can put here additional data that will be passed to `htmlWebpackPlugin.options.data` you can also access _package.json_ from `htmlWebpackPlugin.options.packageConfig`
-| __package.app.webpack__ | null | path to script that can extend basic webpack configuration function exported by this scrip recives 3 params: `env`, `webpackConfig`, `appConfig`
+| __package.apps.[appName].rootDir__ | src | directory where all source code and other assets resides
+| __package.apps.[appName].outDir__ | dist | directory in which to put builded application
+| __package.apps.[appName].main__ | ['main.js'] | entry points to your application relative to `package.apps.[appName].rootDir`
+| __package.apps.[appName].assets__ | ['assets'] | all asset and resource you want to move to build assets directory (you can use glob patterns or just link to directory)
+| __package.apps.[appName].fonts__ | ['fonts'] | all fonts resource you want to move to build fonts directory (you can use glob patterns or just link to directory)
+| __package.apps.[appName].styles__ | ['styles/styles.scss'] | all stylesheets you want to use as entry points
+| __package.apps.[appName].stylesIncludePaths__ | ['./styles'] | list of relative path on which to look for included stylesheet via `@import`
+| __package.apps.[appName].vendor__ | [] | all vendor scripts you want to push to vendor bundle
+| __package.apps.[appName].template__ | index.html | html template that you want to use as template for website
+| __package.apps.[appName].templateData__ | {} | html template is handled by ejs loader so you can put here additional data that will be passed to `htmlWebpackPlugin.options.data` you can also access _package.json_ from `htmlWebpackPlugin.options.packageConfig`
+| __package.apps.[appName].webpack__ | null | path to script that can extend basic webpack configuration function exported by this scrip recives 3 params: `env`, `webpackConfig`, `appConfig`
 
 ### Source code phrase replacement
 
@@ -82,16 +82,16 @@ If anywhere in you code exist one of those phrases it will be replaced with data
 | __process.env.PRODUCTION__ | _boolean_ | | project was build with production flag `--env.prod` |
 | __process.env.PACKAGE__ | _object_ | | contents of _package.json_ |
 | __process.env.APP__ | _object_ | | application build configuration resolved from build context |
-| __process.env.APP.rootDir__ | string | _src_ | `package.app.rootDir` |
-| __process.env.APP.outDir__ | string | _dist_ | `package.app.outDir` |
-| __process.env.APP.rootPath__ | string | | resolved system path to `package.app.rootDir` |
-| __process.env.APP.outPath__ | string | | resolved system path to `package.app.outDir` |
-| __process.env.APP.main__ | string[] | | application entry scripts defined in `package.app.main` |
-| __process.env.APP.assets__ | string[] | | assets defined in `package.app.assets` |
-| __process.env.APP.fonts__ | string[] | ['./fonts'] | fonts defined in `package.app.fonts` |
-| __process.env.APP.styles__ | string[] | ['./styles/styles.scss'] | styles entry points defined in `package.app.styles` |
-| __process.env.APP.stylesIncludePaths__ | string[] | ['./styles'] | styles lookup paths `package.app.stylesIncludePaths` |
-| __process.env.APP.vendor__ | string[] | | vendor scripts defined in `package.app.vendor` |
+| __process.env.APP.rootDir__ | string | _src_ | `package.apps.[appName].rootDir` |
+| __process.env.APP.outDir__ | string | _dist_ | `package.apps.[appName].outDir` |
+| __process.env.APP.rootPath__ | string | | resolved system path to `package.apps.[appName].rootDir` |
+| __process.env.APP.outPath__ | string | | resolved system path to `package.apps.[appName].outDir` |
+| __process.env.APP.main__ | string[] | | application entry scripts defined in `package.apps.[appName].main` |
+| __process.env.APP.assets__ | string[] | | assets defined in `package.apps.[appName].assets` |
+| __process.env.APP.fonts__ | string[] | ['./fonts'] | fonts defined in `package.apps.[appName].fonts` |
+| __process.env.APP.styles__ | string[] | ['./styles/styles.scss'] | styles entry points defined in `package.apps.[appName].styles` |
+| __process.env.APP.stylesIncludePaths__ | string[] | ['./styles'] | styles lookup paths `package.apps.[appName].stylesIncludePaths` |
+| __process.env.APP.vendor__ | string[] | | vendor scripts defined in `package.apps.[appName].vendor` |
 | __process.env.APP.template__ | string | _index.html_ | main template name |
 | __process.env.APP.templateData__ | string | | data injected into template `htmlWebpackPlugin.options.data` |
 | __process.env.APP.appWebpackPath__ | string | | path to additional webpack configuration script |
@@ -123,7 +123,7 @@ _.env_ file should be excluded from you repository via _.gitignore_.
 ### Example stylesheet assets loading
 
 Loading assets from stylesheet depends on entry point stylesheet used to generate url for that asset.
-So if you use as entry point stylesheet that is one folder deep relative to your `package.app.rootDir` you need to compensate that path. So you can for example use structure like this:
+So if you use as entry point stylesheet that is one folder deep relative to your `package.apps.[appName].rootDir` you need to compensate that path. So you can for example use structure like this:
 
 for example:
 
@@ -131,9 +131,11 @@ _file: package.json_
 
 ```json
 {
-  "app": {
-    "rootDir": "src",
-    "styles": ["styles/subdir/entry-stylesheet.scss"]
+  "apps": {
+    "app": {
+      "rootDir": "src",
+      "styles": ["styles/subdir/entry-stylesheet.scss"]
+    }
   }
 }
 ```
@@ -173,7 +175,7 @@ $srcRoot: '../../../../' !default;
 
 ### Example template referenced assets loading
 
-For asset referenced in `index.html` we need to put all referenced assets into `package.app.assets` param.
+For asset referenced in `index.html` we need to put all referenced assets into `package.apps.[appName]s.app.assets` param.
 
 So for example if you have:
 
@@ -195,13 +197,15 @@ _file: package.json_
 
 ```json
 {
-  "app": {
-    "root": "src",
-    "template": "index.html",
-    "assets": [
-      "assets/path/to/image.png",
-      "assets/path/to/svg.svg"
-    ],
+  "apps": {
+    "app": {
+      "root": "src",
+      "template": "index.html",
+      "assets": [
+        "assets/path/to/image.png",
+        "assets/path/to/svg.svg"
+      ],
+    }
   }
 }
 ```

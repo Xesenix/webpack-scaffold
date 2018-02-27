@@ -1,9 +1,8 @@
+const appConfig = require('../app/app.config');
+const chalk = require('chalk');
 const path = require('path');
 const pathExists = require('path-exists');
 const webpack = require('webpack');
-
-// TODO: find a better way to configure projectRoot
-const projectRoot = path.resolve(__dirname, '../..');
 
 /**
  * Handling page template.
@@ -50,35 +49,19 @@ const assetsRulesFactory = require('./rules/assets');
 const babelRulesFactory = require('./rules/babel');
 const stylesRulesFactory = require('./rules/styles');
 
-const packageConfig = require('../../package.json');
-
-const retrivePackageAppConfig = (key, defaultValue) => packageConfig.app && packageConfig.app[key] ? packageConfig.app[key] : defaultValue;
-
-module.exports = (env) => {
+const scaffoldConfig = (env) => {
 	const isProd = !!env.prod;
 	const isTest = !!env.test;
 	const isDev = !!env.dev;
 	const hmr = !!env.hmr;
 	const analyze = !!env.analyze;
+	const app = appConfig.getEnvApp();
+	const { projectRoot, packageConfig } = appConfig;
+	const config = appConfig.getAppConfig(app);
 
-	const appConfig = {};
-
-	appConfig.rootDir = retrivePackageAppConfig('rootDir', 'src');
-	appConfig.outDir = retrivePackageAppConfig('outDir', 'dist');
-	appConfig.main = retrivePackageAppConfig('main', [ './main.js' ]);
-	appConfig.assets = retrivePackageAppConfig('assets', [ './assets' ]);
-	appConfig.fonts = retrivePackageAppConfig('fonts', [ './fonts' ]);
-	// list of entry point stylesheets
-	appConfig.styles = retrivePackageAppConfig('styles', [ './styles/styles.scss' ]);
-	// list of paths to directories on which to look for stylesheets when resolving @import in stylesheets
-	appConfig.stylesIncludePaths = retrivePackageAppConfig('stylesIncludePaths', [ './styles' ]).map(p => path.join(appConfig.rootDir, p));
-	appConfig.vendor = retrivePackageAppConfig('vendor', []);
-	appConfig.template = retrivePackageAppConfig('template', 'index.html');
-	appConfig.templateData = retrivePackageAppConfig('templateData', {});
-	appConfig.appWebpackPath = retrivePackageAppConfig('webpack', null);
-
-	appConfig.rootPath = path.normalize(path.resolve(projectRoot, appConfig.rootDir));
-	appConfig.outPath = path.normalize(path.resolve(projectRoot, appConfig.outDir));
+	console.log(`Project root path: ${chalk.blue(appConfig.projectRoot)}`);
+	console.log(`Running app name: ${chalk.blue(app)}`);
+	console.log('App config:', config);
 
 	const extractCssPlugin = cssPluginFactory();
 
@@ -90,9 +73,9 @@ module.exports = (env) => {
 		packageConfig,
 		data: {
 			title: `${packageConfig.name} - ${packageConfig.version}`,
-			...appConfig.templateData
+			...config.templateData
 		},
-		template: `!!ejs-loader!${appConfig.rootDir}/${appConfig.template}`,
+		template: `!!ejs-loader!${config.rootDir}/${config.template}`,
 		inject: true,
 		// order of injected style tags
 		chunksSortMode: (a, b) => chunks.indexOf(a.names[0]) > chunks.indexOf(b.names[0]) ? 1 : -1,
@@ -109,8 +92,8 @@ module.exports = (env) => {
 
 	// compose entry points
 	chunks
-		.filter((key) => appConfig[key].length > 0)
-		.forEach((key) => entry[key] = appConfig[key]);
+		.filter((key) => config[key].length > 0)
+		.forEach((key) => entry[key] = config[key]);
 
 	// entry['react'] = ['react', 'react-dom'];
 	const externals = {
@@ -122,12 +105,12 @@ module.exports = (env) => {
 		entry,
 		externals,
 		output: {
-			path: appConfig.outPath,
+			path: config.outPath,
 			filename: '[name].boundle.js',
 		},
 		devServer: {
 			contentBase: [
-				appConfig.outPath, // assets needs project to be build before they load from that path
+				config.outPath, // assets needs project to be build before they load from that path
 			],
 			hot: hmr,
 		},
@@ -135,15 +118,15 @@ module.exports = (env) => {
 		resolve: {
 			extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
 			modules: [
-				appConfig.rootPath,
+				config.rootPath,
 				'node_modules',
 			],
 		},
 		module: {
 			rules: [
-				...fontsRulesFactory(appConfig.rootPath),
-				...assetsRulesFactory(appConfig.rootPath),
-				...stylesRulesFactory(extractCssPlugin, isProd, appConfig.stylesIncludePaths),
+				...fontsRulesFactory(config.rootPath),
+				...assetsRulesFactory(config.rootPath),
+				...stylesRulesFactory(extractCssPlugin, isProd, config.stylesIncludePaths),
 				...babelRulesFactory(),
 			]
 		},
@@ -162,21 +145,21 @@ module.exports = (env) => {
 				},
 			}),
 			isTest ? null : new CopyWebpackPlugin([
-					...appConfig.assets,
-					...appConfig.fonts,
+					...config.assets,
+					...config.fonts,
 				]
 				.filter(p => !!p)
-				.filter(p => pathExists.sync(path.join(appConfig.rootDir, p)))
+				.filter(p => pathExists.sync(path.join(config.rootDir, p)))
 				.map(
 					from => typeof from === 'string'
-					? { from: path.join(appConfig.rootDir, from), to: path.join(appConfig.outPath, from) }
+					? { from: path.join(config.rootDir, from), to: path.join(config.outPath, from) }
 					: from
 				),
 				{
 					debug: isProd ? 'warning' : 'info',
 				}
 			),
-			!isProd ? null : new CleanWebpackPlugin([ appConfig.outPath ], { root: projectRoot, verbos: isDev }),
+			!isProd ? null : new CleanWebpackPlugin([ config.outPath ], { root: projectRoot, verbos: isDev }),
 			new DotenvWebpackPlugin({ path: '.env', silent: true }),
 			new webpack.EnvironmentPlugin({
 				NODE_ENV: isProd ? 'production' : isTest ? 'test' : 'development',
@@ -191,7 +174,7 @@ module.exports = (env) => {
 			analyze ? new BundleAnalyzerPlugin({
 				analyzerMode: 'server',
 				openAnalyzer: true,
-				// statsFilename: path.join(appConfig.outPath, 'stats.json'),
+				// statsFilename: path.join(config.outPath, 'stats.json'),
 				generateStatsFile: true,
 			}) : null,
 			isProd ? new UglifyJsPlugin() : null,
@@ -206,9 +189,13 @@ module.exports = (env) => {
 	};
 
 	let appWebpack = () => {};
-	if (appConfig.appWebpackPath) {
-		appWebpack = require(appConfig.appWebpackPath);
+	if (config.appWebpackPath) {
+		appWebpack = require(config.appWebpackPath);
 	}
 
 	return merge(webpackConfig, typeof appWebpack === 'function' ? appWebpack(env, webpackConfig, appConfig) : appWebpack);
 };
+
+module.exports = {
+	scaffoldConfig,
+}
