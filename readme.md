@@ -55,7 +55,6 @@ This project is using __webpack v3__ and probably has a lot place for improvemen
 * auto detect assets included in html template (this is problem if you override default behaviour of copying to production all assets)
 * provide a translation functionality
 * provide better per app configuration for tests (seperate coverage and entry points)
-* don't merge external libraries into main bundle
 * handle lazy loading of modules
 * use react router
 * use [SVG Sprite loader](https://www.npmjs.com/package/svg-sprite-loader) or [react-svg-loader](https://www.npmjs.com/package/react-svg-loader)
@@ -234,6 +233,7 @@ Some additional resources that can clarify concepts behind this scaffold project
 * [react-svg-loader](https://www.npmjs.com/package/react-svg-loader)
 * [image-webpack-loader](https://www.npmjs.com/package/image-webpack-loader)
 * [svgo-loader](https://www.npmjs.com/package/svgo-loader)
+* [gl-react](https://projectseptemberinc.gitbooks.io/gl-react/content/)
 
 ## Testing
 
