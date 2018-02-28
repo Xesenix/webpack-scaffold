@@ -51,3 +51,22 @@ code {
 	background-color: css-variable-with-alpha($codeBlockColor, 50);
 	@include box-glow($codeBlockColor, 1);
 }
+
+table {
+	th,
+	td {
+		padding: .5rem;
+	}
+	thead {
+		th,
+		td {
+			border-bottom: 1px solid #666;
+		}
+	}
+	tbody {
+		th,
+		td {
+			border-bottom: 1px solid #333;
+		}
+	}
+}

@@ -46,6 +46,7 @@ If you want analyze build size and dependencies use:
 * testing karma, jasmine, enzyme
 * Typescript
 * simple theming with css variables
+* markdown loader
 
 ### TODO
 

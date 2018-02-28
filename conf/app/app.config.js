@@ -23,7 +23,6 @@ const getAppConfig = (app) => {
 	config.vendor = getAppConfig('vendor', []);
 	config.template = getAppConfig('template', 'index.html');
 	config.templateData = getAppConfig('templateData', {});
-	config.appWebpackPath = getAppConfig('webpack', null);
 
 	config.rootPath = path.normalize(path.resolve(projectRoot, config.rootDir));
 	config.outPath = path.normalize(path.resolve(projectRoot, config.outDir));

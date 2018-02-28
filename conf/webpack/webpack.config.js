@@ -53,6 +53,7 @@ const fontsRulesFactory = require('./rules/fonts');
 const assetsRulesFactory = require('./rules/assets');
 const babelRulesFactory = require('./rules/babel');
 const stylesRulesFactory = require('./rules/styles');
+const markdownRulesFactory = require('./rules/markdown');
 
 const scaffoldConfig = () => {
 	const isProd = process.env.ENV === 'production';
@@ -149,6 +150,7 @@ const scaffoldConfig = () => {
 				...assetsRulesFactory(config.rootPath),
 				...stylesRulesFactory(extractCssPlugin, isProd, config.stylesIncludePaths),
 				...babelRulesFactory(),
+				...markdownRulesFactory(),
 			]
 		},
 		plugins: [
