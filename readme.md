@@ -57,6 +57,7 @@ This project is using __webpack v3__ and probably has a lot place for improvemen
 * don't merge external libraries into main bundle
 * handle lazy loading of modules
 * use react router
+* use [SVG Sprite loader](https://www.npmjs.com/package/svg-sprite-loader) or [react-svg-loader](https://www.npmjs.com/package/react-svg-loader)
 
 ## Documentation
 
@@ -228,6 +229,10 @@ Some additional resources that can clarify concepts behind this scaffold project
 * [Authentication with PassportJs](http://www.passportjs.org/docs)
 * [Redux i18n](https://github.com/APSL/redux-i18n)
 * [I18n with formatjs](https://formatjs.io/guides/)
+* [svg-sprite-loader](https://www.npmjs.com/package/svg-sprite-loader)
+* [react-svg-loader](https://www.npmjs.com/package/react-svg-loader)
+* [image-webpack-loader](https://www.npmjs.com/package/image-webpack-loader)
+* [svgo-loader](https://www.npmjs.com/package/svgo-loader)
 
 ## Testing
 
