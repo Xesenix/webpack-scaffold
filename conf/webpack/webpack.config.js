@@ -114,7 +114,6 @@ const scaffoldConfig = (env) => {
 		.filter((key) => config[key].length > 0)
 		.forEach((key) => entry[key] = config[key]);
 
-	// entry['react'] = ['react', 'react-dom'];
 	const externals = {
 	//	'react': './node_modules/react/umd/react.production.min.js',
 	//	'react-dom': './node_modules/react-dom/umd/react-dom.production.min.js',
@@ -205,6 +204,10 @@ const scaffoldConfig = (env) => {
 			// Use the NoEmitOnErrorsPlugin to skip the emitting phase whenever there are errors while compiling.
 			// This ensures that no assets are emitted that include errors. The emitted flag in the stats is false for all assets.
 			isTest ? null : new webpack.NoEmitOnErrorsPlugin(),
+			new webpack.optimize.CommonsChunkPlugin({
+				name: 'vendor',
+				minChunks: ({ resource }) => /node_modules/.test(resource),
+			}),
 		].filter(p => !!p)
 	};
 
