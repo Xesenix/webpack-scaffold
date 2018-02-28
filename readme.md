@@ -54,6 +54,9 @@ This project is using __webpack v3__ and probably has a lot place for improvemen
 * auto detect assets included in html template (this is problem if you override default behaviour of copying to production all assets)
 * provide a translation functionality
 * provide better per app configuration for tests (seperate coverage and entry points)
+* don't merge external libraries into main bundle
+* handle lazy loading of modules
+* use react router
 
 ## Documentation
 
@@ -218,12 +221,15 @@ _file: package.json_
 Some additional resources that can clarify concepts behind this scaffold project.
 
 * [Webpack plugins documentation](https://webpack.js.org/plugins/)
+* [Blog about Webpack configuration](https://survivejs.com/webpack/foreword/)
 * [List of webpack plugins](https://github.com/webpack-contrib/awesome-webpack)
 * [Babel 7 and TypeScript](http://artsy.github.io/blog/2017/11/27/Babel-7-and-TypeScript/)
 * [Typescript JSX](https://www.typescriptlang.org/docs/handbook/jsx.html)
 * [Jsx in depth](https://reactjs.org/docs/jsx-in-depth.html)
 * [React Router](https://reacttraining.com/react-router/web/api/BrowserRouter)
 * [Authentication with PassportJs](http://www.passportjs.org/docs)
+* [Redux i18n](https://github.com/APSL/redux-i18n)
+* [I18n with formatjs](https://formatjs.io/guides/)
 
 ## Testing
 
@@ -239,4 +245,10 @@ Some additional resources that can clarify concepts behind this scaffold project
 * [Continous Integration Travis](https://docs.travis-ci.com)
 * [Continous Integration for Windows with Appveyor](https://www.appveyor.com/docs/)
 * [Badges](https://shields.io/)
+* [Yoman generators](http://yeoman.io/authoring/)
 
+# Research
+
+## PurifyCSS
+
+It would be nice to use [PurifyCSS](https://github.com/purifycss/purifycss) but [webpack plugin](https://github.com/Xesenix/purifycss-webpack) for it is broken it doesn't run after assets are created. So, there is no `index.html` that can be used as entry point for purification purpose.
