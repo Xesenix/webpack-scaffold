@@ -1,5 +1,6 @@
 /* This script doesn't really on $srcRoot */
 @import 'bootstrap';
+@import 'font-awesome';
 @import 'variables';
 /* For setting up assets paths for imported style sheets */
 $srcRoot: '../' !default;
@@ -26,25 +27,27 @@ body {
 	@include box-glow($boxColor, $glowIntensity);
 }
 
+.fa,
 .glyphicon {
 	margin: 0 1rem;
 	font-size: 5rem;
+}
+
+.fa,
+.glyphicon {
+	@include text-glow($iconsColor, $glowIntensity);
 }
 
 h1, h2, h3 {
 	@include text-glow($headersColor, $glowIntensity);
 }
 
-.glyphicon {
-	@include text-glow($iconsColor, $glowIntensity);
-}
-
 code {
 	display: block;
 	padding: 1rem;
-	border: 1px solid css-variable-with-alpha($codeBlockColor, 50);
+	border: 1px solid css-variable-with-alpha($codeBlockColor, 75);
 	border-radius: .5rem;
 	margin-bottom: 1rem;
-	background-color: css-variable-with-alpha($codeBlockColor, 25);
+	background-color: css-variable-with-alpha($codeBlockColor, 50);
 	@include box-glow($codeBlockColor, 1);
 }

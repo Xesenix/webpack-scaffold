@@ -39,7 +39,7 @@ If you want analyze build size and dependencies use:
 ### Features
 
 * setting up build specific environmental variables
-* SASS
+* SASS (Bootstrap, Font Awesome)
 * HMR for stylesheets
 * loading png, jpg, gif, svg assets from local project paths and node_modules
 * loading eot, svg, ttf, woff, woff2 fonts from local project paths and node_modules

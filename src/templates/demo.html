@@ -81,6 +81,33 @@
 			<% }) %>
 		</div>
 
+		<div class="box">
+			<p>Font awesome icons from fonts located in node_modules.</p>
+			<%
+				[
+					'asterisk',
+					'car',
+					'cc-paypal',
+					'cc-visa',
+					'cc-stripe',
+					'arrow-left',
+					'arrow-up',
+					'arrow-right',
+					'arrow-down',
+					'arrow-circle-left',
+					'arrow-circle-up',
+					'arrow-circle-right',
+					'arrow-circle-down',
+					'cog',
+					'beer',
+					'bomb',
+					'bolt',
+				].forEach(icon => {
+			%>
+				<div class="fa fa-<%= icon %>"></div>
+			<% }) %>
+		</div>
+
 		<h2>Test svg loading</h2>
 		<div class="box">
 			<code>&lt;img src="assets/svg/sign/sign-00.svg"/&gt;</code>
