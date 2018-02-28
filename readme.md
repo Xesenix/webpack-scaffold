@@ -76,7 +76,6 @@ You can provide application configuration via _package.json_ `app` param:
 | __package.apps.[appName].vendor__ | [] | all vendor scripts you want to push to vendor bundle
 | __package.apps.[appName].template__ | index.html | html template that you want to use as template for website
 | __package.apps.[appName].templateData__ | {} | html template is handled by ejs loader so you can put here additional data that will be passed to `htmlWebpackPlugin.options.data` you can also access _package.json_ from `htmlWebpackPlugin.options.packageConfig`
-| __package.apps.[appName].webpack__ | null | path to script that can extend basic webpack configuration function exported by this scrip recives 3 params: `env`, `webpackConfig`, `appConfig`
 
 ### Source code phrase replacement
 
@@ -100,7 +99,6 @@ If anywhere in you code exist one of those phrases it will be replaced with data
 | __process.env.APP.vendor__ | string[] | | vendor scripts defined in `package.apps.[appName].vendor` |
 | __process.env.APP.template__ | string | _index.html_ | main template name |
 | __process.env.APP.templateData__ | string | | data injected into template `htmlWebpackPlugin.options.data` |
-| __process.env.APP.appWebpackPath__ | string | | path to additional webpack configuration script |
 
 __process.env__ won't have those phrases listed as its params when trying to call it after build. So it secure, in sense that you can use only what you really need.
 

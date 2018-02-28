@@ -54,18 +54,21 @@ const assetsRulesFactory = require('./rules/assets');
 const babelRulesFactory = require('./rules/babel');
 const stylesRulesFactory = require('./rules/styles');
 
-const scaffoldConfig = (env) => {
-	const isProd = !!env.prod;
-	const isTest = !!env.test;
-	const isDev = !!env.dev;
-	const hmr = !!env.hmr;
-	const analyze = !!env.analyze;
+const scaffoldConfig = () => {
+	const isProd = process.env.ENV === 'production';
+	const isTest = process.env.ENV === 'test';
+	const isDev = process.env.ENV === 'development';
+	const hmr = !!process.env.HMR;
+	const analyze = !!process.env.ANALYZE;
 	const app = appConfig.getEnvApp();
 	const { projectRoot, packageConfig } = appConfig;
 	const config = appConfig.getAppConfig(app);
 
 	console.log(`Project root path: ${chalk.blue(appConfig.projectRoot)}`);
 	console.log(`Running app name: ${chalk.blue(app)}`);
+	console.log(`Env isProd: ${chalk.blue(isProd)}`);
+	console.log(`Env isTest: ${chalk.blue(isTest)}`);
+	console.log(`Env isDev: ${chalk.blue(isDev)}`);
 	console.log('App config:', config);
 
 	const extractCssPlugin = cssPluginFactory();
@@ -204,19 +207,14 @@ const scaffoldConfig = (env) => {
 			// Use the NoEmitOnErrorsPlugin to skip the emitting phase whenever there are errors while compiling.
 			// This ensures that no assets are emitted that include errors. The emitted flag in the stats is false for all assets.
 			isTest ? null : new webpack.NoEmitOnErrorsPlugin(),
-			new webpack.optimize.CommonsChunkPlugin({
+			isTest ? null : new webpack.optimize.CommonsChunkPlugin({
 				name: 'vendor',
 				minChunks: ({ resource }) => /node_modules/.test(resource),
 			}),
 		].filter(p => !!p)
 	};
 
-	let appWebpack = () => {};
-	if (config.appWebpackPath) {
-		appWebpack = require(config.appWebpackPath);
-	}
-
-	return merge(webpackConfig, typeof appWebpack === 'function' ? appWebpack(env, webpackConfig, appConfig) : appWebpack);
+	return webpackConfig;
 };
 
 module.exports = {
