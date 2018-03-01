@@ -1,3 +1,6 @@
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+
+import { AppModule } from './app/angular/app.module';
 import { A, C } from './lib';
 import config from './data/config';
 import start from './app';
@@ -33,3 +36,8 @@ window.onload = () => {
 		console.error(err);
 	}
 }
+
+// Angular
+platformBrowserDynamic()
+	.bootstrapModule(AppModule)
+	.catch(console.log);

@@ -3,9 +3,14 @@ module.exports = () => {
 		{
 			test: /\.(t|j)sx?$/,
 			exclude: /(node_modules|bower_components)/,
-			use: {
+			use: [{
 				loader: 'babel-loader',
-			}
+			}, {
+				loader: 'angular2-template-loader',
+				options: {
+					keepUrl: true
+				}
+			}]
 		}
 	];
 }

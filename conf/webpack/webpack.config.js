@@ -54,6 +54,7 @@ const assetsRulesFactory = require('./rules/assets');
 const babelRulesFactory = require('./rules/babel');
 const stylesRulesFactory = require('./rules/styles');
 const markdownRulesFactory = require('./rules/markdown');
+const htmlRulesFactory = require('./rules/html');
 
 const scaffoldConfig = () => {
 	const isProd = process.env.ENV === 'production';
@@ -151,6 +152,7 @@ const scaffoldConfig = () => {
 				...stylesRulesFactory(extractCssPlugin, isProd, config.stylesIncludePaths),
 				...babelRulesFactory(),
 				...markdownRulesFactory(),
+				...htmlRulesFactory(),
 			]
 		},
 		plugins: [
@@ -213,6 +215,8 @@ const scaffoldConfig = () => {
 				name: 'vendor',
 				minChunks: ({ resource }) => /node_modules/.test(resource),
 			}),
+			// fix for angular
+			isTest ? null : new webpack.ContextReplacementPlugin(/\@angular(\\|\/)core(\\|\/)esm5/, path.join(__dirname, './client')),
 		].filter(p => !!p)
 	};
 
