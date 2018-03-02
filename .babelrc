@@ -9,12 +9,15 @@
 			"useBuiltIns": "usage",
 			"modules": false,
 			"debug": true,
-			"spec": true
+			"spec": false
 		}],
 		"@babel/preset-react",
 		"@babel/preset-typescript"
 	],
-	"plugins": ["transform-decorators-legacy"],
+	"plugins": [
+		"transform-decorators-legacy",
+		"transform-class-properties"
+	],
 	"env": {
 		"test": {
 			"presets": [
@@ -23,7 +26,9 @@
 						"esmodules": true
 					},
 					"loose": true,
-					"modules": false
+					"modules": false,
+					"debug": true,
+					"spec": false
 				}],
 				"@babel/preset-react",
 				"@babel/preset-typescript"

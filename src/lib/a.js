@@ -1,4 +1,10 @@
 export class A {
+	name = 'A';
+
+	getName() {
+		return this.name;
+	}
+
 	execute(condition = true) {
 		if (condition) {
 			console.log('Execute A.1');

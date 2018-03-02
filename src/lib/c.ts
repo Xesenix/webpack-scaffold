@@ -1,4 +1,9 @@
 export class C {
+	private name: string = 'C';
+
+	public getName(): string {
+		return this.name;
+	}
 	public execute(): void {
 		console.log('Execute C');
 	}
