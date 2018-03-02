@@ -24,7 +24,6 @@ console.log(pckg.version);
 console.log(pckg.app);
 
 // React
-// TODO: this kills tests needs to fix
 window.onload = () => {
 	try {
 		start();

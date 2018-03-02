@@ -234,6 +234,9 @@ Some additional resources that can clarify concepts behind this scaffold project
 * [image-webpack-loader](https://www.npmjs.com/package/image-webpack-loader)
 * [svgo-loader](https://www.npmjs.com/package/svgo-loader)
 * [gl-react](https://projectseptemberinc.gitbooks.io/gl-react/content/)
+* [React typescript component patterns](https://medium.com/@martin_hotell/ultimate-react-component-patterns-with-typescript-2-8-82990c516935)
+* [Ducks modular Redux](https://github.com/erikras/ducks-modular-redux)
+* [ReDucks](https://github.com/alexnm/re-ducks)
 
 ## Testing
 
