@@ -239,6 +239,10 @@ Some additional resources that can clarify concepts behind this scaffold project
 * [Ducks modular Redux](https://github.com/erikras/ducks-modular-redux)
 * [ReDucks](https://github.com/alexnm/re-ducks)
 
+## Localisation
+
+* [gettext-extract](https://github.com/sinedied/gettext-extract)
+* [gettext-extractor](https://github.com/lukasgeiter/gettext-extractor)
 ## Testing
 
 * [React testing with Karma](https://www.codementor.io/kimagure/testing-reactjs-components-with-karma-and-webpack-8sdzi6hkf)
