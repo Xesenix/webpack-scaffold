@@ -21,10 +21,13 @@ module.exports = (config, webpack) => {
 
 		// frameworks to use
 		// available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-		frameworks: ['jasmine', 'mocha'],
+		frameworks: ['jasmine'],
 
 		// list of files / patterns to load in the browser
 		files: [
+			// { pattern: './src/**/*.spec.js', watched: false },
+			// { pattern: './src/**/*.spec.ts', watched: false },
+			// Alternative usage one entry point https://github.com/webpack-contrib/karma-webpack#alternative-usage
 			'./src/main.test.js',
 		],
 
@@ -35,8 +38,10 @@ module.exports = (config, webpack) => {
 		// preprocess matching files before serving them to the browser
 		// available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
 		preprocessors: {
+			// './src/**/*.spec.js': ['webpack', 'sourcemap'],
+			// './src/**/*.spec.ts': ['webpack', 'sourcemap'],
 			// Alternative usage one entry point https://github.com/webpack-contrib/karma-webpack#alternative-usage
-			'./src/main.test.js': ['webpack', 'sourcemap']
+			'./src/main.test.js': ['webpack', 'sourcemap'],
 		},
 
 		webpack,
