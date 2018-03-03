@@ -52,20 +52,12 @@ module.exports = (config, webpack) => {
 		reporters: [
 			'progress',
 			'kjhtml',
-			'coverage',
+			'coverage-istanbul',
 		],
 
-		coverageReporter: {
-			type: 'lcov',
-			dir: 'coverage/',
-			reporters: [
-				// reporters not supporting the `file` property
-				{ type: 'lcov', subdir: 'report-lcov' },
-			],
-		},
-
 		coverageIstanbulReporter: {
-			reports: [ 'text-summary' ],
+			reports: [ 'html', 'lcovonly', 'text-summary' ],
+			dir: path.resolve('./coverage'),
 			fixWebpackSourcePaths: true,
 		},
 

@@ -44,6 +44,7 @@ If you want analyze build size and dependencies use:
 * loading png, jpg, gif, svg assets from local project paths and node_modules
 * loading eot, svg, ttf, woff, woff2 fonts from local project paths and node_modules
 * testing karma, jasmine, enzyme
+* Test coverage for typescript, javascript, react components
 * Typescript
 * simple theming with css variables
 * markdown loader

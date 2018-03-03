@@ -22,7 +22,7 @@
 		"demo:serve": "cross-env APP=demo npm run serve",
 		"demo:build:dev": "cross-env APP=demo npm run build:dev",
 		"demo:build:prod": "cross-env APP=demo npm run build:prod",
-		"report-coverage": "cat ./coverage/report-lcov/lcov.info | coveralls"
+		"report-coverage": "cat ./coverage/lcov.info | coveralls"
 	},
 	"apps": {
 		"demo": {
@@ -109,6 +109,7 @@
 		"karma-chai": "^0.1.0",
 		"karma-chrome-launcher": "^2.2.0",
 		"karma-coverage": "^1.1.1",
+		"karma-coverage-istanbul-reporter": "^1.4.1",
 		"karma-jasmine": "^1.1.1",
 		"karma-jasmine-html-reporter": "github:Xesenix/karma-jasmine-html-reporter",
 		"karma-mocha": "^1.3.0",
