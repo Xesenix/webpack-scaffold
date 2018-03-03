@@ -8,13 +8,13 @@
 		"url": "https://github.com/Xesenix/webpack-3-scaffold"
 	},
 	"scripts": {
-		"analyze": "cross-env ENV=production ANALYZE=true parallel-webpack --config webpack.config.js",
+		"analyze": "cross-env ANALYZE=true npm run build:prod",
 		"tdd": "cross-env BABEL_ENV=test ENV=test karma start",
 		"test": "cross-env BABEL_ENV=test ENV=test karma start --single-run",
 		"start": "http-server ./dist/demo",
 		"serve": "cross-env ENV=development HMR=true webpack-dev-server --config webpack.config.js",
 		"build:dev": "cross-env ENV=development parallel-webpack --config webpack.config.js",
-		"build:prod": "cross-env ENV=production parallel-webpack --config webpack.config.js",
+		"build:prod": "cross-env ENV=production webpack --config webpack.config.js",
 		"demo:analyze": "cross-env APP=demo npm run analyze",
 		"demo:tdd": "cross-env APP=demo npm run tdd",
 		"demo:test": "cross-env APP=demo npm run test",

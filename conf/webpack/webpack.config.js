@@ -70,6 +70,7 @@ const scaffoldConfig = () => {
 	console.log(`Env isProd: ${chalk.blue(isProd)}`);
 	console.log(`Env isTest: ${chalk.blue(isTest)}`);
 	console.log(`Env isDev: ${chalk.blue(isDev)}`);
+	console.log(`Analyze: ${chalk.blue(analyze)}`);
 	console.log('App config:', config);
 
 	const extractCssPlugin = cssPluginFactory();
