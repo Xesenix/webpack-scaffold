@@ -6,14 +6,14 @@ describe('B', () => {
 		expect(instance).toBeTruthy();
 	});
 
-	describe('execute', () => {
+	describe('tested', () => {
 		it('should execute', () => {
 			const spy = spyOn(console, 'log');
 			const instance = new B();
 
-			instance.execute();
+			instance.tested();
 
-			expect(spy).toHaveBeenCalledWith('Execute B');
+			expect(spy).toHaveBeenCalledWith('Tested B');
 		});
 	});
 })

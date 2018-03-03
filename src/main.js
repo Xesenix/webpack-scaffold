@@ -7,11 +7,11 @@ console.log(config.name);
 
 // Javascript
 const a = new A();
-a.execute();
+a.tested();
 
 // Typescript
 const c = new C();
-c.execute();
+c.tested();
 
 // Compilation string replacment
 const pckg = process.env.PACKAGE;

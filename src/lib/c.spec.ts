@@ -6,21 +6,29 @@ describe('C', () => {
 		expect(instance).toBeTruthy();
 	});
 
-	describe('execute', () => {
-		it('should execute', () => {
+	describe('getName', () => {
+		it('should return class name', () => {
+			const instance = new C();
+
+			expect(instance.getName()).toEqual('C');
+		});
+	});
+
+	describe('tested', () => {
+		it('should execute default code branch', () => {
 			const spy = spyOn(console, 'log');
 			const instance = new C();
 
-			instance.execute();
+			instance.tested();
 
-			expect(spy).toHaveBeenCalledWith('Execute C');
+			expect(spy).toHaveBeenCalledWith('Tested branch C.1');
 		});
 	});
 
 	describe('generator', () => {
 		it('should generate secret code sequence', () => {
 			const instance = new C();
-			const result = [];
+			const result: number[] = [];
 
 			for (const val of instance.generator()) {
 				result.push(val);

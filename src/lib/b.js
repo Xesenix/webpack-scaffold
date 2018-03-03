@@ -1,5 +1,5 @@
 export class B {
-	execute() {
-		console.log('Execute B');
+	tested() {
+		console.log('Tested B');
 	}
 }

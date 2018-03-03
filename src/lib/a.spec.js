@@ -6,23 +6,23 @@ describe('A', () => {
 		expect(instance).toBeTruthy();
 	});
 
-	describe('execute', () => {
-		it('should execute', () => {
+	describe('tested', () => {
+		it('should execute tested default branch', () => {
 			const spy = spyOn(console, 'log');
 			const instance = new A();
 
-			instance.execute();
+			instance.tested();
 
-			expect(spy).toHaveBeenCalledWith('Execute A.1');
+			expect(spy).toHaveBeenCalledWith('Tested branch A.1');
 		});
 
-		it('should execute', () => {
+		it('should execute tested optional branch', () => {
 			const spy = spyOn(console, 'log');
 			const instance = new A();
 
-			instance.execute(false);
+			instance.tested(false);
 
-			expect(spy).toHaveBeenCalledWith('Execute A.2');
+			expect(spy).toHaveBeenCalledWith('Tested branch A.2');
 		});
 	});
 

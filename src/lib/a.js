@@ -5,19 +5,19 @@ export class A {
 		return this.name;
 	}
 
-	execute(condition = true) {
+	tested(condition = true) {
 		if (condition) {
-			console.log('Execute A.1');
+			console.log('Tested branch A.1');
 		} else {
-			console.log('Execute A.2');
+			console.log('Tested branch A.2');
 		}
 	}
 
-	notExecuted(condition = false) {
+	notTested(condition = false) {
 		if (condition) {
-			console.log('Not execute A.1');
+			console.log('Not tested method A.1');
 		} else {
-			console.log('Not execute A.2');
+			console.log('Not tested method A.2');
 		}
 	}
 
