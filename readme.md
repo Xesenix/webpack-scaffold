@@ -20,21 +20,30 @@ This is basic starting point for application using __webpack v3__ with some defa
 
 ### Workflow
 
-Its work in progress so workflow is kind of clunky:
+It's work in progress but you can use those processes:
 
-For development with HMR
+#### For development with HMR
 
 * Run `npm run build:dev` this will copy vendor assets to local folder where from they can be served (if some assets are missing during development run this)
 * Run `npm run serve:dev` this will start `webpack-dev-server` if some assets won't appear you probably need to add them to `package.apps.[appName].assets`
 
-For production build:
+#### For production build:
 
 * Run `npm run build:prod` this will build project and move all assets to `package.apps.[appName].outPath` path
 * Run `npm start` to test build in browser `localhost:8080`
 
-If you want analyze build size and dependencies use:
+#### If you want run tests:
+
+* Run `npm run tdd` for watch mode testing
+* Run `npm run test` for single run
+
+#### If you want analyze build size and dependencies use:
 
 * Run `npm run analyze`
+
+#### Extracting segments for translation:
+
+* Run `npm run xi18n` this will extract all occurences of `__(...)` into `src/locales/messages.pot` you can modify that behavior in `scripts/extract.ts`
 
 ### Features
 
@@ -48,6 +57,7 @@ If you want analyze build size and dependencies use:
 * Typescript
 * simple theming with css variables
 * markdown loader
+* translating and extracting text segments to `pot` file
 
 ### TODO
 
@@ -78,6 +88,7 @@ You can provide application configuration via _package.json_ `app` param:
 | __package.apps.[appName].vendor__ | [] | all vendor scripts you want to push to vendor bundle
 | __package.apps.[appName].template__ | index.html | html template that you want to use as template for website
 | __package.apps.[appName].templateData__ | {} | html template is handled by ejs loader so you can put here additional data that will be passed to `htmlWebpackPlugin.options.data` you can also access _package.json_ from `htmlWebpackPlugin.options.packageConfig`
+| __package.apps.[appName].languages__ | ['en'] | list of languages that will be used by application
 
 ### Source code phrase replacement
 
@@ -101,6 +112,7 @@ If anywhere in you code exist one of those phrases it will be replaced with data
 | __process.env.APP.vendor__ | string[] | | vendor scripts defined in `package.apps.[appName].vendor` |
 | __process.env.APP.template__ | string | _index.html_ | main template name |
 | __process.env.APP.templateData__ | string | | data injected into template `htmlWebpackPlugin.options.data` |
+| __process.env.LANGUAGES__ | string[] | ['en'] | languages provided via `package.apps.[appName].languages` |
 
 __process.env__ won't have those phrases listed as its params when trying to call it after build. So it secure, in sense that you can use only what you really need.
 
@@ -181,7 +193,7 @@ $srcRoot: '../../../../' !default;
 
 ### Example template referenced assets loading
 
-For asset referenced in `index.html` we need to put all referenced assets into `package.apps.[appName]s.app.assets` param.
+For asset referenced in `index.html` we need to put all referenced assets into `package.apps.[appName].app.assets` param.
 
 So for example if you have:
 
@@ -216,12 +228,53 @@ _file: package.json_
 }
 ```
 
+### Example translation
+
+You can use methods provided by `lib/localize.ts` for setting up current language and translating text segment like this:
+
+```js
+import { __ } from 'lib/localize.ts';
+
+console.log(__('text for translation'));
+```
+
+You can extract each occurence of `__(...)` by calling: 
+
+```bash
+npm run xi18n
+```
+
+that will result in extracting `src/locales/messages.pot` file that can be translated.
+After providing translated versions like:
+* _src/locales/messages.pl.po_
+* _src/locales/messages.en.po_
+
+And after setting used languages in:
+
+_package.json_
+```json
+{
+  "apps": {
+    "[appName]": {
+      "languages": ["en", "pl"]
+    }
+  }
+}
+```
+
+they will be loaded and available to choose via:
+
+```js
+import { setLocale } from 'lib/localize.ts';
+
+setLocale('pl');
+```
 # Resources
 
 Some additional resources that can clarify concepts behind this scaffold project.
 
 * [Webpack plugins documentation](https://webpack.js.org/plugins/)
-* [Blog about Webpack configuration](https://survivejs.com/webpack/foreword/)
+* [Book about Webpack configuration](https://survivejs.com/webpack/foreword/)
 * [List of webpack plugins](https://github.com/webpack-contrib/awesome-webpack)
 * [Babel 7 and TypeScript](http://artsy.github.io/blog/2017/11/27/Babel-7-and-TypeScript/)
 * [Typescript JSX](https://www.typescriptlang.org/docs/handbook/jsx.html)
@@ -240,9 +293,14 @@ Some additional resources that can clarify concepts behind this scaffold project
 * [ReDucks](https://github.com/alexnm/re-ducks)
 
 ## Localisation
+I am aiming to have each translations as seperate file loaded at runtime so I don't have to build project for each language.
 
 * [gettext-extract](https://github.com/sinedied/gettext-extract)
 * [gettext-extractor](https://github.com/lukasgeiter/gettext-extractor)
+* [node-gettext](https://github.com/alexanderwallin/node-gettext)
+* [gettext-parser](https://github.com/smhg/gettext-parser)
+* [po-gettext-loader](https://www.npmjs.com/package/po-gettext-loader)
+
 ## Testing
 
 * [React testing with Karma](https://www.codementor.io/kimagure/testing-reactjs-components-with-karma-and-webpack-8sdzi6hkf)
