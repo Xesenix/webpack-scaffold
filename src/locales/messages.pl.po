@@ -22,6 +22,12 @@ msgstr ""
 "jesli wcześniej nie uruchamialiśmy budowania projektu do działania wymagają "
 "uruchomienia:"
 
+#: src/app/app.jsx:20
+#, fuzzy
+#| msgid "Language"
+msgid "Choose language"
+msgstr "Język"
+
 #: src/app/component/theme.tsx:69
 msgid "Glow Intensity"
 msgstr "Siła podśwetlania"
@@ -45,6 +51,10 @@ msgstr "REACT działa"
 #: src/app/component/theme.tsx:51
 msgid "Secondary Color"
 msgstr "Kolor drugorzędny"
+
+#: src/app/app.jsx:21
+msgid "Should update dynamic parts of site with choosen language."
+msgstr "Powinno zaktualizować język dynamicznych fragmentów strony."
 
 #: src/app/app.jsx:17
 msgid "Styled via component stylesheet."

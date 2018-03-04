@@ -20,6 +20,12 @@ msgstr ""
 "Bootstrap icons from fonts located in node_modules. In development mode if "
 "it weren't called before this requires running:"
 
+#: src/app/app.jsx:20
+#, fuzzy
+#| msgid "Language"
+msgid "Choose language"
+msgstr "Language"
+
 #: src/app/component/theme.tsx:69
 msgid "Glow Intensity"
 msgstr "Glow Intensity"
@@ -43,6 +49,10 @@ msgstr "REACT is working"
 #: src/app/component/theme.tsx:51
 msgid "Secondary Color"
 msgstr "Secondary Color"
+
+#: src/app/app.jsx:21
+msgid "Should update dynamic parts of site with choosen language."
+msgstr "Should update dynamic parts of site with choosen language."
 
 #: src/app/app.jsx:17
 msgid "Styled via component stylesheet."

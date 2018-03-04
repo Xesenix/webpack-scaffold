@@ -6,6 +6,10 @@ msgstr ""
 msgid "Bootstrap icons from fonts located in node_modules. In development mode if it weren't called before this requires running:"
 msgstr ""
 
+#: src/app/app.jsx:20
+msgid "Choose language"
+msgstr ""
+
 #: src/app/component/theme.tsx:69
 msgid "Glow Intensity"
 msgstr ""
@@ -28,6 +32,10 @@ msgstr ""
 
 #: src/app/component/theme.tsx:51
 msgid "Secondary Color"
+msgstr ""
+
+#: src/app/app.jsx:21
+msgid "Should update dynamic parts of site with choosen language."
 msgstr ""
 
 #: src/app/app.jsx:17
