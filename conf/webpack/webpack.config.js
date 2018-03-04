@@ -52,6 +52,7 @@ const cssPluginFactory = require('./plugins/css');
 const fontsRulesFactory = require('./rules/fonts');
 const assetsRulesFactory = require('./rules/assets');
 const babelRulesFactory = require('./rules/babel');
+const translationRulesFactory = require('./rules/locale');
 const stylesRulesFactory = require('./rules/styles');
 const markdownRulesFactory = require('./rules/markdown');
 
@@ -152,6 +153,7 @@ const scaffoldConfig = () => {
 				...stylesRulesFactory(extractCssPlugin, isProd, config.stylesIncludePaths),
 				...babelRulesFactory(),
 				...markdownRulesFactory(),
+				...translationRulesFactory(),
 			]
 		},
 		plugins: [
@@ -194,7 +196,8 @@ const scaffoldConfig = () => {
 				'process.env.DEVELOPMENT': JSON.stringify(isDev),
 				'process.env.TEST': JSON.stringify(isTest),
 				'process.env.PACKAGE': JSON.stringify(packageConfig),
-				'process.env.APP': JSON.stringify(appConfig),
+				'process.env.APP': JSON.stringify(config),
+				'process.env.LANGUAGES': JSON.stringify(config.languages),
 			}),
 			analyze ? new BundleAnalyzerPlugin({
 				analyzerMode: 'server',
