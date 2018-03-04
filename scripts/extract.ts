@@ -25,7 +25,9 @@ extractor
 			},
 		}),
 	])
-	.parseFilesGlob(path.join(config.rootDir, './**/*.@(ts|js|tsx|jsx)'));
+	.parseFilesGlob(path.join(config.rootDir, './**/*.@(ts|js|tsx|jsx)'), {
+		ignore: '**/*.spec.*'
+	});
 
 // handle <p translate>Segment to extract</p>
 extractor
