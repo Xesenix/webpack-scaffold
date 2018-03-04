@@ -308,6 +308,7 @@ I am aiming to have each translations as seperate file loaded at runtime so I do
 * [Testing React with Enzyme](https://github.com/airbnb/enzyme/tree/master/packages/enzyme-adapter-react-16)
 * [Enzyme Jasmine Matchers](https://github.com/FormidableLabs/enzyme-matchers)
 * [Testing with Jasmine React](https://github.com/tommyh/jasmine-react)
+* [Mocking modules](https://github.com/theKashey/rewiremock)
 
 ## Project managment related resources
 * [Travis CLI installation](https://github.com/travis-ci/travis.rb#installation)
