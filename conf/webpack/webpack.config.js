@@ -126,6 +126,7 @@ const scaffoldConfig = () => {
 	};
 
 	const webpackConfig = {
+		mode: isProd ? 'production' : 'development',
 		entry,
 		externals,
 		output: {
@@ -156,6 +157,12 @@ const scaffoldConfig = () => {
 				...translationRulesFactory(),
 			]
 		},
+		/*optimization: {
+			splitChunks: {
+				name: 'vendor',
+				minChunks: ({ resource }) => /node_modules/.test(resource),
+			},
+		},*/
 		plugins: [
 			isTest ? null : htmlPlugin,
 			isTest ? null : extractCssPlugin,
@@ -213,10 +220,6 @@ const scaffoldConfig = () => {
 			// Use the NoEmitOnErrorsPlugin to skip the emitting phase whenever there are errors while compiling.
 			// This ensures that no assets are emitted that include errors. The emitted flag in the stats is false for all assets.
 			isTest ? null : new webpack.NoEmitOnErrorsPlugin(),
-			isTest ? null : new webpack.optimize.CommonsChunkPlugin({
-				name: 'vendor',
-				minChunks: ({ resource }) => /node_modules/.test(resource),
-			}),
 		].filter(p => !!p)
 	};
 
