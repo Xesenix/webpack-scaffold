@@ -7,6 +7,7 @@ $iconsColor: var(--secondaryColor);
 $codeBlockColor: black;
 $timerColor: var(--secondaryColor);
 $glowIntensity: var(--glowIntensity, 1);
+$footerBlockColor: var(--neutralColor, blue);
 
 :root {
 	@include define-css-color-variable(primaryColor, #fff);

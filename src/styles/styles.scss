@@ -74,3 +74,11 @@ table {
 select {
 	color: #000;
 }
+
+.footer {
+	display: block;
+	width: 100%;
+	padding: 1rem;
+	background-color: css-variable-with-alpha($footerBlockColor, 75);
+	text-align: right;
+}
