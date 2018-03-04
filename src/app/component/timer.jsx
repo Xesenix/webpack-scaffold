@@ -1,7 +1,7 @@
+import { __ } from 'lib/localize';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { hot } from 'react-hot-loader';
-
 import './timer.scss';
 
 class Timer extends React.Component {
@@ -28,7 +28,7 @@ class Timer extends React.Component {
 
 		return (
 			<span className="timer">
-				<p>Time: { (new Date(Date.now() - start)).toLocaleTimeString() }</p>
+				<p>{ __('Time') }: { (new Date(Date.now() - start)).toLocaleTimeString() }</p>
 			</span>
 		);
 	}

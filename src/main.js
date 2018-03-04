@@ -19,9 +19,9 @@ const pckg = process.env.PACKAGE;
 console.log(process.env.SECRET_VALUE);
 console.log(process.env.PRODUCTION);
 console.log(process.env.APP);
-console.log(pckg.name);
-console.log(pckg.version);
-console.log(pckg.app);
+console.log('name', pckg.name);
+console.log('version', pckg.version);
+console.log('apps', pckg.apps);
 
 // React
 window.onload = () => {

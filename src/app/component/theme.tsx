@@ -1,3 +1,4 @@
+import { __ } from 'lib/localize';
 import * as React from 'react';
 import { hot } from 'react-hot-loader';
 import tinycolor from 'tinycolor2';
@@ -29,17 +30,16 @@ class Theme extends React.Component {
 	}
 
 	public updateThemeValue(name: string, value: string) {
-		console.log('value', name, value);
 		this.style.setProperty(`--${name}`, value);
 	}
 
 	public render() {
 		return (
 			<div className="theme-box">
-				<h3>Swap theme color via style property variable</h3>
-				<p>This works post sass so no sass functionality may be used over this color variable.</p>
+				<h3>{ __('Swap theme color via style property variable') }</h3>
+				<p>{ __('This works post sass so no sass functionality may be used over this color variable.') }</p>
 				<div className="form-group" data-key="primaryColor">
-					<label>Primary Color</label>
+					<label>{ __('Primary Color') }</label>
 					<input
 						className="form-control"
 						type="color"
@@ -48,7 +48,7 @@ class Theme extends React.Component {
 					/>
 				</div>
 				<div className="form-group" data-key="secondaryColor">
-					<label>Secondary Color</label>
+					<label>{ __('Secondary Color') }</label>
 					<input
 						className="form-control"
 						type="color"
@@ -57,7 +57,7 @@ class Theme extends React.Component {
 					/>
 				</div>
 				<div className="form-group" data-key="neutralColor">
-					<label>Neutral Color</label>
+					<label>{ __('Neutral Color') }</label>
 					<input
 						className="form-control"
 						type="color"
@@ -66,7 +66,7 @@ class Theme extends React.Component {
 					/>
 				</div>
 				<div className="form-group" data-key="glowIntensity">
-					<label>Glow Intensity</label>
+					<label>{ __('Glow Intensity') }</label>
 					<input
 						className="form-control"
 						type="number"
