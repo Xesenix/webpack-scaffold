@@ -1,4 +1,4 @@
-import { __, languages, setLocale } from 'lib/localize';
+import { __, i18n, languages } from 'lib/localize';
 import * as React from 'react';
 import { hot } from 'react-hot-loader';
 
@@ -7,7 +7,7 @@ class LanguageSwitch extends React.Component<{ onChange: () => void }> {
 
 	public onChange = () => {
 		const { onChange } = this.props;
-		setLocale(this.languageSelect.value);
+		i18n.setLocale(this.languageSelect.value);
 		// change hook to trigger refresh
 		onChange();
 	}

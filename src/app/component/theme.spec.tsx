@@ -1,5 +1,6 @@
 import { mount } from 'enzyme';
 import jasmineEnzyme from 'jasmine-enzyme';
+import { i18n } from 'lib/localize';
 import React from 'react';
 
 import Theme from './theme';
@@ -7,6 +8,8 @@ import Theme from './theme';
 describe('Theme', () => {
 	beforeEach(() => {
 		jasmineEnzyme();
+
+		i18n.setLocale('en');
 	});
 
 	describe('render', () => {
