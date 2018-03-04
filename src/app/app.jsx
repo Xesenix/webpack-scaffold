@@ -8,6 +8,17 @@ import Theme from './component/theme';
 import LanguageSwitch from './component/language-switch';
 
 class App extends React.Component {
+	/**
+	 * Hook for cheking mounting time.
+	 */
+	componentDidMount() {
+		const { onReady } = this.props;
+
+		if (typeof onReady === 'function') {
+			onReady();
+		}
+	}
+
 	render() {
 		return (<div className="box inverse">
 			<h3>{ __('REACT is working') }</h3>
@@ -19,7 +30,7 @@ class App extends React.Component {
 			<Theme/>
 			<h3>{ __('Choose language') }</h3>
 			<p>{ __('Should update dynamic parts of site with choosen language.') }</p>
-			<LanguageSwitch onChange={() => this.setState({})}/>
+			<LanguageSwitch onChange={() => /* trigger render */ this.setState({})}/>
 		</div>);
 	}
 }

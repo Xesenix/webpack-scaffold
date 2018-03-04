@@ -2,6 +2,8 @@ import { A, C } from './lib';
 import config from './data/config';
 import start from './app';
 
+const startTime = Date.now();
+
 // Json
 console.log(config.name);
 
@@ -26,7 +28,8 @@ console.log('apps', pckg.apps);
 // React
 window.onload = () => {
 	try {
-		start();
+		console.log('onload time', Date.now() - startTime);
+		start(() => console.log('mounting time', Date.now() - startTime));
 	}
 	catch (err) {
 		console.error(err);

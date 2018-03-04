@@ -3,4 +3,4 @@ import * as ReactDOM from 'react-dom';
 
 import App from './app';
 
-export default () => ReactDOM.render(<App/>, document.getElementById('app'));
+export default (onReady) => ReactDOM.render(<App onReady={ onReady }/>, document.getElementById('app'));
