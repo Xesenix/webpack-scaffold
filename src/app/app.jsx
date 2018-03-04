@@ -5,6 +5,7 @@ import { hot } from 'react-hot-loader';
 
 import Timer from './component/timer';
 import Theme from './component/theme';
+import LanguageSwitch from './component/language-switch';
 
 class App extends React.Component {
 	render() {
@@ -16,6 +17,9 @@ class App extends React.Component {
 			<p>{ __('Styled via component stylesheet.') }</p>
 			<Timer/>
 			<Theme/>
+			<h3>{ __('Choose language') }</h3>
+			<p>{ __('Should update dynamic parts of site with choosen language.') }</p>
+			<LanguageSwitch onChange={() => this.setState({})}/>
 		</div>);
 	}
 }
