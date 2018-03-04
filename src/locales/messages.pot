@@ -1,0 +1,55 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+
+#: src/templates/demo.html:62
+msgid "Bootstrap icons from fonts located in node_modules. In development mode if it weren't called before this requires running:"
+msgstr ""
+
+#: src/app/component/theme.tsx:69
+msgid "Glow Intensity"
+msgstr ""
+
+#: src/app/component/language-switch.tsx:18
+msgid "Language"
+msgstr ""
+
+#: src/app/component/theme.tsx:60
+msgid "Neutral Color"
+msgstr ""
+
+#: src/app/component/theme.tsx:42
+msgid "Primary Color"
+msgstr ""
+
+#: src/app/app.jsx:13
+msgid "REACT is working"
+msgstr ""
+
+#: src/app/component/theme.tsx:51
+msgid "Secondary Color"
+msgstr ""
+
+#: src/app/app.jsx:17
+msgid "Styled via component stylesheet."
+msgstr ""
+
+#: src/app/app.jsx:16
+msgid "Sub component"
+msgstr ""
+
+#: src/app/component/theme.tsx:39
+msgid "Swap theme color via style property variable"
+msgstr ""
+
+#: src/templates/demo.html:58
+msgid "Test fonts loading"
+msgstr ""
+
+#: src/app/component/theme.tsx:40
+msgid "This works post sass so no sass functionality may be used over this color variable."
+msgstr ""
+
+#: src/app/component/timer.jsx:31
+msgid "Time"
+msgstr ""
