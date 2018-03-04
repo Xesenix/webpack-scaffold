@@ -309,6 +309,8 @@ I am aiming to have each translations as seperate file loaded at runtime so I do
 * [Enzyme Jasmine Matchers](https://github.com/FormidableLabs/enzyme-matchers)
 * [Testing with Jasmine React](https://github.com/tommyh/jasmine-react)
 * [Mocking modules](https://github.com/theKashey/rewiremock)
+* [How to mock dependencies in node js and why?](https://medium.com/@antonkorzunov/how-to-mock-dependency-in-a-node-js-and-why-2ad4386f6587)
+* [Inject webpack loader](https://github.com/plasticine/inject-loader)
 
 ## Project managment related resources
 * [Travis CLI installation](https://github.com/travis-ci/travis.rb#installation)
