@@ -1,0 +1,76 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: pl_PL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.6\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
+
+#: src/templates/demo.html:62
+msgid ""
+"Bootstrap icons from fonts located in node_modules. In development mode if "
+"it weren't called before this requires running:"
+msgstr ""
+"Ikony Bootstrapowe zlokalizowane w node_modules. W trybie deweloperskim "
+"jesli wcześniej nie uruchamialiśmy budowania projektu do działania wymagają "
+"uruchomienia:"
+
+#: src/app/component/theme.tsx:69
+msgid "Glow Intensity"
+msgstr "Siła podśwetlania"
+
+#: src/app/component/language-switch.tsx:18
+msgid "Language"
+msgstr "Język"
+
+#: src/app/component/theme.tsx:60
+msgid "Neutral Color"
+msgstr "Kolor neutralny"
+
+#: src/app/component/theme.tsx:42
+msgid "Primary Color"
+msgstr "Kolor podstawowy"
+
+#: src/app/app.jsx:13
+msgid "REACT is working"
+msgstr "REACT działa"
+
+#: src/app/component/theme.tsx:51
+msgid "Secondary Color"
+msgstr "Kolor drugorzędny"
+
+#: src/app/app.jsx:17
+msgid "Styled via component stylesheet."
+msgstr "Ostylowany za pomocą styli komponentu."
+
+#: src/app/app.jsx:16
+msgid "Sub component"
+msgstr "Komponęt podrzędny"
+
+#: src/app/component/theme.tsx:39
+msgid "Swap theme color via style property variable"
+msgstr "Zmień kolory strony przy użyciu css-variable"
+
+#: src/templates/demo.html:58
+msgid "Test fonts loading"
+msgstr "Test ładowania czcionek"
+
+#: src/app/component/theme.tsx:40
+msgid ""
+"This works post sass so no sass functionality may be used over this color "
+"variable."
+msgstr ""
+"Zmienne CSS działają po skompilowaniu stylów SASS więc nie można używać "
+"SASSowych funkcjonalności do modyfikowania kolorów przekazanych w zmiennych "
+"CSS."
+
+#: src/app/component/timer.jsx:31
+msgid "Time"
+msgstr "Czas"

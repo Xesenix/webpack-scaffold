@@ -1,0 +1,73 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.6\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/templates/demo.html:62
+msgid ""
+"Bootstrap icons from fonts located in node_modules. In development mode if "
+"it weren't called before this requires running:"
+msgstr ""
+"Bootstrap icons from fonts located in node_modules. In development mode if "
+"it weren't called before this requires running:"
+
+#: src/app/component/theme.tsx:69
+msgid "Glow Intensity"
+msgstr "Glow Intensity"
+
+#: src/app/component/language-switch.tsx:18
+msgid "Language"
+msgstr "Language"
+
+#: src/app/component/theme.tsx:60
+msgid "Neutral Color"
+msgstr "Neutral Color"
+
+#: src/app/component/theme.tsx:42
+msgid "Primary Color"
+msgstr "Primary Color"
+
+#: src/app/app.jsx:13
+msgid "REACT is working"
+msgstr "REACT is working"
+
+#: src/app/component/theme.tsx:51
+msgid "Secondary Color"
+msgstr "Secondary Color"
+
+#: src/app/app.jsx:17
+msgid "Styled via component stylesheet."
+msgstr "Styled via component stylesheet."
+
+#: src/app/app.jsx:16
+msgid "Sub component"
+msgstr "Sub component"
+
+#: src/app/component/theme.tsx:39
+msgid "Swap theme color via style property variable"
+msgstr "Swap theme color via style property variable"
+
+#: src/templates/demo.html:58
+msgid "Test fonts loading"
+msgstr "Test fonts loading"
+
+#: src/app/component/theme.tsx:40
+msgid ""
+"This works post sass so no sass functionality may be used over this color "
+"variable."
+msgstr ""
+"This works post sass so no sass functionality may be used over this color "
+"variable."
+
+#: src/app/component/timer.jsx:31
+msgid "Time"
+msgstr "Time"
