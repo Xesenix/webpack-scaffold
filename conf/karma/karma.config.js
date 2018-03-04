@@ -3,6 +3,7 @@ const path = require('path');
 // Karma configuration
 module.exports = (config, webpack) => {
 	webpack.devtool = 'inline-source-map';
+	// webpack.devtool = 'cheap-module-source-map'; // cheap-module-source-map - suggested in React: https://reactjs.org/docs/cross-origin-errors.html
 	webpack.module.rules.push({
 		test: /\.(j|t)sx?$/,
 		use: {
