@@ -10,7 +10,6 @@ languages.forEach((locale: string) => {
 		console.warn(`Missing locales: ${locale}`);
 	}
 });
-
 i18n.setLocale(languages[0]);
 
 export const __ = i18n.gettext.bind(i18n);

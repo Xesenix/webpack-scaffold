@@ -22,7 +22,7 @@ describe('LanguageSwitch', () => {
 
 	describe('onChange', () => {
 		it('should call callback', () => {
-			spyOn(i18n, 'setLocale');
+			spyOn(i18n, 'setLocale').and.callThrough();
 			const spy = jasmine.createSpy('spy');
 			const component = mount(<LanguageSwitch onChange={spy}/>);
 			const selectTag = component.find(`select`);
