@@ -8,7 +8,7 @@ const app = getEnvApp();
 const config = getAppConfig(app);
 const extractor = new GettextExtractor();
 
-// handle getText('Segment to extract')
+// handle __('Segment to extract')
 extractor
 	.createJsParser([
 		JsExtractors.callExpression('__', {
@@ -36,7 +36,10 @@ extractor
 	])
 	.parseFilesGlob(path.join(config.rootDir, './**/*.html'));
 
-mkdirp.sync('./src/locales/');
-extractor.savePotFile('./src/locales/messages.pot');
+// create locales directory if it doesn't exists
+mkdirp.sync(path.join(config.rootDir, './locales/'));
+
+// write extracted messages to locales/messages.pot
+extractor.savePotFile(path.resolve(config.rootDir, './locales/messages.pot'));
 
 extractor.printStats();

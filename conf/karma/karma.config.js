@@ -1,7 +1,14 @@
 const path = require('path');
 
+import { getAppConfig, getEnvApp } from '../app/app.config';
+
 // Karma configuration
-module.exports = (config, webpack) => {
+module.exports = (karmaConfig, webpack) => {
+	const app = getEnvApp();
+	const config = getAppConfig(app);
+
+	const entry = path.join(config.rootDir, config.test);
+
 	/**
 	 * cheap-module-source-map - fixing react cross origin suggested in:
 	 * @see https://reactjs.org/docs/cross-origin-errors.html
@@ -38,7 +45,7 @@ module.exports = (config, webpack) => {
 			 * Alternative usage one entry point:
 			 * @see https://github.com/webpack-contrib/karma-webpack#alternative-usage
 			 */
-			'./src/main.test.js',
+			entry,
 		],
 
 		// list of files / patterns to exclude
@@ -57,7 +64,7 @@ module.exports = (config, webpack) => {
 			 * Alternative usage one entry point
 			 * @see https://github.com/webpack-contrib/karma-webpack#alternative-usage
 			 */
-			'./src/main.test.js': ['webpack', 'sourcemap'],
+			[entry]: ['webpack', 'sourcemap'],
 		},
 
 		webpack,
@@ -131,5 +138,5 @@ module.exports = (config, webpack) => {
 		options.browsers = ['Chrome_travis_ci'];
 	}
 
-	config.set(options);
+	karmaConfig.set(options);
 };

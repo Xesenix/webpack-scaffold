@@ -28,12 +28,13 @@
 	},
 	"apps": {
 		"demo": {
-			"root": "src",
+			"rootDir": "src/demo",
 			"outDir": "dist/demo",
 			"main": [
 				"main.js"
 			],
 			"template": "templates/demo.html",
+			"test": "main.test.js",
 			"templateData": {
 				"title": "Demo Webpack Scaffold"
 			},

@@ -14,6 +14,7 @@ const getAppConfig = (app) => {
 	config.rootDir = getAppConfig('rootDir', 'src');
 	config.outDir = getAppConfig('outDir', 'dist');
 	config.main = getAppConfig('main', [ './main.js' ]);
+	config.test = getAppConfig('test', 'test.js');
 	config.assets = getAppConfig('assets', [ './assets' ]);
 	config.fonts = getAppConfig('fonts', [ './fonts' ]);
 	// list of entry point stylesheets
