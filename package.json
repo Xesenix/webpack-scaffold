@@ -139,7 +139,7 @@
 		"purifycss-webpack": "^0.7.0",
 		"react-hot-loader": "^4.0.0",
 		"react-test-renderer": "^16.2.0",
-		"rewiremock": "^3.5.1",
+		"rewiremock": "github:xesenix/rewiremock",
 		"sass-loader": "^6.0.6",
 		"sinon": "^4.4.1",
 		"sourcemap": "^0.1.0",

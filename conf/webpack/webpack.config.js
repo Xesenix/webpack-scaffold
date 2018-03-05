@@ -208,7 +208,9 @@ const scaffoldConfig = () => {
 			isProd ? new UglifyJsPlugin() : null,
 			// This plugin will cause the relative path of the module to be displayed when HMR is enabled. Suggested for use in development.
 			// https://webpack.js.org/plugins/named-modules-plugin/
+			// Also needed for testing with rewiremock https://github.com/theKashey/rewiremock#to-run-inside-webpack-enviroment
 			isDev || hmr || isTest ? new webpack.NamedModulesPlugin() : null,
+			// Needed for development and testing with rewiremock https://github.com/theKashey/rewiremock#to-run-inside-webpack-enviroment
 			isDev && hmr ? new webpack.HotModuleReplacementPlugin() : null,
 			// Use the NoEmitOnErrorsPlugin to skip the emitting phase whenever there are errors while compiling.
 			// This ensures that no assets are emitted that include errors. The emitted flag in the stats is false for all assets.
@@ -217,7 +219,8 @@ const scaffoldConfig = () => {
 				name: 'vendor',
 				minChunks: ({ resource }) => /node_modules/.test(resource),
 			}),
-			// isTest ? new (require('rewiremock/webpack/plugin'))() : null
+			// needed for rewiremock https://github.com/theKashey/rewiremock#to-run-inside-webpack-enviroment
+			isTest ? new (require('rewiremock/webpack/plugin'))() : null
 		].filter(p => !!p)
 	};
 
