@@ -35,7 +35,8 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 /**
- * https://survivejs.com/webpack/styling/eliminating-unused-css/#critical-path-rendering
+ * Order scripts and styles increasing startup speed noticable in google analytics.
+ * @see https://survivejs.com/webpack/styling/eliminating-unused-css/#critical-path-rendering
  */
 const HtmlCriticalPlugin = require("html-critical-webpack-plugin");
 
@@ -79,7 +80,10 @@ const scaffoldConfig = () => {
 	// order of chunks is important for style overriding (more specific styles source later)
 	const chunks = ['vendor', 'styles', 'main'];
 
-	// https://github.com/jantimon/html-webpack-plugin#configuration
+	/**
+	 * Setup generation of html template in which all scripts and styles are included.
+	 * @see https://github.com/jantimon/html-webpack-plugin#configuration
+	 */
 	const htmlPlugin = new HtmlWebpackPlugin({
 		packageConfig,
 		data: {
@@ -199,27 +203,60 @@ const scaffoldConfig = () => {
 				'process.env.APP': JSON.stringify(config),
 				'process.env.LANGUAGES': JSON.stringify(config.languages),
 			}),
+
+			/**
+			 * For analyzing size and module dependancy.
+			 * @see https://github.com/webpack-contrib/webpack-bundle-analyzer
+			 */
 			analyze ? new BundleAnalyzerPlugin({
 				analyzerMode: 'server',
 				openAnalyzer: true,
 				// statsFilename: path.join(config.outPath, 'stats.json'),
 				generateStatsFile: true,
 			}) : null,
+
+			/**
+			 * Tree shaking minification and other optimizations.
+			 * @see https://github.com/webpack-contrib/uglifyjs-webpack-plugin
+			 */
 			isProd ? new UglifyJsPlugin() : null,
-			// This plugin will cause the relative path of the module to be displayed when HMR is enabled. Suggested for use in development.
-			// https://webpack.js.org/plugins/named-modules-plugin/
-			// Also needed for testing with rewiremock https://github.com/theKashey/rewiremock#to-run-inside-webpack-enviroment
+
+			/**
+			 * This plugin will cause the relative path of the module to be displayed when HMR is enabled. Suggested for use in development.
+			 * @see https://webpack.js.org/plugins/named-modules-plugin/
+			 *
+			 * Also needed for testing with rewiremock
+			 * @see https://github.com/theKashey/rewiremock#to-run-inside-webpack-enviroment
+			 */
 			isDev || hmr || isTest ? new webpack.NamedModulesPlugin() : null,
-			// Needed for development and testing with rewiremock https://github.com/theKashey/rewiremock#to-run-inside-webpack-enviroment
+
+			/**
+			 * Coding without reloading pages requires this plugin.
+			 *
+			 * Additionaly it is required for testing with rewiremock.
+			 * @see https://github.com/theKashey/rewiremock#to-run-inside-webpack-enviroment
+			 */
 			isDev && hmr ? new webpack.HotModuleReplacementPlugin() : null,
-			// Use the NoEmitOnErrorsPlugin to skip the emitting phase whenever there are errors while compiling.
-			// This ensures that no assets are emitted that include errors. The emitted flag in the stats is false for all assets.
+
+			/**
+			 * Use the NoEmitOnErrorsPlugin to skip the emitting phase whenever there are errors while compiling.
+			 * This ensures that no assets are emitted that include errors. The emitted flag in the stats is false for all assets.
+			 */
 			isTest ? null : new webpack.NoEmitOnErrorsPlugin(),
+
+			/**
+			 * For spliting scripts comming from node_modules into seperate chunk `vendor`
+			 * @todo: to be removed in webpack 4
+			 */
 			isTest ? null : new webpack.optimize.CommonsChunkPlugin({
 				name: 'vendor',
 				minChunks: ({ resource }) => /node_modules/.test(resource),
 			}),
-			// needed for rewiremock https://github.com/theKashey/rewiremock#to-run-inside-webpack-enviroment
+
+			/**
+			 * needed for rewiremock
+			 * @see https://github.com/theKashey/rewiremock#to-run-inside-webpack-enviroment
+			 */
 			isTest ? new (require('rewiremock/webpack/plugin'))() : null
 		].filter(p => !!p)
 	};

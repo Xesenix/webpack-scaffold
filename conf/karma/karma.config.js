@@ -2,8 +2,11 @@ const path = require('path');
 
 // Karma configuration
 module.exports = (config, webpack) => {
-	webpack.devtool = 'inline-source-map';
-	// webpack.devtool = 'cheap-module-source-map'; // cheap-module-source-map - suggested in React: https://reactjs.org/docs/cross-origin-errors.html
+	/**
+	 * cheap-module-source-map - fixing react cross origin suggested in:
+	 * @see https://reactjs.org/docs/cross-origin-errors.html
+	 */
+	webpack.devtool = 'cheap-module-source-map';
 	webpack.module.rules.push({
 		test: /\.(j|t)sx?$/,
 		use: {
@@ -20,15 +23,21 @@ module.exports = (config, webpack) => {
 		// base path that will be used to resolve all patterns (eg. files, exclude)
 		basePath: '',
 
-		// frameworks to use
-		// available frameworks: https://npmjs.org/browse/keyword/karma-adapter
+		/**
+		 * frameworks to use
+		 * available frameworks:
+		 * @see https://npmjs.org/browse/keyword/karma-adapter
+		 */
 		frameworks: ['jasmine'],
 
 		// list of files / patterns to load in the browser
 		files: [
 			// { pattern: './src/**/*.spec.js', watched: false },
 			// { pattern: './src/**/*.spec.ts', watched: false },
-			// Alternative usage one entry point https://github.com/webpack-contrib/karma-webpack#alternative-usage
+			/**
+			 * Alternative usage one entry point:
+			 * @see https://github.com/webpack-contrib/karma-webpack#alternative-usage
+			 */
 			'./src/main.test.js',
 		],
 
@@ -36,20 +45,29 @@ module.exports = (config, webpack) => {
 		exclude: [
 		],
 
-		// preprocess matching files before serving them to the browser
-		// available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
+		/**
+		 * preprocess matching files before serving them to the browser
+		 * available preprocessors:
+		 * @see https://npmjs.org/browse/keyword/karma-preprocessor
+		 */
 		preprocessors: {
 			// './src/**/*.spec.js': ['webpack', 'sourcemap'],
 			// './src/**/*.spec.ts': ['webpack', 'sourcemap'],
-			// Alternative usage one entry point https://github.com/webpack-contrib/karma-webpack#alternative-usage
+			/**
+			 * Alternative usage one entry point
+			 * @see https://github.com/webpack-contrib/karma-webpack#alternative-usage
+			 */
 			'./src/main.test.js': ['webpack', 'sourcemap'],
 		},
 
 		webpack,
 
-		// test results reporter to use
-		// possible values: 'dots', 'progress'
-		// available reporters: https://npmjs.org/browse/keyword/karma-reporter
+		/**
+		 * test results reporter to use
+		 * possible values: 'dots', 'progress'
+		 * available reporters:
+		 * @see https://npmjs.org/browse/keyword/karma-reporter
+		 */
 		reporters: [
 			'progress',
 			'kjhtml',
@@ -79,11 +97,17 @@ module.exports = (config, webpack) => {
 		// enable / disable watching file and executing tests whenever any file changes
 		autoWatch: true,
 
-		// start these browsers
-		// available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
+		/**
+		 * start these browsers
+		 * available browser launchers:
+		 * @see https://npmjs.org/browse/keyword/karma-launcher
+		 */
 		browsers: ['Chrome'],
 
-		// fix typescript serving video/mp2t mime type
+		/**
+		 * fix typescript serving video/mp2t mime type
+		 * @see https://github.com/angular/angular-cli/issues/2125#issuecomment-247395088
+		 */
 		mime: {
 			'text/x-typescript': ['ts','tsx']
 		},

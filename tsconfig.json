@@ -67,7 +67,7 @@
 		"plugins": [{
 			"name": "tslint-language-service"
 		}],
-		"skipLibCheck": true // hack https://github.com/ReactiveX/rxjs/issues/3031
+		"skipLibCheck": true                      /* hack @see https://github.com/ReactiveX/rxjs/issues/3031 */
 	},
 	"files": [
 		"./src/main.js"
