@@ -64,8 +64,6 @@ It's work in progress but you can use those processes:
 This project is using __webpack v3__ and probably has a lot place for improvement like:
 * find a way to avoid need for using `$srcRoot` variable in stylesheet (without copying every asset)
 * auto detect assets included in html template (this is problem if you override default behaviour of copying to production all assets)
-* provide a translation functionality
-* provide better per app configuration for tests (seperate coverage and entry points)
 * handle lazy loading of modules
 * use react router
 * use [SVG Sprite loader](https://www.npmjs.com/package/svg-sprite-loader) or [react-svg-loader](https://www.npmjs.com/package/react-svg-loader)
@@ -81,6 +79,7 @@ You can provide application configuration via _package.json_ `app` param:
 | __package.apps.[appName].rootDir__ | src | directory where all source code and other assets resides
 | __package.apps.[appName].outDir__ | dist | directory in which to put builded application
 | __package.apps.[appName].main__ | ['main.js'] | entry points to your application relative to `package.apps.[appName].rootDir`
+| __package.apps.[appName].test__ | 'main.test.js' | entry point for tests relative to `package.apps.[appName].rootDir`
 | __package.apps.[appName].assets__ | ['assets'] | all asset and resource you want to move to build assets directory (you can use glob patterns or just link to directory)
 | __package.apps.[appName].fonts__ | ['fonts'] | all fonts resource you want to move to build fonts directory (you can use glob patterns or just link to directory)
 | __package.apps.[appName].styles__ | ['styles/styles.scss'] | all stylesheets you want to use as entry points
@@ -105,6 +104,7 @@ If anywhere in you code exist one of those phrases it will be replaced with data
 | __process.env.APP.rootPath__ | string | | resolved system path to `package.apps.[appName].rootDir` |
 | __process.env.APP.outPath__ | string | | resolved system path to `package.apps.[appName].outDir` |
 | __process.env.APP.main__ | string[] | | application entry scripts defined in `package.apps.[appName].main` |
+| __process.env.APP.test__ | string | | application test entry script defined in `package.apps.[appName].test` |
 | __process.env.APP.assets__ | string[] | | assets defined in `package.apps.[appName].assets` |
 | __process.env.APP.fonts__ | string[] | ['./fonts'] | fonts defined in `package.apps.[appName].fonts` |
 | __process.env.APP.styles__ | string[] | ['./styles/styles.scss'] | styles entry points defined in `package.apps.[appName].styles` |
