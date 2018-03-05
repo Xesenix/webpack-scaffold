@@ -3,9 +3,9 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { hot } from 'react-hot-loader';
 
-import Timer from './component/timer';
-import Theme from './component/theme';
-import LanguageSwitch from './component/language-switch';
+import Timer from './components/timer/timer';
+import Theme from './components/theme/theme';
+import LanguageSwitch from './components/language-switch/language-switch';
 
 class App extends React.Component {
 	/**

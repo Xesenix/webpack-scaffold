@@ -1,6 +1,9 @@
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+
 import { A, C } from './lib';
-import config from './data/config';
-import start from './app';
+import config from '../data/config';
+import App from './app';
 
 const startTime = Date.now();
 
@@ -29,7 +32,10 @@ console.log('apps', pckg.apps);
 window.onload = () => {
 	try {
 		console.log('onload time', Date.now() - startTime);
-		start(() => console.log('mounting time', Date.now() - startTime));
+		ReactDOM.render(
+			<App onReady={ () => console.log('mounting time', Date.now() - startTime) }/>,
+			document.getElementById('app')
+		);
 	}
 	catch (err) {
 		console.error(err);

@@ -31,10 +31,10 @@
 			"rootDir": "src/demo",
 			"outDir": "dist/demo",
 			"main": [
-				"main.js"
+				"main.jsx"
 			],
-			"template": "templates/demo.html",
 			"test": "main.test.js",
+			"template": "templates/index.html",
 			"templateData": {
 				"title": "Demo Webpack Scaffold"
 			},
