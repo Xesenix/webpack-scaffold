@@ -6,7 +6,7 @@ export const languages: string[] = process.env.LANGUAGES || ['en'];
 
 languages.forEach((locale: string) => {
 	try {
-		i18n.addTranslations(locale, 'messages', require(`locales/messages.${locale}.po`));
+		i18n.addTranslations(locale, 'messages', require(`${process.env.LOCALES_DIR}/messages.${locale}.po`));
 	} catch (err) {
 		console.warn(`Missing locales: ${locale}`);
 	}

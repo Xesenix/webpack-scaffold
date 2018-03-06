@@ -33,6 +33,9 @@
 			"main": [
 				"main.jsx"
 			],
+			"moduleImportPaths": [
+				"./src"
+			],
 			"test": "main.test.js",
 			"template": "templates/index.html",
 			"templateData": {
@@ -45,8 +48,8 @@
 				"styles/styles.scss",
 				"styles/banners/a.scss"
 			],
-			"stylesIncludePaths": [
-				"./styles"
+			"stylesImportPaths": [
+				"src/demo/styles"
 			],
 			"languages": [
 				"en",

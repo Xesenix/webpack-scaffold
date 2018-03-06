@@ -1,12 +1,18 @@
 import { GettextExtractor, HtmlExtractors, JsExtractors } from 'gettext-extractor';
 import { mkdirp } from 'mkdirp';
 import * as path from 'path';
+import * as chalk from 'chalk';
 
 import { getAppConfig, getEnvApp } from '../conf/app/app.config';
 
 const app = getEnvApp();
 const config = getAppConfig(app);
 const extractor = new GettextExtractor();
+
+console.log(chalk.green('Extracting translation'));
+console.log(chalk.grey('------------------------'));
+console.log(`App: ${chalk.blue(app)}`);
+console.log(`Searching for segments from: ${chalk.blue(config.rootDir)}`);
 
 // handle __('Segment to extract')
 extractor
@@ -36,10 +42,14 @@ extractor
 	])
 	.parseFilesGlob(path.join(config.rootDir, './**/*.html'));
 
+const localesDir = path.resolve(config.rootDir, config.localesDir);
+const potPath = path.resolve(localesDir, './messages.pot');
+
 // create locales directory if it doesn't exists
-mkdirp.sync(path.join(config.rootDir, './locales/'));
+mkdirp.sync(localesDir);
 
 // write extracted messages to locales/messages.pot
-extractor.savePotFile(path.resolve(config.rootDir, './locales/messages.pot'));
+extractor.savePotFile(potPath);
 
 extractor.printStats();
+console.log(`Extracted translation segments added to: ${chalk.blue(potPath)}`);

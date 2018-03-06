@@ -146,6 +146,7 @@ const scaffoldConfig = () => {
 		resolve: {
 			extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
 			modules: [
+				...config.moduleImportPaths,
 				config.rootPath,
 				'node_modules',
 			],
@@ -154,7 +155,7 @@ const scaffoldConfig = () => {
 			rules: [
 				...fontsRulesFactory(config.rootPath),
 				...assetsRulesFactory(config.rootPath),
-				...stylesRulesFactory(extractCssPlugin, isProd, config.stylesIncludePaths),
+				...stylesRulesFactory(extractCssPlugin, isProd, config.stylesImportPaths),
 				...babelRulesFactory(),
 				...markdownRulesFactory(),
 				...translationRulesFactory(),
@@ -202,6 +203,7 @@ const scaffoldConfig = () => {
 				'process.env.PACKAGE': JSON.stringify(packageConfig),
 				'process.env.APP': JSON.stringify(config),
 				'process.env.LANGUAGES': JSON.stringify(config.languages),
+				'process.env.LOCALES_DIR': JSON.stringify(config.localesDir),
 			}),
 
 			/**
