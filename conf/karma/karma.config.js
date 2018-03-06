@@ -1,6 +1,7 @@
 const path = require('path');
 
-import { getAppConfig, getEnvApp } from '../app/app.config';
+const { getAppConfig, getEnvApp } = require('../app/app.config');
+const istanbulCoverageFactory = require('../webpack/rules/istanbul-coverage');
 
 // Karma configuration
 module.exports = (karmaConfig, webpack) => {
@@ -14,16 +15,7 @@ module.exports = (karmaConfig, webpack) => {
 	 * @see https://reactjs.org/docs/cross-origin-errors.html
 	 */
 	webpack.devtool = 'cheap-module-source-map';
-	webpack.module.rules.push({
-		test: /\.(j|t)sx?$/,
-		use: {
-			loader: 'istanbul-instrumenter-loader',
-			options: { esModules: true },
-		},
-		include: path.resolve('./src'),
-		exclude: /\.spec\.(j|t)sx?$/,
-		enforce: 'post', // important to apply after its ready
-	});
+	webpack.module.rules.push(...istanbulCoverageFactory(config.rootPath));
 
 	const options = {
 
