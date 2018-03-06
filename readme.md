@@ -319,6 +319,7 @@ I am aiming to have each translations as seperate file loaded at runtime so I do
 * [Continous Integration for Windows with Appveyor](https://www.appveyor.com/docs/)
 * [Badges](https://shields.io/)
 * [Yoman generators](http://yeoman.io/authoring/)
+* [Splitting project with bit](https://github.com/teambit/bit)
 
 # Research
 
