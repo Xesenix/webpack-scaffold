@@ -72,22 +72,24 @@ This project is using __webpack v3__ and probably has a lot place for improvemen
 
 ### Configuration via package.json 
 
-You can provide application configuration via _package.json_ `app` param:
+You can provide application configuration via _package.json_ `apps` param:
 
 | __param__ | __default__ | __description__
 | --- | --- | --- |
-| __package.apps.[appName].rootDir__ | src | directory where all source code and other assets resides
-| __package.apps.[appName].outDir__ | dist | directory in which to put builded application
-| __package.apps.[appName].main__ | ['main.js'] | entry points to your application relative to `package.apps.[appName].rootDir`
-| __package.apps.[appName].test__ | 'main.test.js' | entry point for tests relative to `package.apps.[appName].rootDir`
-| __package.apps.[appName].assets__ | ['assets'] | all asset and resource you want to move to build assets directory (you can use glob patterns or just link to directory)
+| __package.apps.[appName].rootDir__ | src | directory (relative to project root) where all source code and other assets resides
+| __package.apps.[appName].outDir__ | dist | directory (relative to project root) in which to put builded application
+| __package.apps.[appName].main__ | ['main.js'] | entry points to your application (relative to `package.apps.[appName].rootDir`)
+| __package.apps.[appName].moduleImportPaths__ | [''] | list of paths (relative to project root) on which to look for imported modules when calling `import` or `require` directives
+| __package.apps.[appName].test__ | 'main.test.js' | entry point for tests (relative to `package.apps.[appName].rootDir`)
+| __package.apps.[appName].assets__ | ['assets'] | all asset and resource you want to move to build assets directory (you can use glob patterns or just link to directory) (relative to `package.apps.[appName].rootDir`)
 | __package.apps.[appName].fonts__ | ['fonts'] | all fonts resource you want to move to build fonts directory (you can use glob patterns or just link to directory)
 | __package.apps.[appName].styles__ | ['styles/styles.scss'] | all stylesheets you want to use as entry points
-| __package.apps.[appName].stylesIncludePaths__ | ['./styles'] | list of relative path on which to look for included stylesheet via `@import`
+| __package.apps.[appName].stylesImportPaths__ | ['./styles'] | list of paths (relative to `package.apps.[appName].rootDir`) on which to look when importing stylesheet via `@import`
 | __package.apps.[appName].vendor__ | [] | all vendor scripts you want to push to vendor bundle
 | __package.apps.[appName].template__ | index.html | html template that you want to use as template for website
 | __package.apps.[appName].templateData__ | {} | html template is handled by ejs loader so you can put here additional data that will be passed to `htmlWebpackPlugin.options.data` you can also access _package.json_ from `htmlWebpackPlugin.options.packageConfig`
 | __package.apps.[appName].languages__ | ['en'] | list of languages that will be used by application
+| __package.apps.[appName].localesDir__ | 'locales' | directory for storing translations (relative to `package.apps.[appName].rootDir`)
 
 ### Source code phrase replacement
 
@@ -108,11 +110,12 @@ If anywhere in you code exist one of those phrases it will be replaced with data
 | __process.env.APP.assets__ | string[] | | assets defined in `package.apps.[appName].assets` |
 | __process.env.APP.fonts__ | string[] | ['./fonts'] | fonts defined in `package.apps.[appName].fonts` |
 | __process.env.APP.styles__ | string[] | ['./styles/styles.scss'] | styles entry points defined in `package.apps.[appName].styles` |
-| __process.env.APP.stylesIncludePaths__ | string[] | ['./styles'] | styles lookup paths `package.apps.[appName].stylesIncludePaths` |
+| __process.env.APP.stylesImportPaths__ | string[] | ['./styles'] | styles lookup paths `package.apps.[appName].stylesImportPaths` |
 | __process.env.APP.vendor__ | string[] | | vendor scripts defined in `package.apps.[appName].vendor` |
 | __process.env.APP.template__ | string | _index.html_ | main template name |
 | __process.env.APP.templateData__ | string | | data injected into template `htmlWebpackPlugin.options.data` |
 | __process.env.LANGUAGES__ | string[] | ['en'] | languages provided via `package.apps.[appName].languages` |
+| __process.env.LOCALES_DIR__ | string | 'locales' | directory name for storing translation files `package.apps.[appName].localesDir` |
 
 __process.env__ won't have those phrases listed as its params when trying to call it after build. So it secure, in sense that you can use only what you really need.
 
@@ -193,7 +196,7 @@ $srcRoot: '../../../../' !default;
 
 ### Example template referenced assets loading
 
-For asset referenced in `index.html` we need to put all referenced assets into `package.apps.[appName].app.assets` param.
+For asset referenced in `index.html` we need to put all referenced assets into `package.apps.[appName].assets` param.
 
 So for example if you have:
 
@@ -244,10 +247,10 @@ You can extract each occurence of `__(...)` by calling:
 npm run xi18n
 ```
 
-that will result in extracting `src/locales/messages.pot` file that can be translated.
+that will result in extracting `${package.apps.[appName].rootDir}/${package.apps.[appName].localesDir}/messages.pot` file that can be translated.
 After providing translated versions like:
-* _src/locales/messages.pl.po_
-* _src/locales/messages.en.po_
+* _${package.apps.[appName].rootDir}/${package.apps.[appName].localesDir}/messages.pl.po_
+* _${package.apps.[appName].rootDir}/${package.apps.[appName].localesDir}/messages.en.po_
 
 And after setting used languages in:
 
