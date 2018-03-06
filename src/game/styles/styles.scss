@@ -1,0 +1,11 @@
+/* For setting up assets paths for imported style sheets */
+$srcRoot: '../' !default;
+$neutralColor: black !default;
+
+body {
+	/* Use this kind of path interpolation for getting image preview in Visual Code */
+	background: $neutralColor url(#{$srcRoot + 'assets/background/bg.png'}) repeat;
+	background-size: 256px;
+	image-rendering: pixelated;
+	color: #fff;
+}
