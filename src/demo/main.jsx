@@ -29,15 +29,16 @@ console.log('version', pckg.version);
 console.log('apps', pckg.apps);
 
 // React
+try {
+	ReactDOM.render(
+		<App onReady={ () => console.log('mounting time', Date.now() - startTime) }/>,
+		document.getElementById('app')
+	);
+}
+catch (err) {
+	console.error(err);
+}
+
 window.onload = () => {
-	try {
-		console.log('onload time', Date.now() - startTime);
-		ReactDOM.render(
-			<App onReady={ () => console.log('mounting time', Date.now() - startTime) }/>,
-			document.getElementById('app')
-		);
-	}
-	catch (err) {
-		console.error(err);
-	}
+	console.log('onload time', Date.now() - startTime);
 }
