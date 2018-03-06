@@ -5,6 +5,9 @@
 	],
 	"jsRules": {},
 	"rules": {
+		"max-line-length": {
+			"options": [160],
+		},
 		"indent": [true, "tabs", 2],
 		"trailing-comma": [
 			true,
