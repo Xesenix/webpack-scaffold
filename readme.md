@@ -16,7 +16,7 @@ Check live [demo](https://webpack-3-scaffold.herokuapp.com) of running this scaf
 
 ## About
 
-This is basic starting point for application using __webpack v3__ with some default configuration setup to properly load assets from diffrent locations.
+This is basic starting point for application using __webpack v3__ with some default configuration setup to properly load assets from different locations.
 
 ### Workflow
 
@@ -43,7 +43,7 @@ It's work in progress but you can use those processes:
 
 #### Extracting segments for translation:
 
-* Run `npm run xi18n` this will extract all occurences of `__(...)` into `src/locales/messages.pot` you can modify that behavior in `scripts/extract.ts`
+* Run `npm run xi18n` this will extract all occurrences of `__(...)` into `src/locales/messages.pot` you can modify that behavior in `scripts/extract.ts`
 
 ### Features
 
@@ -62,11 +62,11 @@ It's work in progress but you can use those processes:
 ### TODO
 
 This project is using __webpack v3__ and probably has a lot place for improvement like:
-* find a way to avoid need for using `$srcRoot` variable in stylesheet (without copying every asset)
-* auto detect assets included in html template (this is problem if you override default behaviour of copying to production all assets)
-* handle lazy loading of modules
-* use react router
-* use [SVG Sprite loader](https://www.npmjs.com/package/svg-sprite-loader) or [react-svg-loader](https://www.npmjs.com/package/react-svg-loader)
+- [ ] find a way to avoid need for using `$srcRoot` variable in stylesheet (without copying every asset)
+- [ ] auto detect assets included in html template (this is problem if you override default behavior of copying to production all assets)
+- [ ] handle lazy loading of modules
+- [ ] use react router
+- [ ] use [SVG Sprite loader](https://www.npmjs.com/package/svg-sprite-loader) or [react-svg-loader](https://www.npmjs.com/package/react-svg-loader)
 
 ## Documentation
 
@@ -121,7 +121,7 @@ __process.env__ won't have those phrases listed as its params when trying to cal
 
 ### Additional environmental configuration via _.env_ file
 
-If you need to add any secret configuration to your project you can use similar proccess of replacing source code as above with variables provided in _.env_ file.
+If you need to add any secret configuration to your project you can use similar process of replacing source code as above with variables provided in _.env_ file.
 For example:
 
 _file: .env_
@@ -241,7 +241,7 @@ import { __ } from 'lib/localize.ts';
 console.log(__('text for translation'));
 ```
 
-You can extract each occurence of `__(...)` by calling: 
+You can extract each occurrence of `__(...)` by calling: 
 
 ```bash
 npm run xi18n
@@ -295,8 +295,8 @@ Some additional resources that can clarify concepts behind this scaffold project
 * [Ducks modular Redux](https://github.com/erikras/ducks-modular-redux)
 * [ReDucks](https://github.com/alexnm/re-ducks)
 
-## Localisation
-I am aiming to have each translations as seperate file loaded at runtime so I don't have to build project for each language.
+## Localization
+I am aiming to have each translations as separate file loaded at runtime so I don't have to build project for each language.
 
 * [gettext-extract](https://github.com/sinedied/gettext-extract)
 * [gettext-extractor](https://github.com/lukasgeiter/gettext-extractor)
@@ -315,11 +315,11 @@ I am aiming to have each translations as seperate file loaded at runtime so I do
 * [How to mock dependencies in node js and why?](https://medium.com/@antonkorzunov/how-to-mock-dependency-in-a-node-js-and-why-2ad4386f6587)
 * [Inject webpack loader](https://github.com/plasticine/inject-loader)
 
-## Project managment related resources
+## Project management related resources
 * [Travis CLI installation](https://github.com/travis-ci/travis.rb#installation)
 * [Setup Travis Heroku build](https://docs.travis-ci.com/user/deployment/heroku/)
-* [Continous Integration Travis](https://docs.travis-ci.com)
-* [Continous Integration for Windows with Appveyor](https://www.appveyor.com/docs/)
+* [Continuos Integration Travis](https://docs.travis-ci.com)
+* [Continuos Integration for Windows with Appveyor](https://www.appveyor.com/docs/)
 * [Badges](https://shields.io/)
 * [Yoman generators](http://yeoman.io/authoring/)
 * [Splitting project with bit](https://github.com/teambit/bit)
