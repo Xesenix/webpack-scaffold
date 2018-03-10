@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack =  require('./webpack.config.js')();
-const karmaConfig = require('./conf/karma/karma.config.js');
+const { karmaConfigurator } = require('xes-webpack-core');
 
 module.exports = function(config) {
-	karmaConfig(config, webpack);
+	karmaConfigurator(config, webpack);
 }
