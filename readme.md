@@ -294,6 +294,8 @@ Some additional resources that can clarify concepts behind this scaffold project
 * [React typescript component patterns](https://medium.com/@martin_hotell/ultimate-react-component-patterns-with-typescript-2-8-82990c516935)
 * [Ducks modular Redux](https://github.com/erikras/ducks-modular-redux)
 * [ReDucks](https://github.com/alexnm/re-ducks)
+* [Generating graphs with Graphviz](http://www.graphviz.org/)
+* [Graphviz in browser Viz.js](http://viz-js.com/)
 
 ## Localization
 I am aiming to have each translations as separate file loaded at runtime so I don't have to build project for each language.
