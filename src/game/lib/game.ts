@@ -22,7 +22,6 @@ export class Game extends Phaser.Scene {
 	create = () => {
 		console.log('Phaser:Scene:create');
 		const image = this.add.image(256, 256, 'game-banner');
-		image.anchor.set(0, 0);
 	}
 
 	destroy() {
