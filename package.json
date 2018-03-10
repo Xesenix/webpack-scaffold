@@ -78,7 +78,7 @@
 				"title": "Phaser Game Test"
 			},
 			"assets": [
-				"assets/*"
+				"assets"
 			],
 			"stylesImportPaths": [
 				"styles"
@@ -124,7 +124,7 @@
 		"typescript": "^2.7.2",
 		"webpack-bundle-analyzer": "^2.10.1",
 		"webpack-dev-server": "^2.11.1",
-		"xes-webpack-core": "^0.1.0"
+		"xes-webpack-core": "^0.1.1"
 	},
 	"dependencies": {
 		"cross-env": "^5.1.3",
