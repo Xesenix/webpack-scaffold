@@ -1,5 +1,5 @@
-const webpack = require('webpack');
-const shadersRuleFactory = require('./conf/webpack/rules/shaders')
+// const webpack = require('webpack');
+const { shaderRulesFactory } = require('xes-webpack-core');
 
 /**
  * Copy assets and fonts.
@@ -7,7 +7,7 @@ const shadersRuleFactory = require('./conf/webpack/rules/shaders')
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = (config) => {
-	config.module.rules.push(...shadersRuleFactory());
+	config.module.rules.push(...shaderRulesFactory());
 	/*config.plugins.push(new webpack.DefinePlugin({
 		// required by Phaser 3
 		'WEBGL_RENDERER': JSON.stringify(false),

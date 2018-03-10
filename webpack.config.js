@@ -1,14 +1,12 @@
 const path = require('path');
 const fs = require('fs');
 
-const webpackConfig = require('./conf/webpack/webpack.config.js');
-
-const { getEnvApp } = require('./conf/app/app.config');
+const { getEnvApp, scaffoldConfig } = require('xes-webpack-core');
 const app = getEnvApp();
 const appWebpack = `./webpack.${app}.config.js`;
 
 if (fs.existsSync(appWebpack)) {
-	module.exports = () => require(appWebpack)(webpackConfig.scaffoldConfig());
+	module.exports = (env) => require(appWebpack)(scaffoldConfig(env));
 } else {
-	module.exports = () => webpackConfig.scaffoldConfig();
+	module.exports = (env) => scaffoldConfig(env);
 }

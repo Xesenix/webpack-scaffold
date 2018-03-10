@@ -1,9 +1,9 @@
 import { GettextExtractor, HtmlExtractors, JsExtractors } from 'gettext-extractor';
-import { mkdirp } from 'mkdirp';
-import * as path from 'path';
 import * as chalk from 'chalk';
+import * as mkdirp from 'mkdirp';
+import * as path from 'path';
 
-import { getAppConfig, getEnvApp } from '../conf/app/app.config';
+import { getAppConfig, getEnvApp } from 'xes-webpack-core';
 
 const app = getEnvApp();
 const config = getAppConfig(app);
