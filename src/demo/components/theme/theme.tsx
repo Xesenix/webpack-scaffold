@@ -4,6 +4,7 @@ import { hot } from 'react-hot-loader';
 import tinycolor from 'tinycolor2';
 
 import './theme.scss';
+import { groupLog, benchmark } from 'demo/lib/debug';
 
 class Theme extends React.Component {
 	private primaryColorInput;
@@ -17,6 +18,8 @@ class Theme extends React.Component {
 		this.style = document.documentElement.style;
 	}
 
+	@groupLog('theme')
+	@benchmark()
 	public updateThemeColor(name: string, value: string): void {
 		const color = tinycolor(value);
 		// console.log('color', name, color);

@@ -12,11 +12,15 @@ console.log(config.name);
 
 // Javascript
 const a = new A();
-a.tested();
+console.time('tested A');
+a.tested(false);
+console.timeEnd('tested A');
 
 // Typescript
 const c = new C();
+console.time('tested C');
 c.tested();
+console.timeEnd('tested C');
 
 // Compilation string replacment
 const pckg = process.env.PACKAGE;

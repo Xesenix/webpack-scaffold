@@ -1,9 +1,14 @@
+import { groupLog, benchmark } from './debug';
+
 export class C {
 	private name: string = 'C';
 
 	public getName(): string {
 		return this.name;
 	}
+
+	@groupLog('C')
+	@benchmark()
 	public tested(condition = true): void {
 		if (condition) {
 			console.log('Tested branch C.1');
