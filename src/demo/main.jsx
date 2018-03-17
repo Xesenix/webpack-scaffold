@@ -13,38 +13,53 @@ import { Wheel } from './lib/car/wheel';
 
 const startTime = Date.now();
 
-// Json
-console.log(config.name);
+const group = (name, callback) => {
+	const header = `=== ${name} ===`;
+	console.group(header);
+	callback();
+	console.groupEnd(header);
+}
 
-// Javascript
-const a = new A();
-console.time('tested A');
-a.tested(false);
-console.timeEnd('tested A');
+group('Json loading test', () => {
+	// Json
+	console.log(config.name);
+});
 
-// Typescript
-const c = new C();
-console.time('tested C');
-c.tested();
-console.timeEnd('tested C');
+group('Module loading test', () => {
+	// Javascript
+	const a = new A();
+	console.time('tested A');
+	a.tested(false);
+	console.timeEnd('tested A');
 
-// Compilation string replacement
-const pckg = process.env.PACKAGE;
+	// Typescript
+	const c = new C();
+	console.time('tested C');
+	c.tested();
+	console.timeEnd('tested C');
+});
 
-console.log(process.env.SECRET_VALUE);
-console.log(process.env.PRODUCTION);
-console.log(process.env.APP);
-console.log('name', pckg.name);
-console.log('version', pckg.version);
-console.log('apps', pckg.apps);
+group('Environment setup test', () => {
+	// Compilation string replacement
+	const pckg = process.env.PACKAGE;
 
-const dic = new inversify.Container();
-dic.bind('car').to(Car);
-dic.bind('car-engine').to(Engine);
-dic.bind('car-wheel').to(Wheel);
-dic.bind('driver').to(Driver);
+	console.log(process.env.SECRET_VALUE);
+	console.log(process.env.PRODUCTION);
+	console.log(process.env.APP);
+	console.log('name', pckg.name);
+	console.log('version', pckg.version);
+	console.log('apps', pckg.apps);
+});
 
-const driver = dic.get('driver');
+group('Dependency injection test', () => {
+	const dic = new inversify.Container();
+	dic.bind('car').to(Car);
+	dic.bind('car-engine').to(Engine);
+	dic.bind('car-wheel').to(Wheel);
+	dic.bind('driver').to(Driver);
+
+	const driver = dic.get('driver');
+});
 
 // React
 try {
