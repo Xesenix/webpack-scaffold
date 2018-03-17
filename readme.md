@@ -24,26 +24,26 @@ It's work in progress but you can use those processes:
 
 #### For development with HMR
 
-* Run `npm run build:dev` this will copy vendor assets to local folder where from they can be served (if some assets are missing during development run this)
-* Run `npm run serve:dev` this will start `webpack-dev-server` if some assets won't appear you probably need to add them to `package.apps.[appName].assets`
+* Run `npm run [appName]:build:dev` this will copy vendor assets to local folder where from they can be served (if some assets are missing during development run this)
+* Run `npm run [appName]:serve:dev` this will start `webpack-dev-server` if some assets won't appear you probably need to add them to `package.apps.[appName].assets`
 
 #### For production build:
 
-* Run `npm run build:prod` this will build project and move all assets to `package.apps.[appName].outPath` path
-* Run `npm start` to test build in browser `localhost:8080`
+* Run `npm run [appName]:build:prod` this will build project and move all assets to `package.apps.[appName].outPath` path
+* Run `npm [appName]:start` to test build in browser `localhost:8080`
 
 #### If you want run tests:
 
-* Run `npm run tdd` for watch mode testing
-* Run `npm run test` for single run
+* Run `npm run [appName]:tdd` for watch mode testing
+* Run `npm run [appName]:test` for single run
 
 #### If you want analyze build size and dependencies use:
 
-* Run `npm run analyze`
+* Run `npm run [appName]:analyze`
 
 #### Extracting segments for translation:
 
-* Run `npm run xi18n` this will extract all occurrences of `__(...)` into `src/locales/messages.pot` you can modify that behavior in `scripts/extract.ts`
+* Run `npm run [appName]:xi18n` this will extract all occurrences of `__(...)` into `src/locales/messages.pot` you can modify that behavior in `scripts/extract.ts`
 
 ### Features
 
@@ -58,6 +58,7 @@ It's work in progress but you can use those processes:
 * simple theming with css variables
 * markdown loader
 * translating and extracting text segments to `pot` file
+* dependency injection via inversify
 
 ### TODO
 
@@ -70,54 +71,9 @@ This project is using __webpack v3__ and probably has a lot place for improvemen
 
 ## Documentation
 
-### Configuration via package.json 
+### xes-webpack-core
 
-You can provide application configuration via _package.json_ `apps` param:
-
-| __param__ | __default__ | __description__
-| --- | --- | --- |
-| __package.apps.[appName].rootDir__ | src | directory (relative to project root) where all source code and other assets resides
-| __package.apps.[appName].outDir__ | dist | directory (relative to project root) in which to put builded application
-| __package.apps.[appName].main__ | ['main.js'] | entry points to your application (relative to `package.apps.[appName].rootDir`)
-| __package.apps.[appName].moduleImportPaths__ | [''] | list of paths (relative to project root) on which to look for imported modules when calling `import` or `require` directives
-| __package.apps.[appName].test__ | 'main.test.js' | entry point for tests (relative to `package.apps.[appName].rootDir`)
-| __package.apps.[appName].assets__ | ['assets'] | all asset and resource you want to move to build assets directory (you can use glob patterns or just link to directory) (relative to `package.apps.[appName].rootDir`)
-| __package.apps.[appName].fonts__ | ['fonts'] | all fonts resource you want to move to build fonts directory (you can use glob patterns or just link to directory)
-| __package.apps.[appName].styles__ | ['styles/styles.scss'] | all stylesheets you want to use as entry points
-| __package.apps.[appName].stylesImportPaths__ | ['./styles'] | list of paths (relative to `package.apps.[appName].rootDir`) on which to look when importing stylesheet via `@import`
-| __package.apps.[appName].vendor__ | [] | all vendor scripts you want to push to vendor bundle
-| __package.apps.[appName].template__ | index.html | html template that you want to use as template for website
-| __package.apps.[appName].templateData__ | {} | html template is handled by ejs loader so you can put here additional data that will be passed to `htmlWebpackPlugin.options.data` you can also access _package.json_ from `htmlWebpackPlugin.options.packageConfig`
-| __package.apps.[appName].languages__ | ['en'] | list of languages that will be used by application
-| __package.apps.[appName].localesDir__ | 'locales' | directory for storing translations (relative to `package.apps.[appName].rootDir`)
-
-### Source code phrase replacement
-
-If anywhere in you code exist one of those phrases it will be replaced with data injected via __webpack.DefinePlugin__
-
-| __phrase__ | __type__ | __default__ | __meaning__ |
-|---|---|---|---|
-| __process.env.DEVELOPMENT__ | _boolean_ | | project was build with development flag `--env.dev` |
-| __process.env.PRODUCTION__ | _boolean_ | | project was build with production flag `--env.prod` |
-| __process.env.PACKAGE__ | _object_ | | contents of _package.json_ |
-| __process.env.APP__ | _object_ | | application build configuration resolved from build context |
-| __process.env.APP.rootDir__ | string | _src_ | `package.apps.[appName].rootDir` |
-| __process.env.APP.outDir__ | string | _dist_ | `package.apps.[appName].outDir` |
-| __process.env.APP.rootPath__ | string | | resolved system path to `package.apps.[appName].rootDir` |
-| __process.env.APP.outPath__ | string | | resolved system path to `package.apps.[appName].outDir` |
-| __process.env.APP.main__ | string[] | | application entry scripts defined in `package.apps.[appName].main` |
-| __process.env.APP.test__ | string | | application test entry script defined in `package.apps.[appName].test` |
-| __process.env.APP.assets__ | string[] | | assets defined in `package.apps.[appName].assets` |
-| __process.env.APP.fonts__ | string[] | ['./fonts'] | fonts defined in `package.apps.[appName].fonts` |
-| __process.env.APP.styles__ | string[] | ['./styles/styles.scss'] | styles entry points defined in `package.apps.[appName].styles` |
-| __process.env.APP.stylesImportPaths__ | string[] | ['./styles'] | styles lookup paths `package.apps.[appName].stylesImportPaths` |
-| __process.env.APP.vendor__ | string[] | | vendor scripts defined in `package.apps.[appName].vendor` |
-| __process.env.APP.template__ | string | _index.html_ | main template name |
-| __process.env.APP.templateData__ | string | | data injected into template `htmlWebpackPlugin.options.data` |
-| __process.env.LANGUAGES__ | string[] | ['en'] | languages provided via `package.apps.[appName].languages` |
-| __process.env.LOCALES_DIR__ | string | 'locales' | directory name for storing translation files `package.apps.[appName].localesDir` |
-
-__process.env__ won't have those phrases listed as its params when trying to call it after build. So it secure, in sense that you can use only what you really need.
+This project uses [xes-webpack-core](https://github.com/Xesenix/xes-webpack-core) as base for webpack configuration so see it for details how you can setup project via `package.json`
 
 ### Additional environmental configuration via _.env_ file
 
@@ -296,6 +252,7 @@ Some additional resources that can clarify concepts behind this scaffold project
 * [ReDucks](https://github.com/alexnm/re-ducks)
 * [Generating graphs with Graphviz](http://www.graphviz.org/)
 * [Graphviz in browser Viz.js](http://viz-js.com/)
+* [Dependancy injection with InversifyJS](https://github.com/inversify/InversifyJS)
 
 ## Localization
 I am aiming to have each translations as separate file loaded at runtime so I don't have to build project for each language.
@@ -331,3 +288,8 @@ I am aiming to have each translations as separate file loaded at runtime so I do
 ## PurifyCSS
 
 It would be nice to use [PurifyCSS](https://github.com/purifycss/purifycss) but [webpack plugin](https://github.com/Xesenix/purifycss-webpack) for it is broken it doesn't run after assets are created. So, there is no `index.html` that can be used as entry point for purification purpose.
+
+## Dependency injection InversifyJS
+
+Decorators for js and typescritpt differ from each other so we need to use [inversify-vanillajs-helpers](https://github.com/inversify/inversify-vanillajs-helpers).
+At time of checking it out it unfortunately duplicates dependency on `inversify` increasing build size see [reported issue](https://github.com/inversify/InversifyJS/issues/822).
