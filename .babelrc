@@ -1,0 +1,38 @@
+{
+	"compact": false,
+	"presets": [
+		["@babel/preset-env", {
+			"targets": {
+				"browsers": ["last 2 Chrome versions"]
+			},
+			"loose": true,
+			"useBuiltIns": "usage",
+			"modules": false,
+			"debug": true,
+			"spec": false
+		}],
+		"@babel/preset-react",
+		"@babel/preset-typescript"
+	],
+	"plugins": [
+		"transform-decorators-legacy",
+		"transform-class-properties"
+	],
+	"env": {
+		"test": {
+			"presets": [
+				["@babel/preset-env", {
+					"targets": {
+						"esmodules": true
+					},
+					"loose": true,
+					"modules": false,
+					"debug": true,
+					"spec": false
+				}],
+				"@babel/preset-react",
+				"@babel/preset-typescript"
+			]
+		}
+	}
+}

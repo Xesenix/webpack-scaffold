@@ -111,6 +111,8 @@
 		"gettext-extractor": "^3.2.1",
 		"glslify": "^6.1.1",
 		"http-server": "^0.11.1",
+		"inversify": "^4.11.1",
+		"inversify-vanillajs-helpers": "^2.0.0",
 		"mkdirp": "^0.5.1",
 		"node-gettext": "^2.0.0",
 		"node-sass": "^4.7.2",
@@ -119,12 +121,13 @@
 		"po-gettext-loader": "^0.1.1",
 		"react-hot-loader": "^4.0.0",
 		"react-test-renderer": "^16.2.0",
+		"reflect-metadata": "^0.1.12",
 		"sinon": "^4.4.1",
 		"ts-node": "^5.0.1",
 		"typescript": "^2.7.2",
 		"webpack-bundle-analyzer": "^2.10.1",
 		"webpack-dev-server": "^2.11.1",
-		"xes-webpack-core": "^0.1.3"
+		"xes-webpack-core": "^0.1.2"
 	},
 	"dependencies": {
 		"cross-env": "^5.1.3",
