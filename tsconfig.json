@@ -52,6 +52,7 @@
 			"jasmine",
 			"jasmine-enzyme",
 			"enzyme",
+			"reflect-metadata"
 		],
 		"allowSyntheticDefaultImports": true,     /* Allow default imports from modules with no default export. This does not affect code emit, just typechecking. */
 
@@ -69,9 +70,6 @@
 		}],
 		"skipLibCheck": true                      /* hack @see https://github.com/ReactiveX/rxjs/issues/3031 */
 	},
-	"files": [
-		"./src/main.js"
-	],
 	"include": [
 		"./**/*.ts",
 		"./**/*.tsx"

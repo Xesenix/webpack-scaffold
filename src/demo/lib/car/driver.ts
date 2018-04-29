@@ -7,7 +7,7 @@ export interface ISteerable {
 @inject(['car'])
 export class Driver {
 	constructor(
-		private vehicle: ISteerable,
+		vehicle: ISteerable,
 	) {
 		vehicle.steer();
 	}

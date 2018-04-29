@@ -1,6 +1,8 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
+import 'reflect-metadata';
+
 import { A, C } from './lib';
 import config from '../data/config';
 import App from './app';
@@ -23,6 +25,34 @@ const group = (name, callback) => {
 group('Json loading test', () => {
 	// Json
 	console.log(config.name);
+});
+
+group('Trailing function commas', () => {
+	const f = function(
+		x,
+	) { console.log(`f(${x})`); }
+	f(4);
+});
+
+group('Spread operator', () => {
+	const x = {
+		a: 'A',
+		b: 'C',
+	}
+	console.log({
+		...x
+	});
+	console.log({
+		...x,
+		b: 'B',
+		c: 'C',
+	});
+	const { a, b } = x;
+	console.log(a, b);
+});
+
+group('Expotential operator', () => {
+	console.log('2 ** 3 = ', 2 ** 3);
 });
 
 group('Module loading test', () => {

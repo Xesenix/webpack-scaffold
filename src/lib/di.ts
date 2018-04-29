@@ -1,7 +1,6 @@
 import * as inversify from 'inversify';
 import { interfaces as ii } from 'inversify';
-import { helpers } from 'inversify-vanillajs-helpers';
-import { interfaces as vi } from 'inversify-vanillajs-helpers';
+import { helpers, interfaces as vi } from 'inversify-vanillajs-helpers';
 import 'reflect-metadata';
 
 /**

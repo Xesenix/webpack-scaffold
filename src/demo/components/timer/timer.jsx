@@ -13,6 +13,7 @@ class Timer extends React.Component {
 	}
 
 	componentDidMount() {
+		console.log('Timer:componentDidMount');
 		this.setState({ start: Date.now() });
 		this.intervalHandle = setInterval(() => {
 			this.setState({});
@@ -20,6 +21,7 @@ class Timer extends React.Component {
 	}
 
 	componentWillUnmount() {
+		console.log('Timer:componentWillUnmount');
 		clearInterval(this.intervalHandle);
 	}
 
