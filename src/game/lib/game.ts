@@ -2,9 +2,11 @@ import Phaser from 'phaser';
 
 import { IDictionary } from 'lib/interfaces/dictionary';
 
+type PropertyType = { current: number, max: number, reg?: number };
+
 export class Game extends Phaser.Scene {
 	game: Phaser.Game;
-	private dictionary: IDictionary<{ current: number, max: number, reg?: number }>;
+	private dictionary: IDictionary<PropertyType>;
 	private label: Phaser.Text;
 
 	constructor(private parent: HTMLElement) {
@@ -31,13 +33,13 @@ export class Game extends Phaser.Scene {
 		this.dictionary = {
 			hp: { current: 12, max: 50 },
 			mp: { current: 32, max: 40 },
-		};
+		} as { [key: string]: PropertyType};
 
 		this.label = this.add.text();
 	}
 
 	update = (delta) => {
-		this.dictionary = this.dictionary.keys().reduce((acc, key) => {
+		this.dictionary = Object.keys(this.dictionary).reduce((acc, key) => {
 			const previous = this.dictionary[key];
 			acc[key] = {
 				// ...previous,
@@ -48,7 +50,7 @@ export class Game extends Phaser.Scene {
 
 		this.label.text = '';
 
-		this.dictionary.forEach(({ current, max, reg = 0 }, key) => {
+		Object.entries<PropertyType>(this.dictionary).forEach(([key, { current, max, reg = 0 }]) => {
 			this.label.text += `${key}: ${current}/${max}\n`;
 		});
 	}
