@@ -1,5 +1,6 @@
 language: node_js
 node_js:
+- '10'
 - '9'
 - '8'
 branches:
@@ -21,10 +22,10 @@ after_success:
 - npm run report-coverage
 deploy:
   provider: heroku
+  app: webpack-scaffold
   api_key:
     secure: RNx5So7TGxgOS/eABDn2zqz9Amb50hfDTahF6KiGBWLXR7a7EdZSYStFhiw/kxFjrJzaTer4TW2WP4Wp7LWQbgKAL+NjSPjInGavJ/8MgWTwIrV03Vv8y+yrmuW8nHNTDPqkDHbXopmpSYrH9TBwEYyck+9z4UZ/T6YGisXGahaO72jCk+cYu6tooe3ngBsZpMuhLKYuMG7vyWhUvKA0KyTkhqH/XXPbbfyn5BJNgFWhhDlYMQWCH37M59tqh5/WPlCp4bw1fcMmADgK+ckSDc1Ob61HcS6xLj0jmc7nTYPposopjOK265yJz6uk/4/5NxY5sC6GGV1yKysJOeW/0tcDSFFnfLcdp3vNJ78ARdyegwACsqJupj4TSpPdWv/0m2rlk6ilIP0f75mNhmeQ3Ku2gU7vei2WDCY8g6andDcYai+43jOIKnuQ59r1eRoHKg9BGmXePiltgrxBj6FrR++CcPq+Lyhs80SUlebWzGCVatvGtdRWNkb/HV+qu4QxRohLhyKgpUYDPoBLb/yrSsVvgzWCx99hj0PhFY2kFeKxgJjLD8eWDBIjOyGL2VmKyRr9aPz1rRrd7WdERBiMHr1+C0Tn5Q4/I8AGPMrbuvBHmKvsQokPvLDAJ4NvxEKrIvLZEQpJYoOwJNuKkxYZX5LfDFCl6sMO+oXRWaAIq/0=
-  app: webpack-scaffold
   skip_cleanup: true
   on:
     branch: master
-    node_js: '9'
+    node_js: '10'
