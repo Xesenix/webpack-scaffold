@@ -1,6 +1,7 @@
 # Test against the latest version of this Node.js version
 environment:
   matrix:
+    - nodejs_version: "10"
     - nodejs_version: "9"
     - nodejs_version: "8"
 
@@ -15,6 +16,7 @@ install:
   - ps: Update-AppveyorBuild -Version "$env:package_version.build.$env:APPVEYOR_BUILD_NUMBER"
   # Get the latest stable version of Node.js or io.js
   - ps: Install-Product node $env:nodejs_version $env:platform
+  - npm -g install npm@6
   # install modules
   - npm i
 
