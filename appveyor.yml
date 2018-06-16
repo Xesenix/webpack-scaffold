@@ -19,6 +19,7 @@ install:
   - npm -g install npm@6
   # install modules
   - npm i
+  - npm list xes-webpack-core
 
 # Post-install test scripts.
 test_script:
