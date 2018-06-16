@@ -128,7 +128,7 @@
 		"typescript": "^2.7.2",
 		"webpack-bundle-analyzer": "^2.10.1",
 		"webpack-dev-server": "^2.11.1",
-		"xes-webpack-core": "^0.4.2"
+		"xes-webpack-core": "^0.4.3"
 	},
 	"dependencies": {
 		"@babel/plugin-syntax-numeric-separator": "^7.0.0-beta.51",
