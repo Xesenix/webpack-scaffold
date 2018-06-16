@@ -1,11 +1,11 @@
 {
-	"name": "webpack-test",
+	"name": "webpack-scaffold",
 	"version": "0.7.0",
 	"description": "",
 	"main": "src/main.js",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/Xesenix/webpack-3-scaffold"
+		"url": "https://github.com/Xesenix/webpack-scaffold"
 	},
 	"scripts": {
 		"analyze": "cross-env ANALYZE=true npm run build:prod",
