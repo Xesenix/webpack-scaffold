@@ -2,8 +2,8 @@ import { injectable } from 'lib/di';
 
 require('reflect-metadata');
 
-@injectable()
-export class Wheel {
+
+export @injectable() class Wheel {
 	attach(parent) {
 		console.log(`attached wheel to ${parent}`);
 	}

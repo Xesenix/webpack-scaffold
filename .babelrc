@@ -3,22 +3,23 @@
 	"presets": [
 		["@babel/preset-env", {
 			"targets": {
-				"browsers": ["last 2 Chrome versions"]
+				"browsers": ["last 2 versions"]
 			},
 			"loose": true,
 			"useBuiltIns": "usage",
 			"modules": false,
 			"debug": true,
-			"spec": false
+			"spec": false,
+			"shippedProposals": true
 		}],
 		"@babel/preset-react",
 		"@babel/preset-typescript",
-		"@babel/preset-stage-2"
+		"@babel/preset-stage-3"
 	],
 	"plugins": [
 		"transform-decorators-legacy",
-		"transform-class-properties",
-		"transform-object-rest-spread"
+		"@babel/plugin-proposal-class-properties",
+		"@babel/plugin-proposal-object-rest-spread"
 	],
 	"env": {
 		"test": {
@@ -30,11 +31,12 @@
 					"loose": true,
 					"modules": false,
 					"debug": true,
-					"spec": false
+					"spec": false,
+					"shippedProposals": true
 				}],
 				"@babel/preset-react",
 				"@babel/preset-typescript",
-				"@babel/preset-stage-2"
+				"@babel/preset-stage-3"
 			]
 		}
 	}

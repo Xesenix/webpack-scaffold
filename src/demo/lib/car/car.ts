@@ -1,12 +1,11 @@
 import { ISteerable } from './driver';
-import { inject, injectable } from 'lib/di';
+import { inject } from 'lib/di';
 
 export interface IAttachablePart {
 	attach(parent: string): void;
 }
 
-@inject(['car-wheel', 'car-engine'])
-export class Car implements ISteerable {
+export @inject(['car-wheel', 'car-engine']) class Car implements ISteerable {
 	constructor(
 		private wheel: IAttachablePart,
 		private engine: IAttachablePart,

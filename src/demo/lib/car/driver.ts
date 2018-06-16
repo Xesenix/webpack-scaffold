@@ -4,8 +4,7 @@ export interface ISteerable {
 	steer(): void;
 }
 
-@inject(['car'])
-export class Driver {
+export @inject(['car']) class Driver {
 	constructor(
 		vehicle: ISteerable,
 	) {

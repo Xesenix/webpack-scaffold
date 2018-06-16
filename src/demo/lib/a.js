@@ -1,6 +1,5 @@
 import { benchmark, groupLog } from './debug';
 
-
 export class A {
 	name = 'A';
 
