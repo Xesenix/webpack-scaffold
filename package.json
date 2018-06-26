@@ -1,145 +1,149 @@
 {
-	"name": "webpack-scaffold",
-	"version": "0.8.3",
-	"description": "",
-	"main": "src/main.js",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/Xesenix/webpack-scaffold"
-	},
-	"scripts": {
-		"analyze": "cross-env ANALYZE=true npm run build:prod",
-		"tdd": "cross-env BABEL_ENV=test ENV=test karma start",
-		"test": "cross-env BABEL_ENV=test ENV=test karma start --single-run",
-		"start": "http-server ./dist/demo",
-		"serve": "cross-env ENV=development HMR=true webpack-dev-server --config webpack.config.js",
-		"build:dev": "cross-env ENV=development parallel-webpack --config webpack.config.js",
-		"build:prod": "cross-env ENV=production webpack --config webpack.config.js",
-		"xi18n": "ts-node ./scripts/extract.ts",
-		"demo:analyze": "cross-env APP=demo npm run analyze",
-		"demo:tdd": "cross-env APP=demo npm run tdd",
-		"demo:test": "cross-env APP=demo npm run test",
-		"demo:start": "cross-env APP=demo npm run start",
-		"demo:serve": "cross-env APP=demo npm run serve",
-		"demo:build:dev": "cross-env APP=demo npm run build:dev",
-		"demo:build:prod": "cross-env APP=demo npm run build:prod",
-		"demo:xi18n": "cross-env APP=demo ts-node ./scripts/extract.ts",
-		"game:analyze": "cross-env APP=game npm run analyze",
-		"game:tdd": "cross-env APP=game npm run tdd",
-		"game:test": "cross-env APP=game npm run test",
-		"game:start": "cross-env APP=game npm run start",
-		"game:serve": "cross-env APP=game npm run serve",
-		"game:build:dev": "cross-env APP=game npm run build:dev",
-		"game:build:prod": "cross-env APP=game npm run build:prod",
-		"game:xi18n": "cross-env APP=game ts-node ./scripts/extract.ts",
-		"report-coverage": "cat ./coverage/lcov.info | coveralls"
-	},
-	"apps": {
-		"demo": {
-			"rootDir": "src/demo",
-			"outDir": "dist/demo",
-			"main": [
-				"main.jsx"
-			],
-			"moduleImportPaths": [
-				"src"
-			],
-			"test": "main.test.js",
-			"template": "templates/index.html",
-			"templateData": {
-				"title": "Demo Webpack Scaffold"
-			},
-			"assets": [
-				"assets"
-			],
-			"styles": [
-				"styles/styles.scss",
-				"styles/banners/a.scss"
-			],
-			"stylesImportPaths": [
-				"src/demo/styles"
-			],
-			"languages": [
-				"en",
-				"pl"
-			]
-		},
-		"game": {
-			"rootDir": "src/game",
-			"outDir": "dist/game",
-			"main": [
-				"main.tsx"
-			],
-			"moduleImportPaths": [
-				"src"
-			],
-			"test": "main.test.ts",
-			"templateData": {
-				"title": "Phaser Game Test"
-			},
-			"assets": [
-				"assets"
-			],
-			"stylesImportPaths": [
-				"styles"
-			],
-			"vendor": []
-		}
-	},
-	"author": "Xesenix",
-	"license": "ISC",
-	"devDependencies": {
-		"@types/babel-core": "^6.25.3",
-		"@types/browserify": "^12.0.33",
-		"@types/chalk": "^2.2.0",
-		"@types/mkdirp": "^0.5.2",
-		"@types/path-exists": "^3.0.0",
-		"@types/react": "^16.0.38",
-		"@types/react-dom": "^16.0.4",
-		"@types/react-hot-loader": "^3.0.6",
-		"@types/react-test-renderer": "^16.0.1",
-		"@types/tinycolor2": "^1.4.0",
-		"@types/typescript": "^2.0.0",
-		"@types/webpack-bundle-analyzer": "^2.9.1",
-		"babel-plugin-transform-object-rest-spread": "^6.26.0",
-		"bootstrap-sass": "^3.3.7",
-		"browserify": "^16.2.0",
-		"coveralls": "^3.0.0",
-		"font-awesome": "^4.7.0",
-		"gettext-extractor": "^3.2.1",
-		"glslify": "^6.1.1",
-		"inversify": "^4.11.1",
-		"inversify-vanillajs-helpers": "^2.0.0",
-		"mkdirp": "^0.5.1",
-		"parallel-webpack": "^2.3.0",
-		"po-gettext-loader": "^0.1.1",
-		"react-hot-loader": "^4.0.0",
-		"react-test-renderer": "^16.2.0",
-		"reflect-metadata": "^0.1.12",
-		"sinon": "^4.4.1",
-		"webpack-bundle-analyzer": "^2.10.1",
-		"webpack-dev-server": "^2.11.1"
-	},
-	"dependencies": {
-		"@babel/plugin-syntax-numeric-separator": "^7.0.0-beta.51",
-		"@types/istanbul": "^0.4.30",
-		"chalk": "^2.3.1",
-		"cross-env": "^5.1.3",
-		"istanbul": "^0.4.5",
-		"http-server": "^0.11.1",
-		"karma-jasmine-html-reporter": "^1.1.0",
-		"node-gettext": "^2.0.0",
-		"node-sass": "^4.9.0",
-		"phaser": "^3.2.0",
-		"path-exists": "^3.0.0",
-		"react": "^16.2.0",
-		"react-dom": "^16.2.0",
-		"tinycolor2": "^1.4.1",
-		"ts-node": "^5.0.1",
-		"typescript": "^2.7.2",
-		"xes-webpack-core": "^0.4.3"
-	},
-	"engines": {
-		"node": ">= 8.0.0"
-	}
+  "name": "webpack-scaffold",
+  "version": "0.8.3",
+  "description": "",
+  "main": "src/main.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Xesenix/webpack-scaffold"
+  },
+  "scripts": {
+    "analyze": "cross-env ANALYZE=true npm run build:prod",
+    "tdd": "cross-env BABEL_ENV=test ENV=test karma start",
+    "test": "cross-env BABEL_ENV=test ENV=test karma start --single-run",
+    "start": "http-server ./dist/demo",
+    "serve": "cross-env ENV=development HMR=true webpack-dev-server --config webpack.config.js",
+    "build:dev": "cross-env ENV=development parallel-webpack --config webpack.config.js",
+    "build:prod": "cross-env ENV=production webpack --config webpack.config.js",
+    "xi18n": "ts-node ./scripts/extract.ts",
+    "demo:analyze": "cross-env APP=demo npm run analyze",
+    "demo:tdd": "cross-env APP=demo npm run tdd",
+    "demo:test": "cross-env APP=demo npm run test",
+    "demo:start": "cross-env APP=demo npm run start",
+    "demo:serve": "cross-env APP=demo npm run serve",
+    "demo:build:dev": "cross-env APP=demo npm run build:dev",
+    "demo:build:prod": "cross-env APP=demo npm run build:prod",
+    "demo:xi18n": "cross-env APP=demo ts-node ./scripts/extract.ts",
+    "game:analyze": "cross-env APP=game npm run analyze",
+    "game:tdd": "cross-env APP=game npm run tdd",
+    "game:test": "cross-env APP=game npm run test",
+    "game:start": "cross-env APP=game npm run start",
+    "game:serve": "cross-env APP=game npm run serve",
+    "game:build:dev": "cross-env APP=game npm run build:dev",
+    "game:build:prod": "cross-env APP=game npm run build:prod",
+    "game:xi18n": "cross-env APP=game ts-node ./scripts/extract.ts",
+    "report-coverage": "cat ./coverage/lcov.info | coveralls",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
+  },
+  "apps": {
+    "demo": {
+      "rootDir": "src/demo",
+      "outDir": "dist/demo",
+      "main": [
+        "main.jsx"
+      ],
+      "moduleImportPaths": [
+        "src"
+      ],
+      "test": "main.test.js",
+      "template": "templates/index.html",
+      "templateData": {
+        "title": "Demo Webpack Scaffold"
+      },
+      "assets": [
+        "assets"
+      ],
+      "styles": [
+        "styles/styles.scss",
+        "styles/banners/a.scss"
+      ],
+      "stylesImportPaths": [
+        "src/demo/styles"
+      ],
+      "languages": [
+        "en",
+        "pl"
+      ]
+    },
+    "game": {
+      "rootDir": "src/game",
+      "outDir": "dist/game",
+      "main": [
+        "main.tsx"
+      ],
+      "moduleImportPaths": [
+        "src"
+      ],
+      "test": "main.test.ts",
+      "templateData": {
+        "title": "Phaser Game Test"
+      },
+      "assets": [
+        "assets"
+      ],
+      "stylesImportPaths": [
+        "styles"
+      ],
+      "vendor": []
+    }
+  },
+  "author": "Xesenix",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/babel-core": "^6.25.3",
+    "@types/browserify": "^12.0.33",
+    "@types/chalk": "^2.2.0",
+    "@types/mkdirp": "^0.5.2",
+    "@types/path-exists": "^3.0.0",
+    "@types/react": "^16.0.38",
+    "@types/react-dom": "^16.0.4",
+    "@types/react-hot-loader": "^3.0.6",
+    "@types/react-test-renderer": "^16.0.1",
+    "@types/tinycolor2": "^1.4.0",
+    "@types/typescript": "^2.0.0",
+    "@types/webpack-bundle-analyzer": "^2.9.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "bootstrap-sass": "^3.3.7",
+    "browserify": "^16.2.0",
+    "coveralls": "^3.0.0",
+    "font-awesome": "^4.7.0",
+    "gettext-extractor": "^3.2.1",
+    "glslify": "^6.1.1",
+    "inversify": "^4.11.1",
+    "inversify-vanillajs-helpers": "^2.0.0",
+    "mkdirp": "^0.5.1",
+    "parallel-webpack": "^2.3.0",
+    "po-gettext-loader": "^0.1.1",
+    "react-hot-loader": "^4.0.0",
+    "react-test-renderer": "^16.2.0",
+    "reflect-metadata": "^0.1.12",
+    "sinon": "^4.4.1",
+    "webpack-bundle-analyzer": "^2.10.1",
+    "webpack-dev-server": "^2.11.1"
+  },
+  "dependencies": {
+    "@babel/plugin-syntax-numeric-separator": "^7.0.0-beta.51",
+    "@types/istanbul": "^0.4.30",
+    "chalk": "^2.3.1",
+    "cross-env": "^5.1.3",
+    "istanbul": "^0.4.5",
+    "http-server": "^0.11.1",
+    "karma-jasmine-html-reporter": "^1.1.0",
+    "node-gettext": "^2.0.0",
+    "node-sass": "^4.9.0",
+    "phaser": "^3.2.0",
+    "path-exists": "^3.0.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "tinycolor2": "^1.4.1",
+    "ts-node": "^5.0.1",
+    "typescript": "^2.7.2",
+    "xes-webpack-core": "^0.4.3",
+    "snyk": "^1.85.0"
+  },
+  "engines": {
+    "node": ">= 8.0.0"
+  },
+  "snyk": true
 }
