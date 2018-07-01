@@ -113,7 +113,7 @@
 		"react-dom": "^16.2.0",
 		"tinycolor2": "^1.4.1",
 		"ts-node": "^5.0.1",
-		"xes-webpack-core": "^0.5.1"
+		"xes-webpack-core": "^0.5.2"
 	},
 	"engines": {
 		"node": ">= 8.0.0"
