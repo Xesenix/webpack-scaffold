@@ -1,0 +1,35 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.12.0
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  'npm:hoek:20180212':
+    - xes-webpack-core > node-sass > request > hawk > cryptiles > boom > hoek:
+        patched: '2018-07-01T23:28:19.091Z'
+    - xes-webpack-core > karma > log4js > loggly > request > hawk > hoek:
+        patched: '2018-07-01T23:28:19.091Z'
+    - xes-webpack-core > karma > log4js > loggly > request > hawk > sntp > hoek:
+        patched: '2018-07-01T23:28:19.091Z'
+    - xes-webpack-core > karma > log4js > loggly > request > hawk > cryptiles > boom > hoek:
+        patched: '2018-07-01T23:28:19.091Z'
+    - xes-webpack-core > node-sass > request > hawk > hoek:
+        patched: '2018-07-01T23:28:19.091Z'
+    - xes-webpack-core > node-sass > request > hawk > boom > hoek:
+        patched: '2018-07-01T23:28:19.091Z'
+    - xes-webpack-core > node-sass > request > hawk > sntp > hoek:
+        patched: '2018-07-01T23:28:19.091Z'
+    - xes-webpack-core > karma > log4js > loggly > request > hawk > boom > hoek:
+        patched: '2018-07-01T23:28:19.091Z'
+    - xes-webpack-core > node-sass > node-gyp > request > hawk > hoek:
+        patched: '2018-07-01T23:28:19.091Z'
+    - xes-webpack-core > node-sass > node-gyp > request > hawk > boom > hoek:
+        patched: '2018-07-01T23:28:19.091Z'
+    - xes-webpack-core > node-sass > node-gyp > request > hawk > sntp > hoek:
+        patched: '2018-07-01T23:28:19.091Z'
+    - xes-webpack-core > node-sass > node-gyp > request > hawk > cryptiles > boom > hoek:
+        patched: '2018-07-01T23:28:19.091Z'
+  'npm:tunnel-agent:20170305':
+    - xes-webpack-core > karma > log4js > loggly > request > tunnel-agent:
+        patched: '2018-07-01T23:28:19.091Z'
+    - xes-webpack-core > node-sass > request > tunnel-agent:
+        patched: '2018-07-01T23:28:19.091Z'
