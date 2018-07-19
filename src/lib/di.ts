@@ -8,11 +8,10 @@ import 'reflect-metadata';
  *
  * @param {((string | symbol | ii.Newable<any> | ii.Abstract<any> | vi.BasicInjection | vi.NamedInjection | vi.TaggedInjection)[])} dependencies
  */
-
-export function inject(dependencies?: (string | symbol | ii.Newable<any> | ii.Abstract<any> | vi.BasicInjection | vi.NamedInjection | vi.TaggedInjection)[]) {
+export function inject<T>(dependencies?: (string | symbol | ii.Newable<any> | ii.Abstract<any> | vi.BasicInjection | vi.NamedInjection | vi.TaggedInjection)[]) {
 	return (target, key, descriptor) => {
 		!process.env.DEBUG || console.debug('annotation:inject', target.name, dependencies);
-		return helpers.annotate(target, dependencies);
+		return helpers.annotate<T>(target, dependencies);
 	}
 }
 
