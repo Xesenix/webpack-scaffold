@@ -1,10 +1,11 @@
-import { inject, injectable } from 'lib/di';
+import { inject } from 'lib/di';
 
 export interface ISteerable {
 	steer(): void;
 }
 
-export @inject(['car']) class Driver {
+@inject(['car'])
+export class Driver {
 	constructor(
 		vehicle: ISteerable,
 	) {

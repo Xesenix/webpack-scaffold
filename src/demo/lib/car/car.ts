@@ -5,13 +5,14 @@ export interface IAttachablePart {
 	attach(parent: string): void;
 }
 
-export @inject(['car-wheel', 'car-engine']) class Car implements ISteerable {
+@inject(['car-wheel', 'car-engine'])
+export class Car implements ISteerable {
 	constructor(
 		private wheel: IAttachablePart,
 		private engine: IAttachablePart,
 	) {
-		wheel.attach('car');
-		engine.attach('car');
+		this.wheel.attach('car');
+		this.engine.attach('car');
 	}
 
 	steer(): void {
