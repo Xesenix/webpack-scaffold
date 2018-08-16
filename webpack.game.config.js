@@ -1,3 +1,4 @@
+const chalk = require('chalk');
 const webpackBase = require('webpack');
 const { webpack } = require('xes-webpack-core');
 
@@ -7,6 +8,7 @@ const { webpack } = require('xes-webpack-core');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = (config) => {
+	console.log(chalk.bold.yellow('Setting WEBPACK for app: game...'))
 	config.module.rules.push(...webpack.loaders.shaderRulesFactory());
 
 	if (process.env.ENV === 'test') {

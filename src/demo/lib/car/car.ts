@@ -11,6 +11,8 @@ export class Car implements ISteerable {
 		private wheel: IAttachablePart,
 		private engine: IAttachablePart,
 	) {
+		this.wheel = wheel;
+		this.engine = engine;
 		this.wheel.attach('car');
 		this.engine.attach('car');
 	}

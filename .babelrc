@@ -1,42 +1,50 @@
 {
 	"compact": false,
 	"presets": [
-		["@babel/preset-env", {
-			"targets": {
-				"browsers": ["last 2 versions"]
-			},
-			"loose": true,
-			"useBuiltIns": "usage",
-			"modules": false,
-			"debug": true,
-			"spec": false,
-			"shippedProposals": true
-		}],
-		"@babel/preset-react",
+		[
+			"@babel/preset-env",
+			{
+				"targets": {
+					"browsers": [
+						"last 2 versions"
+					]
+				},
+				"loose": true,
+				"useBuiltIns": "usage",
+				"modules": false,
+				"debug": true,
+				"spec": false,
+				"shippedProposals": true
+			}
+		],
 		"@babel/preset-typescript",
-		"@babel/preset-stage-3"
+		"@babel/preset-react"
 	],
 	"plugins": [
-		"transform-decorators-legacy",
+		["@babel/plugin-proposal-decorators", {
+			"legacy": true
+		}],
 		"@babel/plugin-proposal-class-properties",
 		"@babel/plugin-proposal-object-rest-spread"
 	],
 	"env": {
 		"test": {
 			"presets": [
-				["@babel/preset-env", {
-					"targets": {
-						"esmodules": true
-					},
-					"loose": true,
-					"modules": false,
-					"debug": true,
-					"spec": false,
-					"shippedProposals": true
-				}],
+				[
+					"@babel/preset-env",
+					{
+						"targets": {
+							"esmodules": true
+						},
+						"loose": true,
+						"modules": false,
+						"debug": true,
+						"spec": false,
+						"shippedProposals": true
+					}
+				],
 				"@babel/preset-react",
-				"@babel/preset-typescript",
-				"@babel/preset-stage-3"
+				"@babel/preset-typescript"
 			]
 		}
 	}

@@ -6,7 +6,7 @@ const app = application.getEnvApp();
 const appWebpack = `./webpack.${app}.config.js`;
 
 const factoryConfig = {
-	useBabelrc: false,
+	useBabelrc: true,
 }
 
 if (fs.existsSync(appWebpack)) {
