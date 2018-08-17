@@ -1,0 +1,22 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.12.0
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  'npm:hoek:20180212':
+    - xes-webpack-core > karma > log4js > loggly > request > hawk > hoek:
+        patched: '2018-08-17T00:51:21.650Z'
+    - xes-webpack-core > karma > log4js > loggly > request > hawk > boom > hoek:
+        patched: '2018-08-17T00:51:21.650Z'
+    - xes-webpack-core > karma > log4js > loggly > request > hawk > sntp > hoek:
+        patched: '2018-08-17T00:51:21.650Z'
+    - xes-webpack-core > karma > log4js > loggly > request > hawk > cryptiles > boom > hoek:
+        patched: '2018-08-17T00:51:21.650Z'
+  'npm:lodash:20180130':
+    - xes-webpack-core > ejs-loader > lodash:
+        patched: '2018-08-17T00:51:21.650Z'
+    - xes-webpack-core > html-critical-webpack-plugin > critical > oust > cheerio > lodash:
+        patched: '2018-08-17T00:51:21.650Z'
+  'npm:tunnel-agent:20170305':
+    - xes-webpack-core > karma > log4js > loggly > request > tunnel-agent:
+        patched: '2018-08-17T00:51:21.650Z'
