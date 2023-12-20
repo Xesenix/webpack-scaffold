@@ -109,9 +109,9 @@
 		"istanbul": "github:Xesenix/istanbul",
 		"phaser": "^3.2.0",
 		"react": "^16.2.0",
-		"react-dom": "^16.2.0",
+		"react-dom": "^16.2.1",
 		"tinycolor2": "^1.4.1",
-		"xes-webpack-core": "^0.7.4"
+		"xes-webpack-core": "^0.9.1"
 	},
 	"engines": {
 		"node": ">= 8.0.0"
